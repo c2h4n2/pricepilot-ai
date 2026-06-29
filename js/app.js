@@ -1,7 +1,9 @@
-const products = window.PRICEPILOT_PRODUCTS || [];
+let products = [];
+
 const $ = (id) => document.getElementById(id);
 
 let currentFilter = "all";
+let selectedCompareIds = [];
 
 function money(n) {
   return "$" + Number(n).toLocaleString();
@@ -38,48 +40,99 @@ function getFiltered() {
   });
 }
 
-function render() {
-  const list = getFiltered();
+function toggleCompare(productId) {
+  if (selectedCompareIds.includes(productId)) {
+    selectedCompareIds = selectedCompareIds.filter((id) => id !== productId);
+  } else {
+    if (selectedCompareIds.length >= 4) {
+      alert("You can compare up to 4 laptops at a time.");
+      return;
+    }
 
-  $("productCount").textContent = products.length;
+    selectedCompareIds.push(productId);
+  }
 
+  render();
+}
+
+function clearCompare() {
+  selectedCompareIds = [];
+  render();
+}
+
+function getSelectedProducts() {
+  return products.filter((p) => selectedCompareIds.includes(p.id));
+}
+
+function renderProductCards(list) {
   $("productGrid").innerHTML = list
-    .map(
-      (p) => `
-      <article class="card">
-        <div class="badge">${p.badge}</div>
-        <h3>${p.name}</h3>
-        <p>${p.summary}</p>
-        <div class="price">${money(p.price)}</div>
-        <ul>
-          <li>${p.bestFor}</li>
-          <li>${p.ram} RAM · ${p.storage}</li>
-          <li>${p.processor}</li>
-          <li>${p.store}</li>
-        </ul>
-        <a class="buy" href="product.html?id=${p.id}">View details</a>
-      </article>
-    `
-    )
+    .map((p) => {
+      const isSelected = selectedCompareIds.includes(p.id);
+
+      return `
+        <article class="card">
+          <div class="badge">${p.badge}</div>
+          <h3>${p.name}</h3>
+          <p>${p.summary}</p>
+          <div class="price">${money(p.price)}</div>
+          <ul>
+            <li>${p.bestFor}</li>
+            <li>${p.ram} RAM · ${p.storage}</li>
+            <li>${p.processor}</li>
+            <li>${p.store}</li>
+          </ul>
+
+          <button class="compare-btn ${isSelected ? "selected" : ""}" data-id="${p.id}">
+            ${isSelected ? "Selected" : "Compare"}
+          </button>
+
+          <a class="buy" href="product.html?id=${p.id}">View details</a>
+        </article>
+      `;
+    })
     .join("");
 
-  $("compareRows").innerHTML = list
-    .map(
-      (p) => `
+  document.querySelectorAll(".compare-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      toggleCompare(button.dataset.id);
+    });
+  });
+}
+
+function renderCompareTable() {
+  const selectedProducts = getSelectedProducts();
+
+  if (selectedProducts.length === 0) {
+    $("compareRows").innerHTML = `
       <tr>
-        <td>${p.name}</td>
-        <td>${p.bestFor}</td>
-        <td>${money(p.price)}</td>
-        <td>${p.ram}</td>
-        <td>${p.storage}</td>
-        <td>${p.score}</td>
+        <td colspan="7">Select laptops above to compare them here.</td>
       </tr>
-    `
-    )
-    .join("");
+    `;
+  } else {
+    $("compareRows").innerHTML = selectedProducts
+      .map(
+        (p) => `
+        <tr>
+          <td>${p.name}</td>
+          <td>${p.bestFor}</td>
+          <td>${money(p.price)}</td>
+          <td>${p.ram}</td>
+          <td>${p.storage}</td>
+          <td>${p.processor}</td>
+          <td>${p.score}</td>
+        </tr>
+      `
+      )
+      .join("");
+  }
 
-  $("emptyState").classList.toggle("hidden", list.length > 0);
+  $("compareStatus").textContent =
+    selectedProducts.length === 0
+      ? "Select laptops to compare."
+      : `${selectedProducts.length} laptop${selectedProducts.length > 1 ? "s" : ""} selected.`;
+}
 
+function renderTopPick() {
   const top = [...products].sort((a, b) => b.score - a.score)[0];
 
   if (top) {
@@ -87,6 +140,18 @@ function render() {
     $("topPickSummary").textContent = top.summary;
     $("topPickScore").textContent = `${top.score}/100 value score`;
   }
+}
+
+function render() {
+  const list = getFiltered();
+
+  $("productCount").textContent = products.length;
+
+  renderProductCards(list);
+  renderCompareTable();
+  renderTopPick();
+
+  $("emptyState").classList.toggle("hidden", list.length > 0);
 }
 
 function init() {
@@ -106,6 +171,8 @@ function init() {
     render();
   });
 
+  $("clearCompareBtn").addEventListener("click", clearCompare);
+
   document.querySelectorAll(".filters button").forEach((button) => {
     button.addEventListener("click", () => {
       currentFilter = button.dataset.filter;
@@ -122,4 +189,23 @@ function init() {
   render();
 }
 
-document.addEventListener("DOMContentLoaded", init);
+async function loadProducts() {
+  try {
+    const response = await fetch("data/laptops.json");
+
+    if (!response.ok) {
+      throw new Error("Laptop data could not be loaded.");
+    }
+
+    products = await response.json();
+    init();
+  } catch (error) {
+    console.error("Could not load laptop data:", error);
+
+    $("productGrid").innerHTML = `
+      <p class="empty">Could not load product data. Please try again later.</p>
+    `;
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadProducts);
