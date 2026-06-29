@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://c2h4n2.github.io/DealScout/sitemap.xml
