@@ -9,6 +9,11 @@ function money(n) {
   return "$" + Number(n).toLocaleString();
 }
 
+function stars(rating) {
+  const fullStars = Math.round(Number(rating));
+  return "★★★★★".slice(0, fullStars) + "☆☆☆☆☆".slice(0, 5 - fullStars);
+}
+
 function productText(p) {
   return `${p.name} ${p.brand} ${p.category} ${p.bestFor} ${p.price} ${p.ram} ${p.storage} ${p.processor}`.toLowerCase();
 }
@@ -71,31 +76,47 @@ function renderProductCards(list) {
       const image = p.image || "assets/images/laptops/placeholder.svg";
 
       return `
-        <article class="card">
+        <article class="card product-card">
           <div class="product-image">
             <img src="${image}" alt="${p.name}" loading="lazy">
+            <span class="image-badge">${p.badge}</span>
           </div>
 
-          <div class="badge">${p.badge}</div>
+          <div class="card-topline">
+            <span class="brand-pill">${p.brand}</span>
+            <span class="score-pill">${p.score}/100</span>
+          </div>
 
           <h3>${p.name}</h3>
 
+          <div class="rating-row">
+            <span class="stars">${stars(p.rating)}</span>
+            <span>${p.rating}</span>
+          </div>
+
           <p>${p.summary}</p>
 
-          <div class="price">${money(p.price)}</div>
+          <div class="price-row">
+            <div>
+              <span class="price-label">From</span>
+              <div class="price">${money(p.price)}</div>
+            </div>
+            <span class="category-pill">${p.bestFor}</span>
+          </div>
 
-          <ul>
-            <li>${p.bestFor}</li>
-            <li>${p.ram} RAM · ${p.storage}</li>
-            <li>${p.processor}</li>
-            <li>${p.store}</li>
-          </ul>
+          <div class="spec-chips">
+            <span>${p.ram}</span>
+            <span>${p.storage}</span>
+            <span>${p.processor}</span>
+          </div>
 
-          <button class="compare-btn ${isSelected ? "selected" : ""}" data-id="${p.id}">
-            ${isSelected ? "Selected" : "Compare"}
-          </button>
+          <div class="card-actions">
+            <button class="compare-btn ${isSelected ? "selected" : ""}" data-id="${p.id}">
+              ${isSelected ? "Selected ✓" : "Compare"}
+            </button>
 
-          <a class="buy" href="product.html?id=${p.id}">View details</a>
+            <a class="buy" href="product.html?id=${p.id}">View details</a>
+          </div>
         </article>
       `;
     })
