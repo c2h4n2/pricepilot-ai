@@ -68,13 +68,22 @@ function renderProductCards(list) {
   $("productGrid").innerHTML = list
     .map((p) => {
       const isSelected = selectedCompareIds.includes(p.id);
+      const image = p.image || "assets/images/laptops/placeholder.svg";
 
       return `
         <article class="card">
+          <div class="product-image">
+            <img src="${image}" alt="${p.name}" loading="lazy">
+          </div>
+
           <div class="badge">${p.badge}</div>
+
           <h3>${p.name}</h3>
+
           <p>${p.summary}</p>
+
           <div class="price">${money(p.price)}</div>
+
           <ul>
             <li>${p.bestFor}</li>
             <li>${p.ram} RAM · ${p.storage}</li>
@@ -112,16 +121,16 @@ function renderCompareTable() {
     $("compareRows").innerHTML = selectedProducts
       .map(
         (p) => `
-        <tr>
-          <td>${p.name}</td>
-          <td>${p.bestFor}</td>
-          <td>${money(p.price)}</td>
-          <td>${p.ram}</td>
-          <td>${p.storage}</td>
-          <td>${p.processor}</td>
-          <td>${p.score}</td>
-        </tr>
-      `
+          <tr>
+            <td>${p.name}</td>
+            <td>${p.bestFor}</td>
+            <td>${money(p.price)}</td>
+            <td>${p.ram}</td>
+            <td>${p.storage}</td>
+            <td>${p.processor}</td>
+            <td>${p.score}</td>
+          </tr>
+        `
       )
       .join("");
   }
@@ -159,6 +168,7 @@ function init() {
 
   $("searchInput").addEventListener("input", render);
   $("sortSelect").addEventListener("change", render);
+  $("clearCompareBtn").addEventListener("click", clearCompare);
 
   $("clearBtn").addEventListener("click", () => {
     $("searchInput").value = "";
@@ -170,8 +180,6 @@ function init() {
 
     render();
   });
-
-  $("clearCompareBtn").addEventListener("click", clearCompare);
 
   document.querySelectorAll(".filters button").forEach((button) => {
     button.addEventListener("click", () => {
