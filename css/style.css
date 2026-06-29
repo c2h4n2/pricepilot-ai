@@ -119,3 +119,70 @@
 .card-actions .compare-btn {
   margin: 0;
 }
+/* ---------- AI Advisor ---------- */
+
+.advisor {
+  margin: 55px auto;
+}
+
+.advisor h2 {
+  margin: 8px 0 24px;
+  font-size: 2rem;
+}
+
+.advisor-box {
+  display: flex;
+  gap: 14px;
+  background: linear-gradient(180deg,#12261a,#0d1e15);
+  border: 1px solid rgba(141,240,167,.18);
+  border-radius: 24px;
+  padding: 18px;
+}
+
+.advisor-box input {
+  flex: 1;
+  background: rgba(255,255,255,.06);
+  color: white;
+  border: 1px solid rgba(141,240,167,.18);
+  border-radius: 16px;
+  padding: 18px;
+  outline: none;
+}
+
+.advisor-box input::placeholder {
+  color: #b9c7bd;
+}
+
+.advisor-box button {
+  background: linear-gradient(135deg,#8df0a7,#b7ffd3);
+  color: #07130d;
+  border: none;
+  border-radius: 16px;
+  padding: 0 28px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.advisor-result {
+  margin-top: 22px;
+  padding: 24px;
+  border-radius: 22px;
+  border: 1px solid rgba(141,240,167,.18);
+  background: rgba(255,255,255,.05);
+}
+
+.advisor-result h3 {
+  margin-top: 0;
+}
+
+@media (max-width:850px){
+
+  .advisor-box{
+    flex-direction:column;
+  }
+
+  .advisor-box button{
+    padding:18px;
+  }
+
+}
