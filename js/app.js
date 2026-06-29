@@ -9,7 +9,7 @@ function getBudget(text) {
 
 function scoreLaptop(product, query) {
   const text = query.toLowerCase();
-  let advisorScore = product.score;
+  let advisorScore = Number(product.score) || 0;
   const reasons = [];
 
   const budget = getBudget(text);
@@ -17,41 +17,45 @@ function scoreLaptop(product, query) {
   if (budget) {
     if (product.price <= budget) {
       advisorScore += 25;
-      reasons.push(`fits your ${money(budget)} budget`);
+      reasons.push(`Fits your ${money(budget)} budget.`);
     } else {
       advisorScore -= 40;
-      reasons.push(`is above your ${money(budget)} budget`);
+      reasons.push(`It is above your ${money(budget)} budget.`);
     }
   }
 
   if ((text.includes("student") || text.includes("college") || text.includes("school")) && product.category === "student") {
     advisorScore += 30;
-    reasons.push("is a strong student-friendly choice");
+    reasons.push("Strong choice for students and college use.");
   }
 
   if (text.includes("gaming") && product.category === "gaming") {
     advisorScore += 35;
-    reasons.push("is built for gaming performance");
+    reasons.push("Built for gaming performance.");
   }
 
   if ((text.includes("business") || text.includes("work")) && product.category === "business") {
     advisorScore += 25;
-    reasons.push("is well suited for business and work");
+    reasons.push("Well suited for business and work.");
   }
 
   if ((text.includes("budget") || text.includes("cheap") || text.includes("affordable")) && product.category === "budget") {
     advisorScore += 30;
-    reasons.push("is one of the best value picks");
+    reasons.push("One of the best value picks.");
   }
 
-  if ((text.includes("programming") || text.includes("coding") || text.includes("computer science")) && product.ram.includes("16")) {
+  if ((text.includes("programming") || text.includes("coding") || text.includes("computer science")) && String(product.ram).includes("16")) {
     advisorScore += 20;
-    reasons.push("has 16 GB RAM, which is helpful for coding");
+    reasons.push("16 GB RAM is helpful for coding and multitasking.");
   }
 
-  if (product.rating >= 4.7) {
+  if (Number(product.rating) >= 4.7) {
     advisorScore += 10;
-    reasons.push(`has a strong ${product.rating}/5 rating`);
+    reasons.push(`Strong ${product.rating}/5 rating.`);
+  }
+
+  if (reasons.length === 0) {
+    reasons.push("High overall value score.");
   }
 
   return {
@@ -80,7 +84,7 @@ function runAdvisor() {
     result.classList.remove("hidden");
     result.innerHTML = `
       <h3>Tell us what you need</h3>
-      <p>Try something like: <strong>I need a laptop under $900 for college and programming.</strong></p>
+      <p>Try: <strong>I need a laptop under $900 for college and programming.</strong></p>
     `;
     return;
   }
@@ -98,7 +102,7 @@ function runAdvisor() {
         .map(
           (laptop, index) => `
             <article class="advisor-card">
-              <img src="${laptop.image}" alt="${laptop.name}">
+              <img src="${laptop.image}" alt="${laptop.name}" loading="lazy">
 
               <div>
                 <p class="eyebrow">${index === 0 ? "Best match" : "Alternative"}</p>
