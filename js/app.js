@@ -1,29 +1,15 @@
 let products = [];
-
-const $ = (id) => document.getElementById(id);
-
 let currentFilter = "all";
 let selectedCompareIds = [];
-
-function money(n) {
-  return "$" + Number(n).toLocaleString();
-}
-
-function stars(rating) {
-  const fullStars = Math.round(Number(rating));
-  return "★★★★★".slice(0, fullStars) + "☆☆☆☆☆".slice(0, 5 - fullStars);
-}
 
 function productText(p) {
   return `${p.name} ${p.brand} ${p.category} ${p.bestFor} ${p.price} ${p.ram} ${p.storage} ${p.processor}`.toLowerCase();
 }
 
 function getFiltered() {
-  const q = ($("searchInput")?.value || "").toLowerCase().trim();
+  const q = (getById("searchInput")?.value || "").toLowerCase().trim();
 
-  let list = products.filter((p) => {
-    return currentFilter === "all" || p.category === currentFilter;
-  });
+  let list = products.filter((p) => currentFilter === "all" || p.category === currentFilter);
 
   if (q) {
     const under = q.match(/under\s*\$?(\d+)/);
@@ -35,7 +21,7 @@ function getFiltered() {
     }
   }
 
-  const sort = $("sortSelect")?.value || "score";
+  const sort = getById("sortSelect")?.value || "score";
 
   return list.sort((a, b) => {
     if (sort === "priceLow") return a.price - b.price;
@@ -45,296 +31,48 @@ function getFiltered() {
   });
 }
 
-function toggleCompare(productId) {
-  if (selectedCompareIds.includes(productId)) {
-    selectedCompareIds = selectedCompareIds.filter((id) => id !== productId);
-  } else {
-    if (selectedCompareIds.length >= 4) {
-      alert("You can compare up to 4 laptops at a time.");
-      return;
-    }
-
-    selectedCompareIds.push(productId);
-  }
-
-  render();
-}
-
-function clearCompare() {
-  selectedCompareIds = [];
-  render();
-}
-
-function getSelectedProducts() {
-  return products.filter((p) => selectedCompareIds.includes(p.id));
-}
-
-function renderProductCards(list) {
-  $("productGrid").innerHTML = list
-    .map((p) => {
-      const isSelected = selectedCompareIds.includes(p.id);
-      const image = p.image || "assets/images/laptops/placeholder.svg";
-
-      return `
-        <article class="card product-card">
-          <div class="product-image">
-            <img src="${image}" alt="${p.name}" loading="lazy">
-            <span class="image-badge">${p.badge}</span>
-          </div>
-
-          <div class="card-topline">
-            <span class="brand-pill">${p.brand}</span>
-            <span class="score-pill">${p.score}/100</span>
-          </div>
-
-          <h3>${p.name}</h3>
-
-          <div class="rating-row">
-            <span class="stars">${stars(p.rating)}</span>
-            <span>${p.rating}</span>
-          </div>
-
-          <p>${p.summary}</p>
-
-          <div class="price-row">
-            <div>
-              <span class="price-label">From</span>
-              <div class="price">${money(p.price)}</div>
-            </div>
-            <span class="category-pill">${p.bestFor}</span>
-          </div>
-
-          <div class="spec-chips">
-            <span>${p.ram}</span>
-            <span>${p.storage}</span>
-            <span>${p.processor}</span>
-          </div>
-
-          <div class="card-actions">
-            <button class="compare-btn ${isSelected ? "selected" : ""}" data-id="${p.id}">
-              ${isSelected ? "Selected ✓" : "Compare"}
-            </button>
-
-            <a class="buy" href="product.html?id=${p.id}">View details</a>
-          </div>
-        </article>
-      `;
-    })
-    .join("");
-
-  document.querySelectorAll(".compare-btn").forEach((button) => {
-    button.addEventListener("click", () => {
-      toggleCompare(button.dataset.id);
-    });
-  });
-}
-
-function renderCompareTable() {
-  const selectedProducts = getSelectedProducts();
-
-  if (selectedProducts.length === 0) {
-    $("compareRows").innerHTML = `
-      <tr>
-        <td colspan="7">Select laptops above to compare them here.</td>
-      </tr>
-    `;
-  } else {
-    $("compareRows").innerHTML = selectedProducts
-      .map(
-        (p) => `
-          <tr>
-            <td>${p.name}</td>
-            <td>${p.bestFor}</td>
-            <td>${money(p.price)}</td>
-            <td>${p.ram}</td>
-            <td>${p.storage}</td>
-            <td>${p.processor}</td>
-            <td>${p.score}</td>
-          </tr>
-        `
-      )
-      .join("");
-  }
-
-  $("compareStatus").textContent =
-    selectedProducts.length === 0
-      ? "Select laptops to compare."
-      : `${selectedProducts.length} laptop${selectedProducts.length > 1 ? "s" : ""} selected.`;
-}
-
 function renderTopPick() {
   const top = [...products].sort((a, b) => b.score - a.score)[0];
 
   if (top) {
-    $("topPickName").textContent = top.name;
-    $("topPickSummary").textContent = top.summary;
-    $("topPickScore").textContent = `${top.score}/100 value score`;
+    getById("topPickName").textContent = top.name;
+    getById("topPickSummary").textContent = top.summary;
+    getById("topPickScore").textContent = `${top.score}/100 value score`;
   }
-}
-
-function getBudget(text) {
-  const under = text.match(/under\s*\$?(\d+)/);
-  const max = text.match(/max\s*\$?(\d+)/);
-  const budget = text.match(/budget\s*\$?(\d+)/);
-
-  const match = under || max || budget;
-  return match ? Number(match[1]) : null;
-}
-
-function scoreLaptop(product, query) {
-  const text = query.toLowerCase();
-  let advisorScore = Number(product.score) || 0;
-  const reasons = [];
-
-  const budget = getBudget(text);
-
-  if (budget) {
-    if (product.price <= budget) {
-      advisorScore += 25;
-      reasons.push(`Fits your ${money(budget)} budget.`);
-    } else {
-      advisorScore -= 40;
-      reasons.push(`It is above your ${money(budget)} budget.`);
-    }
-  }
-
-  if ((text.includes("student") || text.includes("college") || text.includes("school")) && product.category === "student") {
-    advisorScore += 30;
-    reasons.push("Strong choice for students and college use.");
-  }
-
-  if (text.includes("gaming") && product.category === "gaming") {
-    advisorScore += 35;
-    reasons.push("Built for gaming performance.");
-  }
-
-  if ((text.includes("business") || text.includes("work")) && product.category === "business") {
-    advisorScore += 25;
-    reasons.push("Well suited for business and work.");
-  }
-
-  if ((text.includes("budget") || text.includes("cheap") || text.includes("affordable")) && product.category === "budget") {
-    advisorScore += 30;
-    reasons.push("One of the best value picks.");
-  }
-
-  if ((text.includes("programming") || text.includes("coding") || text.includes("computer science")) && String(product.ram).includes("16")) {
-    advisorScore += 20;
-    reasons.push("16 GB RAM is helpful for coding and multitasking.");
-  }
-
-  if (Number(product.rating) >= 4.7) {
-    advisorScore += 10;
-    reasons.push(`Strong ${product.rating}/5 rating.`);
-  }
-
-  if (reasons.length === 0) {
-    reasons.push("High overall value score.");
-  }
-
-  return {
-    ...product,
-    advisorScore,
-    reasons
-  };
-}
-
-function getRecommendations(query) {
-  return products
-    .map((product) => scoreLaptop(product, query))
-    .sort((a, b) => b.advisorScore - a.advisorScore)
-    .slice(0, 3);
-}
-
-function runAdvisor() {
-  const input = $("advisorInput");
-  const result = $("advisorResult");
-
-  if (!input || !result) return;
-
-  const query = input.value.trim();
-
-  if (!query) {
-    result.classList.remove("hidden");
-    result.innerHTML = `
-      <h3>Tell us what you need</h3>
-      <p>Try: <strong>I need a laptop under $900 for college and programming.</strong></p>
-    `;
-    return;
-  }
-
-  const recommendations = getRecommendations(query);
-
-  result.classList.remove("hidden");
-
-  result.innerHTML = `
-    <h3>🎯 PricePilot AI recommends</h3>
-    <p>Based on: “${query}”</p>
-
-    <div class="advisor-recommendations">
-      ${recommendations
-        .map(
-          (laptop, index) => `
-            <article class="advisor-card">
-              <img src="${laptop.image}" alt="${laptop.name}" loading="lazy">
-
-              <div>
-                <p class="eyebrow">${index === 0 ? "Best match" : "Alternative"}</p>
-                <h2>${laptop.name}</h2>
-                <p><strong>${money(laptop.price)}</strong> · ${stars(laptop.rating)} ${laptop.rating}</p>
-                <p>${laptop.summary}</p>
-
-                <p><strong>Why this fits:</strong></p>
-                <ul>
-                  ${laptop.reasons.slice(0, 3).map((reason) => `<li>${reason}</li>`).join("")}
-                </ul>
-
-                <a class="buy" href="product.html?id=${laptop.id}">View Details</a>
-              </div>
-            </article>
-          `
-        )
-        .join("")}
-    </div>
-  `;
 }
 
 function render() {
   const list = getFiltered();
 
-  $("productCount").textContent = products.length;
+  getById("productCount").textContent = products.length;
 
   renderProductCards(list);
   renderCompareTable();
   renderTopPick();
 
-  $("emptyState").classList.toggle("hidden", list.length > 0);
+  getById("emptyState").classList.toggle("hidden", list.length > 0);
 }
 
 function init() {
-  $("year").textContent = new Date().getFullYear();
+  getById("year").textContent = new Date().getFullYear();
 
-  $("searchInput").addEventListener("input", render);
-  $("sortSelect").addEventListener("change", render);
-  $("clearCompareBtn").addEventListener("click", clearCompare);
+  getById("searchInput").addEventListener("input", render);
+  getById("sortSelect").addEventListener("change", render);
+  getById("clearCompareBtn").addEventListener("click", clearCompare);
 
-  const advisorBtn = $("advisorBtn");
-  const advisorInput = $("advisorInput");
+  const advisorBtn = getById("advisorBtn");
+  const advisorInput = getById("advisorInput");
 
-  if (advisorBtn) {
-    advisorBtn.addEventListener("click", runAdvisor);
-  }
+  if (advisorBtn) advisorBtn.addEventListener("click", runAdvisor);
 
   if (advisorInput) {
     advisorInput.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") {
-        runAdvisor();
-      }
+      if (event.key === "Enter") runAdvisor();
     });
   }
 
-  $("clearBtn").addEventListener("click", () => {
-    $("searchInput").value = "";
+  getById("clearBtn").addEventListener("click", () => {
+    getById("searchInput").value = "";
     currentFilter = "all";
 
     document.querySelectorAll(".filters button").forEach((button) => {
@@ -348,9 +86,7 @@ function init() {
     button.addEventListener("click", () => {
       currentFilter = button.dataset.filter;
 
-      document.querySelectorAll(".filters button").forEach((b) => {
-        b.classList.remove("active");
-      });
+      document.querySelectorAll(".filters button").forEach((b) => b.classList.remove("active"));
 
       button.classList.add("active");
       render();
@@ -364,16 +100,14 @@ async function loadProducts() {
   try {
     const response = await fetch("data/laptops.json");
 
-    if (!response.ok) {
-      throw new Error("Laptop data could not be loaded.");
-    }
+    if (!response.ok) throw new Error("Laptop data could not be loaded.");
 
     products = await response.json();
     init();
   } catch (error) {
     console.error("Could not load laptop data:", error);
 
-    $("productGrid").innerHTML = `
+    getById("productGrid").innerHTML = `
       <p class="empty">Could not load product data. Please try again later.</p>
     `;
   }
