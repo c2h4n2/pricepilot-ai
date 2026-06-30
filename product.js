@@ -2,31 +2,11 @@ let products = [];
 
 const params = new URLSearchParams(window.location.search);
 const productId = params.get("id");
-const container = document.getElementById("product-detail");
-
-function money(n) {
-  return "$" + Number(n).toLocaleString();
-}
-
-function stars(rating) {
-  const fullStars = Math.round(Number(rating));
-  return "★★★★★".slice(0, fullStars) + "☆☆☆☆☆".slice(0, 5 - fullStars);
-}
-
-function listItems(items) {
-  return items.map((item) => `<li>${item}</li>`).join("");
-}
+const container = getById("product-detail");
 
 function bestForTags(product) {
   const tags = [product.bestFor, product.category, "Everyday use", product.ram];
   return tags.filter(Boolean).map((tag) => `<span>${tag}</span>`).join("");
-}
-
-function scoreLabel(score) {
-  if (score >= 95) return "Excellent";
-  if (score >= 90) return "Great";
-  if (score >= 80) return "Very Good";
-  return "Good";
 }
 
 function ratingBreakdown(product) {
@@ -95,7 +75,7 @@ async function loadProduct() {
 
       <section class="review-meta">
         <span>Reviewed by PricePilot AI</span>
-        <span>Updated 2026</span>
+        <span>Last updated ${formatDate()}</span>
         <span>8-minute read</span>
       </section>
 
