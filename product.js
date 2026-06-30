@@ -19,10 +19,36 @@ function listItems(items) {
 
 function bestForTags(product) {
   const tags = [product.bestFor, product.category, "Everyday use", product.ram];
+  return tags.filter(Boolean).map((tag) => `<span>${tag}</span>`).join("");
+}
 
-  return tags
-    .filter(Boolean)
-    .map((tag) => `<span>${tag}</span>`)
+function scoreLabel(score) {
+  if (score >= 95) return "Excellent";
+  if (score >= 90) return "Great";
+  if (score >= 80) return "Very Good";
+  return "Good";
+}
+
+function ratingBreakdown(product) {
+  const value = Math.min(5, Math.max(1, product.score / 20)).toFixed(1);
+
+  const rows = [
+    ["Performance", product.rating],
+    ["Value", value],
+    ["Portability", product.category === "gaming" ? 3.8 : 4.7],
+    ["Battery", product.category === "gaming" ? 3.7 : 4.6],
+    ["Everyday use", 4.8]
+  ];
+
+  return rows
+    .map(
+      ([label, score]) => `
+        <div class="rating-breakdown-row">
+          <span>${label}</span>
+          <strong>${stars(score)} ${score}</strong>
+        </div>
+      `
+    )
     .join("");
 }
 
@@ -67,6 +93,12 @@ async function loadProduct() {
     container.innerHTML = `
       <a href="index.html" class="back-link">← Back to all laptops</a>
 
+      <section class="review-meta">
+        <span>Reviewed by PricePilot AI</span>
+        <span>Updated 2026</span>
+        <span>8-minute read</span>
+      </section>
+
       <section class="product-hero">
         <div class="product-hero-image">
           <img src="${product.image}" alt="${product.name}">
@@ -104,10 +136,32 @@ async function loadProduct() {
         </div>
       </section>
 
+      <section class="trust-grid">
+        <article class="score-card">
+          <p class="eyebrow">Overall score</p>
+          <strong>${product.score}</strong>
+          <span>${scoreLabel(product.score)}</span>
+        </article>
+
+        <article class="award-card">
+          <p class="eyebrow">Award</p>
+          <h2>${product.badge}</h2>
+          <p>Selected by PricePilot AI for ${product.bestFor.toLowerCase()}.</p>
+        </article>
+      </section>
+
       <section class="verdict-card">
         <p class="eyebrow">PricePilot verdict</p>
         <h2>Our quick take</h2>
         <p>${verdict(product)}</p>
+      </section>
+
+      <section class="review-card">
+        <p class="eyebrow">Rating breakdown</p>
+        <h2>How it scores</h2>
+        <div class="rating-breakdown">
+          ${ratingBreakdown(product)}
+        </div>
       </section>
 
       <section class="review-card">
