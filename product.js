@@ -17,6 +17,19 @@ function listItems(items) {
   return items.map((item) => `<li>${item}</li>`).join("");
 }
 
+function bestForTags(product) {
+  const tags = [product.bestFor, product.category, "Everyday use", product.ram];
+
+  return tags
+    .filter(Boolean)
+    .map((tag) => `<span>${tag}</span>`)
+    .join("");
+}
+
+function verdict(product) {
+  return `${product.name} is one of the strongest picks for ${product.bestFor.toLowerCase()} because it combines ${product.processor}, ${product.ram} RAM, ${product.storage}, and a ${product.score}/100 value score. It is a smart option if you want a reliable laptop without spending hours comparing specs.`;
+}
+
 function relatedProducts(currentProduct) {
   return products
     .filter((p) => p.id !== currentProduct.id)
@@ -91,6 +104,20 @@ async function loadProduct() {
         </div>
       </section>
 
+      <section class="verdict-card">
+        <p class="eyebrow">PricePilot verdict</p>
+        <h2>Our quick take</h2>
+        <p>${verdict(product)}</p>
+      </section>
+
+      <section class="review-card">
+        <p class="eyebrow">Best for</p>
+        <h2>Who should buy this?</h2>
+        <div class="best-for-tags">
+          ${bestForTags(product)}
+        </div>
+      </section>
+
       <section class="product-review-grid">
         <article class="review-card">
           <h2>Why you'll love it</h2>
@@ -113,6 +140,15 @@ async function loadProduct() {
         <p>
           ${product.name} is a strong choice for ${product.bestFor.toLowerCase()} because it balances
           ${product.processor}, ${product.ram} RAM, ${product.storage}, and a ${product.score}/100 value score.
+        </p>
+      </section>
+
+      <section class="review-card">
+        <p class="eyebrow">Buying tip</p>
+        <h2>Buy smarter</h2>
+        <p>
+          Laptop prices can change during back-to-school sales, holiday events, and manufacturer promotions.
+          Before purchasing, compare current offers and check whether upgraded RAM or storage is worth the extra cost.
         </p>
       </section>
 
