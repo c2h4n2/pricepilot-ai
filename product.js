@@ -13,6 +13,26 @@ function stars(rating) {
   return "★★★★★".slice(0, fullStars) + "☆☆☆☆☆".slice(0, 5 - fullStars);
 }
 
+function listItems(items) {
+  return items.map((item) => `<li>${item}</li>`).join("");
+}
+
+function relatedProducts(currentProduct) {
+  return products
+    .filter((p) => p.id !== currentProduct.id)
+    .slice(0, 3)
+    .map(
+      (p) => `
+        <a class="related-card" href="product.html?id=${p.id}">
+          <img src="${p.image}" alt="${p.name}">
+          <strong>${p.name}</strong>
+          <span>${money(p.price)}</span>
+        </a>
+      `
+    )
+    .join("");
+}
+
 async function loadProduct() {
   try {
     const response = await fetch("data/laptops.json");
@@ -68,6 +88,55 @@ async function loadProduct() {
           <a class="buy product-buy" href="${product.link}" target="_blank" rel="nofollow sponsored noopener">
             Check price at ${product.store}
           </a>
+        </div>
+      </section>
+
+      <section class="product-review-grid">
+        <article class="review-card">
+          <h2>Why you'll love it</h2>
+          <ul class="positive-list">
+            ${listItems(product.pros || [])}
+          </ul>
+        </article>
+
+        <article class="review-card">
+          <h2>Things to consider</h2>
+          <ul class="negative-list">
+            ${listItems(product.cons || [])}
+          </ul>
+        </article>
+      </section>
+
+      <section class="review-card">
+        <p class="eyebrow">PricePilot recommendation</p>
+        <h2>Why PricePilot AI recommends this</h2>
+        <p>
+          ${product.name} is a strong choice for ${product.bestFor.toLowerCase()} because it balances
+          ${product.processor}, ${product.ram} RAM, ${product.storage}, and a ${product.score}/100 value score.
+        </p>
+      </section>
+
+      <section class="review-card">
+        <p class="eyebrow">Specifications</p>
+        <h2>Detailed specs</h2>
+
+        <div class="spec-table">
+          <div><strong>Brand</strong><span>${product.brand}</span></div>
+          <div><strong>Display</strong><span>${product.display}</span></div>
+          <div><strong>Processor</strong><span>${product.processor}</span></div>
+          <div><strong>RAM</strong><span>${product.ram}</span></div>
+          <div><strong>Storage</strong><span>${product.storage}</span></div>
+          <div><strong>Battery</strong><span>${product.battery}</span></div>
+          <div><strong>Weight</strong><span>${product.weight}</span></div>
+          <div><strong>Best For</strong><span>${product.bestFor}</span></div>
+        </div>
+      </section>
+
+      <section class="review-card">
+        <p class="eyebrow">Keep comparing</p>
+        <h2>You may also like</h2>
+        <div class="related-grid">
+          ${relatedProducts(product)}
         </div>
       </section>
     `;
