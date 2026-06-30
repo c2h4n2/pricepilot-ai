@@ -12,10 +12,15 @@
     "ram": "16 GB",
     "storage": "512 GB SSD",
     "processor": "Apple M3",
+    "display": "13.6-inch Liquid Retina",
+    "battery": "Up to 18 hours",
+    "weight": "2.7 lbs",
     "rating": 4.9,
     "score": 98,
     "store": "Apple",
-    "link": "https://www.apple.com/macbook-air/"
+    "link": "https://www.apple.com/macbook-air/",
+    "pros": ["Excellent battery life", "Lightweight design", "Fast Apple M3 chip", "Great for students"],
+    "cons": ["Limited ports", "Upgrades can be expensive"]
   },
   {
     "id": "dell-xps-13",
@@ -30,10 +35,15 @@
     "ram": "16 GB",
     "storage": "512 GB SSD",
     "processor": "Intel Core Ultra 7",
+    "display": "13.4-inch premium display",
+    "battery": "All-day battery life",
+    "weight": "About 2.6 lbs",
     "rating": 4.7,
     "score": 94,
     "store": "Dell",
-    "link": "https://www.dell.com/"
+    "link": "https://www.dell.com/",
+    "pros": ["Premium build quality", "Portable design", "Strong productivity performance", "Excellent screen"],
+    "cons": ["Can get expensive", "Limited port selection"]
   },
   {
     "id": "lenovo-loq-15",
@@ -48,10 +58,15 @@
     "ram": "16 GB",
     "storage": "1 TB SSD",
     "processor": "AMD Ryzen 7",
+    "display": "15.6-inch gaming display",
+    "battery": "Moderate gaming battery life",
+    "weight": "About 5.3 lbs",
     "rating": 4.8,
     "score": 95,
     "store": "Lenovo",
-    "link": "https://www.lenovo.com/"
+    "link": "https://www.lenovo.com/",
+    "pros": ["Strong gaming value", "Dedicated graphics performance", "Large SSD storage", "Good multitasking specs"],
+    "cons": ["Heavier than ultrabooks", "Battery life is shorter while gaming"]
   },
   {
     "id": "asus-vivobook-15",
@@ -66,9 +81,14 @@
     "ram": "16 GB",
     "storage": "512 GB SSD",
     "processor": "AMD Ryzen 5",
+    "display": "15.6-inch display",
+    "battery": "Good everyday battery life",
+    "weight": "About 3.7 lbs",
     "rating": 4.6,
     "score": 90,
     "store": "ASUS",
-    "link": "https://www.asus.com/"
+    "link": "https://www.asus.com/",
+    "pros": ["Affordable price", "Good everyday performance", "16 GB RAM at a budget price", "Large screen"],
+    "cons": ["Not ideal for heavy gaming", "Build quality is more basic"]
   }
 ]
