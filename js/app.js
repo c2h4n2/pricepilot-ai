@@ -98,7 +98,7 @@ function init() {
 
 async function loadProducts() {
   try {
-    const response = await fetch("data/laptops.json");
+    const response = await fetch("data/products.json");
 
     if (!response.ok) throw new Error("Laptop data could not be loaded.");
 

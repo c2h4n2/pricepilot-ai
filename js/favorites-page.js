@@ -3,7 +3,7 @@ let products = [];
 async function loadFavoritesPage() {
   getById("year").textContent = new Date().getFullYear();
 
-  const response = await fetch("data/laptops.json");
+  const response = await fetch("data/products.json");
   products = await response.json();
 
   const favoriteIds = getFavorites();

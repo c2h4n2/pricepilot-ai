@@ -54,7 +54,7 @@ function relatedProducts(currentProduct) {
 
 async function loadProduct() {
   try {
-    const response = await fetch("data/laptops.json");
+    const response = await fetch("data/products.json");
     products = await response.json();
 
     const product = products.find((p) => String(p.id) === String(productId));
