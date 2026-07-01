@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Favorites | PricePilot AI</title>
+  <meta name="description" content="View your saved favorite laptops on PricePilot AI." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav wrap">
+      <a class="brand" href="index.html"><span>PP</span> PricePilot <em>AI</em></a>
+      <div class="links">
+        <a href="index.html#deals">Deals</a>
+        <a href="index.html#compare">Compare</a>
+        <a href="index.html#guides">Guides</a>
+        <a href="favorites.html">Favorites</a>
+        <a href="about.html">About</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap page-hero">
+    <p class="eyebrow">Saved laptops</p>
+    <h1>My Favorites</h1>
+    <p class="lead">Your saved laptops are stored in this browser.</p>
+
+    <section style="margin-top: 34px;">
+      <div id="favoritesGrid" class="grid"></div>
+      <p id="favoritesEmpty" class="empty hidden">
+        You have not saved any laptops yet. Go back to the homepage and click “♡ Save”.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer wrap">
+    <p>© <span id="year"></span> PricePilot AI.</p>
+  </footer>
+
+  <script src="js/utils.js?v=2"></script>
+  <script src="js/favorites.js?v=2"></script>
+  <script src="js/favorites-page.js?v=2"></script>
+</body>
+</html>
