@@ -25,11 +25,22 @@ function numberFromText(value) {
   return Number(String(value).replace(/[^0-9.]/g, "")) || 0;
 }
 
+function storageToGB(storage) {
+  const text = String(storage).toLowerCase();
+  const number = numberFromText(text);
+
+  if (text.includes("tb")) {
+    return number * 1024;
+  }
+
+  return number;
+}
+
 function getComparisonWinners(selectedProducts) {
   return {
     price: Math.min(...selectedProducts.map((p) => p.price)),
     ram: Math.max(...selectedProducts.map((p) => numberFromText(p.ram))),
-    storage: Math.max(...selectedProducts.map((p) => numberFromText(p.storage))),
+    storage: Math.max(...selectedProducts.map((p) => storageToGB(p.storage))),
     rating: Math.max(...selectedProducts.map((p) => Number(p.rating))),
     score: Math.max(...selectedProducts.map((p) => Number(p.score)))
   };
@@ -65,7 +76,7 @@ function renderCompareTable() {
           <td>${p.bestFor}</td>
           <td>${money(p.price)} ${winnerBadge(p.price === winners.price)}</td>
           <td>${p.ram} ${winnerBadge(numberFromText(p.ram) === winners.ram)}</td>
-          <td>${p.storage} ${winnerBadge(numberFromText(p.storage) === winners.storage)}</td>
+          <td>${p.storage} ${winnerBadge(storageToGB(p.storage) === winners.storage)}</td>
           <td>${p.processor}</td>
           <td>${p.rating} ${winnerBadge(Number(p.rating) === winners.rating)}</td>
           <td>${p.score} ${winnerBadge(Number(p.score) === winners.score)}</td>
