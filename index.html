@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PricePilot AI | Smart Laptop Deals</title>
-  <meta name="description" content="PricePilot AI helps shoppers compare laptop deals, prices, specs, and buying guides." />
+  <title>PricePilot AI | Smart Tech Deals</title>
+  <meta name="description" content="PricePilot AI helps shoppers compare tech deals, prices, specs, and buying guides." />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -24,9 +24,9 @@
   <main>
     <section class="hero wrap">
       <div>
-        <p class="eyebrow">Laptop deals, simplified</p>
-        <h1>Find the best laptop deal without hours of research.</h1>
-        <p class="lead">Search by budget, brand, specs, or use case. PricePilot AI compares curated laptop picks and explains who each option is best for.</p>
+        <p class="eyebrow">Tech deals, simplified</p>
+        <h1>Find the best tech deal without hours of research.</h1>
+        <p class="lead">Search by budget, brand, specs, or use case. PricePilot AI compares curated tech picks and explains who each option is best for.</p>
 
         <div class="search-box">
           <input id="searchInput" type="search" placeholder="Try student, gaming, under 700, 16GB, MacBook..." />
@@ -46,32 +46,32 @@
       <aside class="hero-card">
         <p class="eyebrow">AI Pick</p>
         <h2 id="topPickName">Loading...</h2>
-        <p id="topPickSummary">Finding today's best balanced laptop.</p>
+        <p id="topPickSummary">Finding today's best balanced product.</p>
         <strong id="topPickScore">-- value score</strong>
       </aside>
     </section>
 
     <section class="advisor wrap">
       <p class="eyebrow">Ask PricePilot AI</p>
-      <h2>Tell us what you need. We’ll recommend a laptop.</h2>
+      <h2>Tell us what you need. We’ll recommend the right product.</h2>
 
       <div class="advisor-box">
         <input id="advisorInput" type="text" placeholder="Example: I need a laptop under $900 for college and programming" />
-        <button id="advisorBtn">Find my laptop</button>
+        <button id="advisorBtn">Find my product</button>
       </div>
 
       <div id="advisorResult" class="advisor-result hidden"></div>
     </section>
 
     <section class="stats wrap">
-      <div><strong id="productCount">0</strong><span>curated laptops</span></div>
+      <div><strong id="productCount">0</strong><span>curated products</span></div>
       <div><strong>5</strong><span>shopping goals</span></div>
-      <div><strong>0</strong><span>coding required</span></div>
+      <div><strong>0</strong><span>guesswork required</span></div>
     </section>
 
     <section id="deals" class="wrap section-head">
       <p class="eyebrow">Featured deals</p>
-      <h2>Recommended laptops</h2>
+      <h2>Recommended products</h2>
       <select id="sortSelect">
         <option value="score">Best value</option>
         <option value="priceLow">Price: low to high</option>
@@ -83,7 +83,7 @@
     <section class="wrap">
       <div class="compare-actions">
         <button id="clearCompareBtn">Clear comparison</button>
-        <span id="compareStatus">Select laptops to compare.</span>
+        <span id="compareStatus">Select products to compare.</span>
       </div>
 
       <div id="productGrid" class="grid"></div>
@@ -97,7 +97,7 @@
         <table>
           <thead>
             <tr>
-              <th>Laptop</th>
+              <th>Product</th>
               <th>Best for</th>
               <th>Price</th>
               <th>RAM</th>
@@ -110,6 +110,7 @@
           <tbody id="compareRows"></tbody>
         </table>
       </div>
+      <div id="compareRecommendation" class="compare-recommendation hidden"></div>
     </section>
 
     <section id="guides" class="wrap guides">
