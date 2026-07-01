@@ -1,9 +1,61 @@
+function getTypeLabel(product) {
+  const labels = {
+    laptop: "Laptop",
+    monitor: "Monitor",
+    keyboard: "Keyboard",
+    mouse: "Mouse",
+    headphones: "Headphones",
+    tablet: "Tablet",
+    smartwatch: "Smartwatch",
+    tv: "TV",
+    ssd: "SSD",
+    router: "Router",
+    camera: "Camera",
+    printer: "Printer"
+  };
+
+  return labels[product.type] || "Product";
+}
+
+function getTypeIcon(product) {
+  const icons = {
+    laptop: "💻",
+    monitor: "🖥️",
+    keyboard: "⌨️",
+    mouse: "🖱️",
+    headphones: "🎧",
+    tablet: "📱",
+    smartwatch: "⌚",
+    tv: "📺",
+    ssd: "💾",
+    router: "📡",
+    camera: "📷",
+    printer: "🖨️"
+  };
+
+  return icons[product.type] || "📦";
+}
+
+function getSpecChips(product) {
+  if (product.type === "monitor") {
+    return [product.ram, product.storage, product.processor]
+      .filter(Boolean)
+      .map((spec) => `<span>${spec}</span>`)
+      .join("");
+  }
+
+  return [product.ram, product.storage, product.processor]
+    .filter(Boolean)
+    .map((spec) => `<span>${spec}</span>`)
+    .join("");
+}
+
 function renderProductCards(list) {
   getById("productGrid").innerHTML = list
     .map((p) => {
       const isSelected = selectedCompareIds.includes(p.id);
       const favorite = isFavorite(p.id);
-      const image = p.image || "assets/images/laptops/placeholder.svg";
+      const image = p.image || "assets/images/placeholder.svg";
 
       return `
         <article class="card product-card">
@@ -16,6 +68,8 @@ function renderProductCards(list) {
             <span class="brand-pill">${p.brand}</span>
             <span class="score-pill">${p.score}/100</span>
           </div>
+
+          <p class="product-type">${getTypeIcon(p)} ${getTypeLabel(p)}</p>
 
           <h3>${p.name}</h3>
 
@@ -35,9 +89,7 @@ function renderProductCards(list) {
           </div>
 
           <div class="spec-chips">
-            <span>${p.ram}</span>
-            <span>${p.storage}</span>
-            <span>${p.processor}</span>
+            ${getSpecChips(p)}
           </div>
 
           <div class="card-actions">
