@@ -50,6 +50,38 @@ function winnerBadge(condition) {
   return condition ? `<span class="winner-badge">Best</span>` : "";
 }
 
+function getComparisonRecommendation(selectedProducts) {
+  return [...selectedProducts].sort((a, b) => {
+    const aValue = Number(a.score) + Number(a.rating) * 5 - a.price / 100;
+    const bValue = Number(b.score) + Number(b.rating) * 5 - b.price / 100;
+    return bValue - aValue;
+  })[0];
+}
+
+function renderCompareRecommendation(selectedProducts) {
+  const box = getById("compareRecommendation");
+  if (!box) return;
+
+  if (selectedProducts.length < 2) {
+    box.classList.add("hidden");
+    box.innerHTML = "";
+    return;
+  }
+
+  const pick = getComparisonRecommendation(selectedProducts);
+
+  box.classList.remove("hidden");
+  box.innerHTML = `
+    <p class="eyebrow">PricePilot recommendation</p>
+    <h3>🏆 ${pick.name} is the strongest overall pick</h3>
+    <p>
+      We recommend ${pick.name} because it combines a ${pick.score}/100 value score,
+      a ${pick.rating}/5 rating, ${pick.ram} RAM, ${pick.storage}, and a ${pick.processor}.
+    </p>
+    <a class="buy" href="product.html?id=${pick.id}">View recommended laptop</a>
+  `;
+}
+
 function renderCompareTable() {
   const selectedProducts = getSelectedProducts();
 
@@ -61,6 +93,7 @@ function renderCompareTable() {
     `;
 
     getById("compareStatus").textContent = "Select laptops to compare.";
+    renderCompareRecommendation([]);
     return;
   }
 
@@ -70,9 +103,7 @@ function renderCompareTable() {
     .map(
       (p) => `
         <tr>
-          <td>
-            <strong>${p.name}</strong>
-          </td>
+          <td><strong>${p.name}</strong></td>
           <td>${p.bestFor}</td>
           <td>${money(p.price)} ${winnerBadge(p.price === winners.price)}</td>
           <td>${p.ram} ${winnerBadge(numberFromText(p.ram) === winners.ram)}</td>
@@ -87,4 +118,6 @@ function renderCompareTable() {
 
   getById("compareStatus").textContent =
     `${selectedProducts.length} laptop${selectedProducts.length > 1 ? "s" : ""} selected. Best values are highlighted.`;
+
+  renderCompareRecommendation(selectedProducts);
 }
