@@ -41,13 +41,15 @@ function renderProductCards(list) {
           </div>
 
           <div class="card-actions">
-            <button class="favorite-btn ${favorite ? "selected" : ""}" data-id="${p.id}">
-              ${favorite ? "♥ Saved" : "♡ Save"}
-            </button>
+            <div class="card-action-row">
+              <button class="favorite-btn ${favorite ? "selected" : ""}" data-id="${p.id}">
+                ${favorite ? "♥ Saved" : "♡ Save"}
+              </button>
 
-            <button class="compare-btn ${isSelected ? "selected" : ""}" data-id="${p.id}">
-              ${isSelected ? "Selected ✓" : "Compare"}
-            </button>
+              <button class="compare-btn ${isSelected ? "selected" : ""}" data-id="${p.id}">
+                ${isSelected ? "Selected ✓" : "Compare"}
+              </button>
+            </div>
 
             <a class="buy" href="product.html?id=${p.id}">
               View details

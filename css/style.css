@@ -728,3 +728,14 @@ td:first-child {
   color: var(--accent2);
   border-color: rgba(244, 201, 93, 0.45);
 }
+.card-action-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.favorite-btn,
+.compare-btn {
+  margin: 0;
+}
