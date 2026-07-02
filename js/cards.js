@@ -37,13 +37,6 @@ function getTypeIcon(product) {
 }
 
 function getSpecChips(product) {
-  if (product.type === "monitor") {
-    return [product.ram, product.storage, product.processor]
-      .filter(Boolean)
-      .map((spec) => `<span>${spec}</span>`)
-      .join("");
-  }
-
   return [product.ram, product.storage, product.processor]
     .filter(Boolean)
     .map((spec) => `<span>${spec}</span>`)
@@ -51,11 +44,16 @@ function getSpecChips(product) {
 }
 
 function renderProductCards(list) {
+  const firstCompared = selectedCompareIds.length
+    ? products.find((product) => product.id === selectedCompareIds[0])
+    : null;
+
   getById("productGrid").innerHTML = list
     .map((p) => {
       const isSelected = selectedCompareIds.includes(p.id);
       const favorite = isFavorite(p.id);
       const image = p.image || "assets/images/placeholder.svg";
+      const compareLocked = firstCompared && firstCompared.type !== p.type && !isSelected;
 
       return `
         <article class="card product-card">
@@ -98,8 +96,18 @@ function renderProductCards(list) {
                 ${favorite ? "♥ Saved" : "♡ Save"}
               </button>
 
-              <button class="compare-btn ${isSelected ? "selected" : ""}" data-id="${p.id}">
-                ${isSelected ? "Selected ✓" : "Compare"}
+              <button
+                class="compare-btn ${isSelected ? "selected" : ""} ${compareLocked ? "locked" : ""}"
+                data-id="${p.id}"
+                ${compareLocked ? "disabled" : ""}
+              >
+                ${
+                  isSelected
+                    ? "Selected ✓"
+                    : compareLocked
+                      ? "🔒 Unavailable"
+                      : "Compare"
+                }
               </button>
             </div>
 
@@ -112,7 +120,7 @@ function renderProductCards(list) {
     })
     .join("");
 
-  document.querySelectorAll(".compare-btn").forEach((button) => {
+  document.querySelectorAll(".compare-btn:not(:disabled)").forEach((button) => {
     button.addEventListener("click", () => toggleCompare(button.dataset.id));
   });
 

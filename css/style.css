@@ -816,3 +816,16 @@ td:first-child {
   display: block;
   color: var(--muted);
 }
+.compare-btn.locked {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.compare-btn.locked:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.compare-btn:disabled {
+  pointer-events: none;
+}
