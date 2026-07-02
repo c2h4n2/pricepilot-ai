@@ -4,21 +4,43 @@ const params = new URLSearchParams(window.location.search);
 const productId = params.get("id");
 const container = getById("product-detail");
 
+function productTypeLabel(product) {
+  if (product.type === "monitor") return "Monitor";
+  if (product.type === "laptop") return "Laptop";
+  return "Product";
+}
+
 function bestForTags(product) {
-  const tags = [product.bestFor, product.category, "Everyday use", product.ram];
+  const tags = [productTypeLabel(product), product.bestFor, product.category, product.ram];
   return tags.filter(Boolean).map((tag) => `<span>${tag}</span>`).join("");
+}
+
+function productSpecChips(product) {
+  return [product.ram, product.storage, product.processor]
+    .filter(Boolean)
+    .map((spec) => `<span>${spec}</span>`)
+    .join("");
 }
 
 function ratingBreakdown(product) {
   const value = Math.min(5, Math.max(1, product.score / 20)).toFixed(1);
 
-  const rows = [
-    ["Performance", product.rating],
-    ["Value", value],
-    ["Portability", product.category === "gaming" ? 3.8 : 4.7],
-    ["Battery", product.category === "gaming" ? 3.7 : 4.6],
-    ["Everyday use", 4.8]
-  ];
+  const rows =
+    product.type === "monitor"
+      ? [
+          ["Display quality", product.rating],
+          ["Value", value],
+          ["Color & clarity", 4.7],
+          ["Gaming / motion", product.category === "gaming" ? 4.8 : 4.1],
+          ["Productivity", 4.8]
+        ]
+      : [
+          ["Performance", product.rating],
+          ["Value", value],
+          ["Portability", product.category === "gaming" ? 3.8 : 4.7],
+          ["Battery", product.category === "gaming" ? 3.7 : 4.6],
+          ["Everyday use", 4.8]
+        ];
 
   return rows
     .map(
@@ -33,12 +55,63 @@ function ratingBreakdown(product) {
 }
 
 function verdict(product) {
+  if (product.type === "monitor") {
+    return `${product.name} is one of the strongest picks for ${product.bestFor.toLowerCase()} because it combines ${product.ram}, ${product.storage}, ${product.processor}, and a ${product.score}/100 value score. It is a smart option if you want a quality display without spending hours comparing monitor specs.`;
+  }
+
   return `${product.name} is one of the strongest picks for ${product.bestFor.toLowerCase()} because it combines ${product.processor}, ${product.ram} RAM, ${product.storage}, and a ${product.score}/100 value score. It is a smart option if you want a reliable laptop without spending hours comparing specs.`;
+}
+
+function recommendationText(product) {
+  if (product.type === "monitor") {
+    return `${product.name} is a strong choice for ${product.bestFor.toLowerCase()} because it balances ${product.ram}, ${product.storage}, ${product.processor}, and a ${product.score}/100 value score.`;
+  }
+
+  return `${product.name} is a strong choice for ${product.bestFor.toLowerCase()} because it balances ${product.processor}, ${product.ram} RAM, ${product.storage}, and a ${product.score}/100 value score.`;
+}
+
+function buyingTip(product) {
+  if (product.type === "monitor") {
+    return `
+      Monitor prices can change during holiday sales, back-to-school promotions, and gaming events.
+      Before purchasing, compare resolution, refresh rate, panel type, ports, and whether the monitor fits your desk setup.
+    `;
+  }
+
+  return `
+    Laptop prices can change during back-to-school sales, holiday events, and manufacturer promotions.
+    Before purchasing, compare current offers and check whether upgraded RAM or storage is worth the extra cost.
+  `;
+}
+
+function specsTable(product) {
+  if (product.type === "monitor") {
+    return `
+      <div><strong>Brand</strong><span>${product.brand}</span></div>
+      <div><strong>Size</strong><span>${product.ram}</span></div>
+      <div><strong>Display</strong><span>${product.storage}</span></div>
+      <div><strong>Panel</strong><span>${product.processor}</span></div>
+      <div><strong>Screen</strong><span>${product.display}</span></div>
+      <div><strong>Weight</strong><span>${product.weight}</span></div>
+      <div><strong>Best For</strong><span>${product.bestFor}</span></div>
+    `;
+  }
+
+  return `
+    <div><strong>Brand</strong><span>${product.brand}</span></div>
+    <div><strong>Display</strong><span>${product.display}</span></div>
+    <div><strong>Processor</strong><span>${product.processor}</span></div>
+    <div><strong>RAM</strong><span>${product.ram}</span></div>
+    <div><strong>Storage</strong><span>${product.storage}</span></div>
+    <div><strong>Battery</strong><span>${product.battery}</span></div>
+    <div><strong>Weight</strong><span>${product.weight}</span></div>
+    <div><strong>Best For</strong><span>${product.bestFor}</span></div>
+  `;
 }
 
 function relatedProducts(currentProduct) {
   return products
-    .filter((p) => p.id !== currentProduct.id)
+    .filter((p) => p.id !== currentProduct.id && p.type === currentProduct.type)
     .slice(0, 3)
     .map(
       (p) => `
@@ -68,15 +141,16 @@ async function loadProduct() {
       return;
     }
 
+    const typeLabel = productTypeLabel(product);
     document.title = `${product.name} | PricePilot AI`;
 
     container.innerHTML = `
-      <a href="index.html" class="back-link">← Back to all laptops</a>
+      <a href="index.html" class="back-link">← Back to all products</a>
 
       <section class="review-meta">
         <span>Reviewed by PricePilot AI</span>
+        <span>${typeLabel}</span>
         <span>Last updated ${formatDate()}</span>
-        <span>8-minute read</span>
       </section>
 
       <section class="product-hero">
@@ -85,7 +159,7 @@ async function loadProduct() {
         </div>
 
         <div class="product-hero-content">
-          <p class="eyebrow">${product.brand}</p>
+          <p class="eyebrow">${product.brand} ${typeLabel}</p>
           <h1>${product.name}</h1>
 
           <div class="rating-row">
@@ -105,9 +179,7 @@ async function loadProduct() {
           </div>
 
           <div class="spec-chips">
-            <span>${product.ram}</span>
-            <span>${product.storage}</span>
-            <span>${product.processor}</span>
+            ${productSpecChips(product)}
           </div>
 
           <a class="buy product-buy" href="${product.link}" target="_blank" rel="nofollow sponsored noopener">
@@ -138,7 +210,7 @@ async function loadProduct() {
 
       <section class="review-card">
         <p class="eyebrow">Rating breakdown</p>
-        <h2>How it scores</h2>
+        <h2>How this ${typeLabel.toLowerCase()} scores</h2>
         <div class="rating-breakdown">
           ${ratingBreakdown(product)}
         </div>
@@ -171,34 +243,21 @@ async function loadProduct() {
       <section class="review-card">
         <p class="eyebrow">PricePilot recommendation</p>
         <h2>Why PricePilot AI recommends this</h2>
-        <p>
-          ${product.name} is a strong choice for ${product.bestFor.toLowerCase()} because it balances
-          ${product.processor}, ${product.ram} RAM, ${product.storage}, and a ${product.score}/100 value score.
-        </p>
+        <p>${recommendationText(product)}</p>
       </section>
 
       <section class="review-card">
         <p class="eyebrow">Buying tip</p>
         <h2>Buy smarter</h2>
-        <p>
-          Laptop prices can change during back-to-school sales, holiday events, and manufacturer promotions.
-          Before purchasing, compare current offers and check whether upgraded RAM or storage is worth the extra cost.
-        </p>
+        <p>${buyingTip(product)}</p>
       </section>
 
       <section class="review-card">
-        <p class="eyebrow">Specifications</p>
+        <p class="eyebrow">${typeLabel} specifications</p>
         <h2>Detailed specs</h2>
 
         <div class="spec-table">
-          <div><strong>Brand</strong><span>${product.brand}</span></div>
-          <div><strong>Display</strong><span>${product.display}</span></div>
-          <div><strong>Processor</strong><span>${product.processor}</span></div>
-          <div><strong>RAM</strong><span>${product.ram}</span></div>
-          <div><strong>Storage</strong><span>${product.storage}</span></div>
-          <div><strong>Battery</strong><span>${product.battery}</span></div>
-          <div><strong>Weight</strong><span>${product.weight}</span></div>
-          <div><strong>Best For</strong><span>${product.bestFor}</span></div>
+          ${specsTable(product)}
         </div>
       </section>
 
