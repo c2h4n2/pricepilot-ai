@@ -38,7 +38,7 @@ function getSpecLabels(product) {
   if (product.type === "monitor") {
     return {
       spec1: "Size",
-      spec2: "Resolution",
+      spec2: "Display",
       spec3: "Panel"
     };
   }
@@ -82,7 +82,7 @@ function getComparisonRecommendation(selectedProducts) {
 
 function comparisonReason(product) {
   if (product.type === "monitor") {
-    return `${product.display}, ${product.storage}, ${product.processor}, a ${product.score}/100 value score, and a ${product.rating}/5 rating`;
+    return `${product.ram} size, ${product.storage} display, ${product.processor}, a ${product.score}/100 value score, and a ${product.rating}/5 rating`;
   }
 
   return `${product.ram} RAM, ${product.storage}, ${product.processor}, a ${product.score}/100 value score, and a ${product.rating}/5 rating`;
