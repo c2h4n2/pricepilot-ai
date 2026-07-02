@@ -1,16 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Product Details | PricePilot AI</title>
-  <meta name="description" content="View detailed specifications, pricing, and recommendations for laptops on PricePilot AI.">
-
+  <meta name="description" content="View detailed specifications, pricing, and recommendations for tech products on PricePilot AI.">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-
 <header class="site-header">
   <div class="wrap nav">
     <a class="brand" href="index.html">
@@ -19,26 +17,22 @@
 
     <div class="links">
       <a href="index.html">Home</a>
-      <a href="best-laptops-for-students.html">Guides</a>
+      <a href="index.html#deals">Deals</a>
+      <a href="index.html#compare">Compare</a>
+      <a href="favorites.html">Favorites</a>
       <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
     </div>
   </div>
 </header>
 
 <main class="wrap page-hero">
-
   <section id="product-detail">
     <p>Loading product...</p>
   </section>
-
 </main>
 
 <footer class="footer wrap">
-  <p>
-    © <span id="year"></span> PricePilot AI
-  </p>
-
+  <p>© <span id="year"></span> PricePilot AI</p>
   <p>
     <a href="about.html">About</a> ·
     <a href="contact.html">Contact</a> ·
@@ -48,12 +42,10 @@
 </footer>
 
 <script>
-document.getElementById("year").textContent = new Date().getFullYear();
+  document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 
-<script src="products.js"></script>
-<script src="js/utils.js"></script>
-<script src="product.js"></script>
-
+<script src="js/utils.js?v=2"></script>
+<script src="product.js?v=2"></script>
 </body>
 </html>

@@ -1,15 +1,20 @@
 let products = [];
 let currentFilter = "all";
+let currentTypeFilter = "all";
 let selectedCompareIds = [];
 
 function productText(p) {
-  return `${p.name} ${p.brand} ${p.category} ${p.bestFor} ${p.price} ${p.ram} ${p.storage} ${p.processor}`.toLowerCase();
+  return `${p.name} ${p.brand} ${p.type} ${p.category} ${p.bestFor} ${p.price} ${p.ram} ${p.storage} ${p.processor}`.toLowerCase();
 }
 
 function getFiltered() {
   const q = (getById("searchInput")?.value || "").toLowerCase().trim();
 
-  let list = products.filter((p) => currentFilter === "all" || p.category === currentFilter);
+  let list = products.filter((p) => {
+    const matchesType = currentTypeFilter === "all" || p.type === currentTypeFilter;
+    const matchesCategory = currentFilter === "all" || p.category === currentFilter;
+    return matchesType && matchesCategory;
+  });
 
   if (q) {
     const under = q.match(/under\s*\$?(\d+)/);
@@ -32,7 +37,8 @@ function getFiltered() {
 }
 
 function renderTopPick() {
-  const top = [...products].sort((a, b) => b.score - a.score)[0];
+  const list = getFiltered();
+  const top = [...list].sort((a, b) => b.score - a.score)[0] || [...products].sort((a, b) => b.score - a.score)[0];
 
   if (top) {
     getById("topPickName").textContent = top.name;
@@ -44,7 +50,7 @@ function renderTopPick() {
 function render() {
   const list = getFiltered();
 
-  getById("productCount").textContent = products.length;
+  getById("productCount").textContent = list.length;
 
   renderProductCards(list);
   renderCompareTable();
@@ -74,9 +80,14 @@ function init() {
   getById("clearBtn").addEventListener("click", () => {
     getById("searchInput").value = "";
     currentFilter = "all";
+    currentTypeFilter = "all";
 
     document.querySelectorAll(".filters button").forEach((button) => {
       button.classList.toggle("active", button.dataset.filter === "all");
+    });
+
+    document.querySelectorAll(".type-filters button").forEach((button) => {
+      button.classList.toggle("active", button.dataset.type === "all");
     });
 
     render();
@@ -93,6 +104,17 @@ function init() {
     });
   });
 
+  document.querySelectorAll(".type-filters button").forEach((button) => {
+    button.addEventListener("click", () => {
+      currentTypeFilter = button.dataset.type;
+
+      document.querySelectorAll(".type-filters button").forEach((b) => b.classList.remove("active"));
+
+      button.classList.add("active");
+      render();
+    });
+  });
+
   render();
 }
 
@@ -100,12 +122,12 @@ async function loadProducts() {
   try {
     const response = await fetch("data/products.json");
 
-    if (!response.ok) throw new Error("Laptop data could not be loaded.");
+    if (!response.ok) throw new Error("Product data could not be loaded.");
 
     products = await response.json();
     init();
   } catch (error) {
-    console.error("Could not load laptop data:", error);
+    console.error("Could not load product data:", error);
 
     getById("productGrid").innerHTML = `
       <p class="empty">Could not load product data. Please try again later.</p>
