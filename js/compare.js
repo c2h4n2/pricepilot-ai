@@ -1,14 +1,31 @@
 function toggleCompare(productId) {
+  const product = products.find((p) => p.id === productId);
+
+  if (!product) return;
+
   if (selectedCompareIds.includes(productId)) {
     selectedCompareIds = selectedCompareIds.filter((id) => id !== productId);
-  } else {
-    if (selectedCompareIds.length >= 4) {
-      alert("You can compare up to 4 products at a time.");
-      return;
-    }
-    selectedCompareIds.push(productId);
+    render();
+    return;
   }
 
+  if (selectedCompareIds.length > 0) {
+    const firstProduct = products.find((p) => p.id === selectedCompareIds[0]);
+
+    if (firstProduct && firstProduct.type !== product.type) {
+      alert(
+        `You're currently comparing ${firstProduct.type}s. Remove them first if you'd like to compare ${product.type}s instead.`
+      );
+      return;
+    }
+  }
+
+  if (selectedCompareIds.length >= 4) {
+    alert("You can compare up to 4 products at a time.");
+    return;
+  }
+
+  selectedCompareIds.push(productId);
   render();
 }
 
@@ -149,7 +166,7 @@ function renderCompareTable() {
     .join("");
 
   getById("compareStatus").textContent =
-    `${selectedProducts.length} product${selectedProducts.length > 1 ? "s" : ""} selected.`;
+    `${selectedProducts.length} ${selectedProducts[0].type}${selectedProducts.length > 1 ? "s" : ""} selected.`;
 
   renderCompareRecommendation(selectedProducts);
 }
