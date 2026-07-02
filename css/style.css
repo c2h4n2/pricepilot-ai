@@ -807,3 +807,12 @@ td:first-child {
   color: var(--accent-dark);
   border-color: transparent;
 }
+.compare-specs {
+  display: grid;
+  gap: 6px;
+}
+
+.compare-specs span {
+  display: block;
+  color: var(--muted);
+}

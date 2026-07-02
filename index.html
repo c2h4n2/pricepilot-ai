@@ -8,140 +8,242 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header class="site-header">
-    <nav class="nav wrap">
-      <a class="brand" href="index.html"><span>PP</span> PricePilot <em>AI</em></a>
-      <div class="links">
-        <a href="#deals">Deals</a>
-        <a href="#compare">Compare</a>
-        <a href="#guides">Guides</a>
-        <a href="favorites.html">Favorites</a>
-        <a href="about.html">About</a>
-      </div>
-    </nav>
-  </header>
 
-  <main>
-    <section class="hero wrap">
-      <div>
-        <p class="eyebrow">Tech deals, simplified</p>
-        <h1>Find the best tech deal without hours of research.</h1>
-        <p class="lead">Search by budget, brand, specs, or use case. PricePilot AI compares curated tech picks and explains who each option is best for.</p>
+<header class="site-header">
+  <nav class="nav wrap">
+    <a class="brand" href="index.html"><span>PP</span> PricePilot <em>AI</em></a>
 
-        <div class="search-box">
-          <input id="searchInput" type="search" placeholder="Try student, gaming, under 700, 16GB, MacBook..." />
-          <button id="clearBtn">Clear</button>
-        </div>
-        
-        <section class="type-filters">
-  <button data-type="all" class="active">All Products</button>
-  <button data-type="laptop">💻 Laptops</button>
-  <button data-type="monitor">🖥️ Monitors</button>
-</section>
+    <div class="links">
+      <a href="#deals">Deals</a>
+      <a href="#compare">Compare</a>
+      <a href="#guides">Guides</a>
+      <a href="favorites.html">Favorites</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+</header>
 
-        <div class="filters" id="filters">
-          <button data-filter="all" class="active">All</button>
-          <button data-filter="student">Student</button>
-          <button data-filter="gaming">Gaming</button>
-          <button data-filter="business">Business</button>
-          <button data-filter="creator">Creator</button>
-          <button data-filter="budget">Budget</button>
-        </div>
+<main>
+
+  <section class="hero wrap">
+
+    <div>
+
+      <p class="eyebrow">Tech deals, simplified</p>
+
+      <h1>Find the best tech deal without hours of research.</h1>
+
+      <p class="lead">
+        Search by budget, brand, specs, or use case.
+        PricePilot AI compares curated tech picks and explains who each option is best for.
+      </p>
+
+      <div class="search-box">
+        <input
+          id="searchInput"
+          type="search"
+          placeholder="Try student, gaming, under 700, 16GB, MacBook..."
+        />
+        <button id="clearBtn">Clear</button>
       </div>
 
-      <aside class="hero-card">
-        <p class="eyebrow">AI Pick</p>
-        <h2 id="topPickName">Loading...</h2>
-        <p id="topPickSummary">Finding today's best balanced product.</p>
-        <strong id="topPickScore">-- value score</strong>
-      </aside>
-    </section>
+      <section class="type-filters">
+        <button data-type="all" class="active">All Products</button>
+        <button data-type="laptop">💻 Laptops</button>
+        <button data-type="monitor">🖥️ Monitors</button>
+      </section>
 
-    <section class="advisor wrap">
-      <p class="eyebrow">Ask PricePilot AI</p>
-      <h2>Tell us what you need. We’ll recommend the right product.</h2>
-
-      <div class="advisor-box">
-        <input id="advisorInput" type="text" placeholder="Example: I need a laptop under $900 for college and programming" />
-        <button id="advisorBtn">Find my product</button>
+      <div class="filters" id="filters">
+        <button data-filter="all" class="active">All</button>
+        <button data-filter="student">Student</button>
+        <button data-filter="gaming">Gaming</button>
+        <button data-filter="business">Business</button>
+        <button data-filter="creator">Creator</button>
+        <button data-filter="budget">Budget</button>
       </div>
 
-      <div id="advisorResult" class="advisor-result hidden"></div>
-    </section>
+    </div>
 
-    <section class="stats wrap">
-      <div><strong id="productCount">0</strong><span>curated products</span></div>
-      <div><strong>5</strong><span>shopping goals</span></div>
-      <div><strong>0</strong><span>guesswork required</span></div>
-    </section>
+    <aside class="hero-card">
 
-    <section id="deals" class="wrap section-head">
-      <p class="eyebrow">Featured deals</p>
-      <h2>Recommended products</h2>
-      <select id="sortSelect">
-        <option value="score">Best value</option>
-        <option value="priceLow">Price: low to high</option>
-        <option value="priceHigh">Price: high to low</option>
-        <option value="rating">Highest rated</option>
-      </select>
-    </section>
+      <p class="eyebrow">AI Pick</p>
 
-    <section class="wrap">
-      <div class="compare-actions">
-        <button id="clearCompareBtn">Clear comparison</button>
-        <span id="compareStatus">Select products to compare.</span>
-      </div>
+      <h2 id="topPickName">Loading...</h2>
 
-      <div id="productGrid" class="grid"></div>
-      <p id="emptyState" class="empty hidden">No products matched your search. Try a broader term like “student” or “gaming”.</p>
-    </section>
+      <p id="topPickSummary">
+        Finding today's best balanced product.
+      </p>
 
-    <section id="compare" class="wrap compare">
-      <p class="eyebrow">Side-by-side</p>
-      <h2>Selected comparison</h2>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Product</th>
-              <th>Best for</th>
-              <th>Price</th>
-              <th>Size / RAM</th>
-<th>Display / Storage</th>
-<th>Panel / Processor</th>
-              <th>Rating</th>
-              <th>Score</th>
-            </tr>
-          </thead>
-          <tbody id="compareRows"></tbody>
-        </table>
-      </div>
-      <div id="compareRecommendation" class="compare-recommendation hidden"></div>
-    </section>
+      <strong id="topPickScore">-- value score</strong>
 
-    <section id="guides" class="wrap guides">
-      <p class="eyebrow">SEO content engine</p>
-      <h2>Buying guides to publish first</h2>
-      <div class="guide-grid">
-        <a href="best-laptops-under-500.html"><b>Best laptops under $500</b><span>Budget picks for school and everyday use.</span></a>
-        <a href="best-laptops-under-700.html"><b>Best laptops under $700</b><span>Better multitasking and practical value picks.</span></a>
-        <a href="best-laptops-for-students.html"><b>Best laptops for students</b><span>Portable laptops with good battery life.</span></a>
-        <a href="best-gaming-laptops-under-1000.html"><b>Gaming laptops under $1,000</b><span>Value gaming machines with strong graphics.</span></a>
-        <a href="chromebook-vs-laptop.html"><b>Chromebook vs laptop</b><span>A beginner-friendly choosing guide.</span></a>
-      </div>
-    </section>
-  </main>
+    </aside>
 
-  <footer class="footer wrap">
-    <p>© <span id="year"></span> PricePilot AI.</p>
-    <p><a href="about.html">About</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Privacy</a> · <a href="affiliate-disclosure.html">Affiliate Disclosure</a></p>
-  </footer>
+  </section>
 
-  <script src="js/utils.js?v=2"></script>
-  <script src="js/favorites.js?v=2"></script>
-  <script src="js/cards.js?v=2"></script>
-  <script src="js/compare.js?v=2"></script>
-  <script src="js/advisor.js?v=2"></script>
-  <script src="js/app.js?v=2"></script>
+  <section class="advisor wrap">
+
+    <p class="eyebrow">Ask PricePilot AI</p>
+
+    <h2>Tell us what you need. We'll recommend the right product.</h2>
+
+    <div class="advisor-box">
+      <input
+        id="advisorInput"
+        type="text"
+        placeholder="Example: I need a laptop under $900 for college and programming"
+      />
+
+      <button id="advisorBtn">Find my product</button>
+    </div>
+
+    <div id="advisorResult" class="advisor-result hidden"></div>
+
+  </section>
+
+  <section class="stats wrap">
+
+    <div>
+      <strong id="productCount">0</strong>
+      <span>curated products</span>
+    </div>
+
+    <div>
+      <strong>5</strong>
+      <span>shopping goals</span>
+    </div>
+
+    <div>
+      <strong>0</strong>
+      <span>guesswork required</span>
+    </div>
+
+  </section>
+
+  <section id="deals" class="wrap section-head">
+
+    <p class="eyebrow">Featured deals</p>
+
+    <h2>Recommended products</h2>
+
+    <select id="sortSelect">
+      <option value="score">Best value</option>
+      <option value="priceLow">Price: low to high</option>
+      <option value="priceHigh">Price: high to low</option>
+      <option value="rating">Highest rated</option>
+    </select>
+
+  </section>
+
+  <section class="wrap">
+
+    <div class="compare-actions">
+      <button id="clearCompareBtn">Clear comparison</button>
+      <span id="compareStatus">Select products to compare.</span>
+    </div>
+
+    <div id="productGrid" class="grid"></div>
+
+    <p id="emptyState" class="empty hidden">
+      No products matched your search.
+      Try a broader term like "student" or "gaming".
+    </p>
+
+  </section>
+
+  <section id="compare" class="wrap compare">
+
+    <p class="eyebrow">Side-by-side</p>
+
+    <h2>Selected comparison</h2>
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Best For</th>
+            <th>Rating</th>
+            <th>Score</th>
+            <th>Specs</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+
+        <tbody id="compareRows"></tbody>
+
+      </table>
+
+    </div>
+
+    <div
+      id="compareRecommendation"
+      class="compare-recommendation hidden">
+    </div>
+
+  </section>
+
+  <section id="guides" class="wrap guides">
+
+    <p class="eyebrow">SEO content engine</p>
+
+    <h2>Buying guides to publish first</h2>
+
+    <div class="guide-grid">
+
+      <a href="best-laptops-under-500.html">
+        <b>Best laptops under $500</b>
+        <span>Budget picks for school and everyday use.</span>
+      </a>
+
+      <a href="best-laptops-under-700.html">
+        <b>Best laptops under $700</b>
+        <span>Better multitasking and practical value picks.</span>
+      </a>
+
+      <a href="best-laptops-for-students.html">
+        <b>Best laptops for students</b>
+        <span>Portable laptops with good battery life.</span>
+      </a>
+
+      <a href="best-gaming-laptops-under-1000.html">
+        <b>Gaming laptops under $1,000</b>
+        <span>Value gaming machines with strong graphics.</span>
+      </a>
+
+      <a href="chromebook-vs-laptop.html">
+        <b>Chromebook vs laptop</b>
+        <span>A beginner-friendly choosing guide.</span>
+      </a>
+
+    </div>
+
+  </section>
+
+</main>
+
+<footer class="footer wrap">
+
+  <p>
+    © <span id="year"></span> PricePilot AI.
+  </p>
+
+  <p>
+    <a href="about.html">About</a> ·
+    <a href="contact.html">Contact</a> ·
+    <a href="privacy.html">Privacy</a> ·
+    <a href="affiliate-disclosure.html">Affiliate Disclosure</a>
+  </p>
+
+</footer>
+
+<script src="js/utils.js?v=2"></script>
+<script src="js/favorites.js?v=2"></script>
+<script src="js/cards.js?v=2"></script>
+<script src="js/compare.js?v=2"></script>
+<script src="js/advisor.js?v=2"></script>
+<script src="js/app.js?v=2"></script>
+
 </body>
 </html>
