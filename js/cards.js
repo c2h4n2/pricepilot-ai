@@ -37,10 +37,11 @@ function getTypeIcon(product) {
 }
 
 function getSpecChips(product) {
-  return [product.ram, product.storage, product.processor]
+  return [product.spec1, product.spec2, product.spec3]
     .filter(Boolean)
     .map((spec) => `<span>${spec}</span>`)
     .join("");
+}
 }
 
 function renderProductCards(list) {
