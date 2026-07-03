@@ -4,14 +4,7 @@ let currentTypeFilter = "all";
 let selectedCompareIds = [];
 
 function getHighlights(product) {
-  return product.highlights || [
-    product.spec1,
-    product.spec2,
-    product.spec3,
-    product.ram,
-    product.storage,
-    product.processor
-  ].filter(Boolean);
+  return product.highlights || [];
 }
 
 function productText(p) {
