@@ -3,8 +3,27 @@ let currentFilter = "all";
 let currentTypeFilter = "all";
 let selectedCompareIds = [];
 
+function getHighlights(product) {
+  return product.highlights || [
+    product.spec1,
+    product.spec2,
+    product.spec3,
+    product.ram,
+    product.storage,
+    product.processor
+  ].filter(Boolean);
+}
+
 function productText(p) {
-  return `${p.name} ${p.brand} ${p.type} ${p.category} ${p.bestFor} ${p.price} ${p.ram} ${p.storage} ${p.processor}`.toLowerCase();
+  return `
+    ${p.name}
+    ${p.brand}
+    ${p.type}
+    ${p.category}
+    ${p.bestFor}
+    ${p.price}
+    ${getHighlights(p).join(" ")}
+  `.toLowerCase();
 }
 
 function getFiltered() {
@@ -38,7 +57,9 @@ function getFiltered() {
 
 function renderTopPick() {
   const list = getFiltered();
-  const top = [...list].sort((a, b) => b.score - a.score)[0] || [...products].sort((a, b) => b.score - a.score)[0];
+  const top =
+    [...list].sort((a, b) => b.score - a.score)[0] ||
+    [...products].sort((a, b) => b.score - a.score)[0];
 
   if (top) {
     getById("topPickName").textContent = top.name;
