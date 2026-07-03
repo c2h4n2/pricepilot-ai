@@ -57,8 +57,19 @@ function getProductIcon(product) {
   return icons[product.type] || "📦";
 }
 
+function getHighlights(product) {
+  return product.highlights || [
+    product.spec1,
+    product.spec2,
+    product.spec3,
+    product.ram,
+    product.storage,
+    product.processor
+  ].filter(Boolean);
+}
+
 function getSpecs(product) {
-  return [product.ram, product.storage, product.processor].filter(Boolean);
+  return getHighlights(product).slice(0, 3);
 }
 
 function getComparisonWinners(selectedProducts) {
