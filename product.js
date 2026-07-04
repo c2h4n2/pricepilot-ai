@@ -109,17 +109,13 @@ function buyingTip(product) {
 }
 
 function specsTable(product) {
-  const highlights = getHighlights(product);
+  const specs = product.specs || {};
 
   return `
     <div><strong>Brand</strong><span>${product.brand}</span></div>
-    ${highlights
-      .slice(0, 6)
-      .map((item, index) => `<div><strong>Highlight ${index + 1}</strong><span>${item}</span></div>`)
+    ${Object.entries(specs)
+      .map(([label, value]) => `<div><strong>${label}</strong><span>${value}</span></div>`)
       .join("")}
-    <div><strong>Display</strong><span>${product.display || "Not applicable"}</span></div>
-    <div><strong>Battery</strong><span>${product.battery || "Not applicable"}</span></div>
-    <div><strong>Weight</strong><span>${product.weight || "Not listed"}</span></div>
     <div><strong>Best For</strong><span>${product.bestFor}</span></div>
   `;
 }
@@ -269,7 +265,7 @@ async function loadProduct() {
 
       <section class="review-card">
         <p class="eyebrow">${typeLabel} specifications</p>
-        <h2>Key highlights</h2>
+        <h2>Detailed specs</h2>
 
         <div class="spec-table">
           ${specsTable(product)}
