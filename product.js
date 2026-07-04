@@ -5,42 +5,56 @@ const productId = params.get("id");
 const container = getById("product-detail");
 
 function productTypeLabel(product) {
-  if (product.type === "monitor") return "Monitor";
-  if (product.type === "laptop") return "Laptop";
-  return "Product";
+  const labels = {
+    laptop: "Laptop",
+    monitor: "Monitor",
+    keyboard: "Keyboard",
+    mouse: "Mouse",
+    headphones: "Headphones",
+    tablet: "Tablet",
+    smartwatch: "Smartwatch",
+    tv: "TV",
+    ssd: "SSD",
+    router: "Router",
+    camera: "Camera",
+    printer: "Printer"
+  };
+
+  return labels[product.type] || "Product";
+}
+
+function getHighlights(product) {
+  return product.highlights || [];
 }
 
 function bestForTags(product) {
-  const tags = [productTypeLabel(product), product.bestFor, product.category, product.ram];
+  const tags = [
+    productTypeLabel(product),
+    product.bestFor,
+    product.category,
+    ...getHighlights(product).slice(0, 1)
+  ];
+
   return tags.filter(Boolean).map((tag) => `<span>${tag}</span>`).join("");
 }
 
 function productSpecChips(product) {
-  return [product.ram, product.storage, product.processor]
-    .filter(Boolean)
-    .map((spec) => `<span>${spec}</span>`)
+  return getHighlights(product)
+    .slice(0, 3)
+    .map((highlight) => `<span>${highlight}</span>`)
     .join("");
 }
 
 function ratingBreakdown(product) {
   const value = Math.min(5, Math.max(1, product.score / 20)).toFixed(1);
 
-  const rows =
-    product.type === "monitor"
-      ? [
-          ["Display quality", product.rating],
-          ["Value", value],
-          ["Color & clarity", 4.7],
-          ["Gaming / motion", product.category === "gaming" ? 4.8 : 4.1],
-          ["Productivity", 4.8]
-        ]
-      : [
-          ["Performance", product.rating],
-          ["Value", value],
-          ["Portability", product.category === "gaming" ? 3.8 : 4.7],
-          ["Battery", product.category === "gaming" ? 3.7 : 4.6],
-          ["Everyday use", 4.8]
-        ];
+  const rows = [
+    ["Performance", product.rating],
+    ["Value", value],
+    ["Build quality", 4.7],
+    ["Ease of use", 4.6],
+    ["Everyday use", 4.8]
+  ];
 
   return rows
     .map(
@@ -54,20 +68,16 @@ function ratingBreakdown(product) {
     .join("");
 }
 
-function verdict(product) {
-  if (product.type === "monitor") {
-    return `${product.name} is one of the strongest picks for ${product.bestFor.toLowerCase()} because it combines ${product.ram}, ${product.storage}, ${product.processor}, and a ${product.score}/100 value score. It is a smart option if you want a quality display without spending hours comparing monitor specs.`;
-  }
+function highlightsText(product) {
+  return getHighlights(product).slice(0, 3).join(", ");
+}
 
-  return `${product.name} is one of the strongest picks for ${product.bestFor.toLowerCase()} because it combines ${product.processor}, ${product.ram} RAM, ${product.storage}, and a ${product.score}/100 value score. It is a smart option if you want a reliable laptop without spending hours comparing specs.`;
+function verdict(product) {
+  return `${product.name} is one of the strongest picks for ${product.bestFor.toLowerCase()} because it combines ${highlightsText(product)} and a ${product.score}/100 value score. It is a smart option if you want a reliable ${productTypeLabel(product).toLowerCase()} without spending hours comparing specs.`;
 }
 
 function recommendationText(product) {
-  if (product.type === "monitor") {
-    return `${product.name} is a strong choice for ${product.bestFor.toLowerCase()} because it balances ${product.ram}, ${product.storage}, ${product.processor}, and a ${product.score}/100 value score.`;
-  }
-
-  return `${product.name} is a strong choice for ${product.bestFor.toLowerCase()} because it balances ${product.processor}, ${product.ram} RAM, ${product.storage}, and a ${product.score}/100 value score.`;
+  return `${product.name} is a strong choice for ${product.bestFor.toLowerCase()} because it balances ${highlightsText(product)} and a ${product.score}/100 value score.`;
 }
 
 function buyingTip(product) {
@@ -78,33 +88,38 @@ function buyingTip(product) {
     `;
   }
 
-  return `
-    Laptop prices can change during back-to-school sales, holiday events, and manufacturer promotions.
-    Before purchasing, compare current offers and check whether upgraded RAM or storage is worth the extra cost.
-  `;
-}
-
-function specsTable(product) {
-  if (product.type === "monitor") {
+  if (product.type === "keyboard") {
     return `
-      <div><strong>Brand</strong><span>${product.brand}</span></div>
-      <div><strong>Size</strong><span>${product.ram}</span></div>
-      <div><strong>Display</strong><span>${product.storage}</span></div>
-      <div><strong>Panel</strong><span>${product.processor}</span></div>
-      <div><strong>Screen</strong><span>${product.display}</span></div>
-      <div><strong>Weight</strong><span>${product.weight}</span></div>
-      <div><strong>Best For</strong><span>${product.bestFor}</span></div>
+      Keyboard prices can change during gaming sales, productivity promotions, and holiday events.
+      Before purchasing, compare layout, switch type, wireless support, build quality, and whether the keyboard fits your desk setup.
+    `;
+  }
+
+  if (product.type === "laptop") {
+    return `
+      Laptop prices can change during back-to-school sales, holiday events, and manufacturer promotions.
+      Before purchasing, compare current offers and check whether upgraded memory, storage, or processor options are worth the extra cost.
     `;
   }
 
   return `
+    Tech prices can change during seasonal sales and manufacturer promotions.
+    Before purchasing, compare current offers, key specifications, reviews, and whether the product fits your setup.
+  `;
+}
+
+function specsTable(product) {
+  const highlights = getHighlights(product);
+
+  return `
     <div><strong>Brand</strong><span>${product.brand}</span></div>
-    <div><strong>Display</strong><span>${product.display}</span></div>
-    <div><strong>Processor</strong><span>${product.processor}</span></div>
-    <div><strong>RAM</strong><span>${product.ram}</span></div>
-    <div><strong>Storage</strong><span>${product.storage}</span></div>
-    <div><strong>Battery</strong><span>${product.battery}</span></div>
-    <div><strong>Weight</strong><span>${product.weight}</span></div>
+    ${highlights
+      .slice(0, 6)
+      .map((item, index) => `<div><strong>Highlight ${index + 1}</strong><span>${item}</span></div>`)
+      .join("")}
+    <div><strong>Display</strong><span>${product.display || "Not applicable"}</span></div>
+    <div><strong>Battery</strong><span>${product.battery || "Not applicable"}</span></div>
+    <div><strong>Weight</strong><span>${product.weight || "Not listed"}</span></div>
     <div><strong>Best For</strong><span>${product.bestFor}</span></div>
   `;
 }
@@ -254,7 +269,7 @@ async function loadProduct() {
 
       <section class="review-card">
         <p class="eyebrow">${typeLabel} specifications</p>
-        <h2>Detailed specs</h2>
+        <h2>Key highlights</h2>
 
         <div class="spec-table">
           ${specsTable(product)}
