@@ -1,0 +1,13 @@
+{
+  "name": "pricepilot-ai",
+  "version": "1.0.0",
+  "description": "AI-powered tech product comparison website",
+  "author": "c2h4n2",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build-products.js",
+    "serve": "python3 -m http.server 8000",
+    "dev": "npm run build && npm run serve"
+  }
+}

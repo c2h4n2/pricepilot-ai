@@ -37,12 +37,11 @@ function getTypeIcon(product) {
 }
 
 function getSpecChips(product) {
-  return [product.spec1, product.spec2, product.spec3]
-    .filter(Boolean)
-    .map((spec) => `<span>${spec}</span>`)
+  return (product.highlights || [])
+    .map((highlight) => `<span>${highlight}</span>`)
     .join("");
 }
-}
+
 
 function renderProductCards(list) {
   const firstCompared = selectedCompareIds.length

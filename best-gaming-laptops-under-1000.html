@@ -1,1 +1,141 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Best Gaming Laptops Under 1000 | PricePilot AI</title><link rel="stylesheet" href="style.css"></head><body><header class="site-header"><nav class="nav wrap"><a class="brand" href="index.html"><span>PP</span> PricePilot <em>AI</em></a><div class="links"><a href="index.html#deals">Deals</a><a href="index.html#compare">Compare</a><a href="index.html#guides">Guides</a><a href="about.html">About</a></div></nav></header><main><section class="page-hero wrap"><p class="eyebrow">PricePilot AI</p><h1>Best Gaming Laptops Under 1000</h1><p class="lead">Starter page for the PricePilot AI laptop comparison website.</p></section><article class="article wrap"><h2>Overview</h2><p>This page is part of the first working version of PricePilot AI. We will expand it with original buying advice, comparison tables, product recommendations, and affiliate links later.</p><h2>What to add next</h2><p>Add real product research, current prices, pros and cons, and clear recommendations for different shoppers.</p><p><a class="buy" href="index.html">Back to homepage</a></p></article></main><footer class="footer wrap"><p>© <span id="year"></span> PricePilot AI.</p></footer><script>document.getElementById('year').textContent=new Date().getFullYear();</script></body></html>
+function getTypeLabel(product) {
+  const labels = {
+    laptop: "Laptop",
+    monitor: "Monitor",
+    keyboard: "Keyboard",
+    mouse: "Mouse",
+    headphones: "Headphones",
+    tablet: "Tablet",
+    smartwatch: "Smartwatch",
+    tv: "TV",
+    ssd: "SSD",
+    router: "Router",
+    camera: "Camera",
+    printer: "Printer"
+  };
+
+  return labels[product.type] || "Product";
+}
+
+function getTypeIcon(product) {
+  const icons = {
+    laptop: "💻",
+    monitor: "🖥️",
+    keyboard: "⌨️",
+    mouse: "🖱️",
+    headphones: "🎧",
+    tablet: "📱",
+    smartwatch: "⌚",
+    tv: "📺",
+    ssd: "💾",
+    router: "📡",
+    camera: "📷",
+    printer: "🖨️"
+  };
+
+  return icons[product.type] || "📦";
+}
+
+function getHighlights(product) {
+  return product.highlights || [
+    product.spec1,
+    product.spec2,
+    product.spec3,
+    product.ram,
+    product.storage,
+    product.processor
+  ].filter(Boolean);
+}
+
+function getSpecChips(product) {
+  return getHighlights(product)
+    .slice(0, 3)
+    .map((spec) => `<span>${spec}</span>`)
+    .join("");
+}
+
+function renderProductCards(list) {
+  const firstCompared = selectedCompareIds.length
+    ? products.find((product) => product.id === selectedCompareIds[0])
+    : null;
+
+  getById("productGrid").innerHTML = list
+    .map((p) => {
+      const isSelected = selectedCompareIds.includes(p.id);
+      const favorite = isFavorite(p.id);
+      const image = p.image || "assets/images/placeholder.svg";
+      const compareLocked = firstCompared && firstCompared.type !== p.type && !isSelected;
+
+      return `
+        <article class="card product-card">
+          <div class="product-image">
+            <img src="${image}" alt="${p.name}" loading="lazy">
+            <span class="image-badge">${p.badge}</span>
+          </div>
+
+          <div class="card-topline">
+            <span class="brand-pill">${p.brand}</span>
+            <span class="score-pill">${p.score}/100</span>
+          </div>
+
+          <p class="product-type">${getTypeIcon(p)} ${getTypeLabel(p)}</p>
+
+          <h3>${p.name}</h3>
+
+          <div class="rating-row">
+            <span class="stars">${stars(p.rating)}</span>
+            <span>${p.rating}</span>
+          </div>
+
+          <p>${p.summary}</p>
+
+          <div class="price-row">
+            <div>
+              <span class="price-label">From</span>
+              <div class="price">${money(p.price)}</div>
+            </div>
+            <span class="category-pill">${p.bestFor}</span>
+          </div>
+
+          <div class="spec-chips">
+            ${getSpecChips(p)}
+          </div>
+
+          <div class="card-actions">
+            <div class="card-action-row">
+              <button class="favorite-btn ${favorite ? "selected" : ""}" data-id="${p.id}">
+                ${favorite ? "♥ Saved" : "♡ Save"}
+              </button>
+
+              <button
+                class="compare-btn ${isSelected ? "selected" : ""} ${compareLocked ? "locked" : ""}"
+                data-id="${p.id}"
+                ${compareLocked ? "disabled" : ""}
+              >
+                ${
+                  isSelected
+                    ? "Selected ✓"
+                    : compareLocked
+                      ? "🔒 Unavailable"
+                      : "Compare"
+                }
+              </button>
+            </div>
+
+            <a class="buy" href="product.html?id=${p.id}">
+              View details
+            </a>
+          </div>
+        </article>
+      `;
+    })
+    .join("");
+
+  document.querySelectorAll(".compare-btn:not(:disabled)").forEach((button) => {
+    button.addEventListener("click", () => toggleCompare(button.dataset.id));
+  });
+
+  document.querySelectorAll(".favorite-btn").forEach((button) => {
+    button.addEventListener("click", () => toggleFavorite(button.dataset.id));
+  });
+}

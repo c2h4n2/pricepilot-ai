@@ -1,0 +1,158 @@
+[
+  {
+    "id": "dell-ultrasharp-u2723qe",
+    "type": "monitor",
+    "brand": "Dell",
+    "name": "Dell UltraSharp U2723QE",
+    "image": "assets/images/monitors/dell-ultrasharp-u2725qe.jpg",
+    "category": "creator",
+    "badge": "Best 4K Monitor",
+    "summary": "A sharp 27-inch 4K monitor with excellent color quality for productivity and creative work.",
+    "bestFor": "Creators",
+    "price": 549,
+    "highlights": [
+      "27-inch",
+      "4K UHD",
+      "IPS Black Panel"
+    ],
+    "specs": {
+      "Screen Size": "27-inch",
+      "Resolution": "4K UHD",
+      "Panel": "IPS Black",
+      "Refresh Rate": "60 Hz",
+      "Connectivity": "USB-C, HDMI, DisplayPort",
+      "Weight": "About 14.6 lbs"
+    },
+    "rating": 4.8,
+    "score": 96,
+    "store": "Dell",
+    "link": "https://www.dell.com/",
+    "pros": [
+      "Excellent 4K sharpness",
+      "Great color quality",
+      "USB-C connectivity",
+      "Strong productivity features"
+    ],
+    "cons": [
+      "More expensive than basic monitors",
+      "Not designed for high-refresh gaming"
+    ]
+  },
+  {
+    "id": "lg-ultragear-27gr83q",
+    "type": "monitor",
+    "brand": "LG",
+    "name": "LG UltraGear 27GR83Q",
+    "image": "assets/images/monitors/lg-ultragear-27GR83Q-B.jpg",
+    "category": "gaming",
+    "badge": "Gaming Pick",
+    "summary": "A fast 27-inch gaming monitor with a high refresh rate and smooth performance.",
+    "bestFor": "Gaming",
+    "price": 349,
+    "highlights": [
+      "27-inch",
+      "1440p QHD",
+      "240 Hz"
+    ],
+    "specs": {
+      "Screen Size": "27-inch",
+      "Resolution": "2560×1440 (QHD)",
+      "Panel": "IPS",
+      "Refresh Rate": "240 Hz",
+      "Response Time": "1 ms",
+      "Weight": "About 13 lbs"
+    },
+    "rating": 4.7,
+    "score": 93,
+    "store": "LG",
+    "link": "https://www.lg.com/",
+    "pros": [
+      "Very smooth refresh rate",
+      "Great for competitive gaming",
+      "Sharp QHD resolution",
+      "Low input lag"
+    ],
+    "cons": [
+      "Not 4K",
+      "Best value depends on sale price"
+    ]
+  },
+  {
+    "id": "samsung-odyssey-g5",
+    "type": "monitor",
+    "brand": "Samsung",
+    "name": "Samsung Odyssey G5",
+    "image": "assets/images/monitors/samsung-odyssey-g5-g50D.jpg",
+    "category": "gaming",
+    "badge": "Curved Gaming",
+    "summary": "A curved gaming monitor that offers immersive gameplay at a strong value price.",
+    "bestFor": "Gaming",
+    "price": 279,
+    "highlights": [
+      "27-inch",
+      "1440p QHD",
+      "Curved VA Panel"
+    ],
+    "specs": {
+      "Screen Size": "27-inch",
+      "Resolution": "2560×1440 (QHD)",
+      "Panel": "Curved VA",
+      "Refresh Rate": "165 Hz",
+      "Response Time": "1 ms",
+      "Weight": "About 10 lbs"
+    },
+    "rating": 4.6,
+    "score": 89,
+    "store": "Samsung",
+    "link": "https://www.samsung.com/",
+    "pros": [
+      "Immersive curved display",
+      "Good gaming value",
+      "Sharp QHD resolution",
+      "Strong contrast"
+    ],
+    "cons": [
+      "Viewing angles are not as wide as IPS",
+      "Color accuracy is not creator-focused"
+    ]
+  },
+  {
+    "id": "asus-proart-pa278qv",
+    "type": "monitor",
+    "brand": "ASUS",
+    "name": "ASUS ProArt PA278QV",
+    "image": "assets/images/monitors/asus-proart-pa278qv.jpg",
+    "category": "creator",
+    "badge": "Creator Value",
+    "summary": "A color-focused monitor for creators, designers, and productivity users on a budget.",
+    "bestFor": "Creators",
+    "price": 299,
+    "highlights": [
+      "27-inch",
+      "1440p QHD",
+      "IPS Panel"
+    ],
+    "specs": {
+      "Screen Size": "27-inch",
+      "Resolution": "2560×1440 (QHD)",
+      "Panel": "IPS",
+      "Refresh Rate": "75 Hz",
+      "Color Accuracy": "Calman Verified",
+      "Weight": "About 15 lbs"
+    },
+    "rating": 4.7,
+    "score": 91,
+    "store": "ASUS",
+    "link": "https://www.asus.com/",
+    "pros": [
+      "Good color accuracy",
+      "Great value for creators",
+      "Sharp QHD resolution",
+      "Comfortable stand adjustments"
+    ],
+    "cons": [
+      "Not a high-refresh gaming monitor",
+      "No 4K resolution"
+    ]
+  }
+]

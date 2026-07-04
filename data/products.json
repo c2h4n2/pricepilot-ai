@@ -1,75 +1,315 @@
 [
   {
-    "id": "macbook-air-m3",
-    "type": "laptop",
-    "brand": "Apple",
-    "name": "MacBook Air 13 (M3)",
-    "image": "assets/images/laptops/macbook-air-m3.jpg",
-    "category": "student",
-    "badge": "Editor's Choice",
-    "summary": "Excellent battery life, lightweight, and perfect for students and everyday work.",
-    "bestFor": "Students",
-    "price": 1099,
-    "ram": "16 GB",
-    "storage": "512 GB SSD",
-    "processor": "Apple M3",
-    "display": "13.6-inch Liquid Retina",
-    "battery": "Up to 18 hours",
-    "weight": "2.7 lbs",
-    "rating": 4.9,
-    "score": 98,
-    "store": "Apple",
-    "link": "https://www.apple.com/macbook-air/",
-    "pros": ["Excellent battery life", "Lightweight design", "Fast Apple M3 chip", "Great for students"],
-    "cons": ["Limited ports", "Upgrades can be expensive"]
-  },
-  {
-    "id": "dell-xps-13",
-    "type": "laptop",
-    "brand": "Dell",
-    "name": "Dell XPS 13",
-    "image": "assets/images/laptops/dell-xps-13.jpg",
-    "category": "business",
-    "badge": "Premium",
-    "summary": "A premium Windows ultrabook with an excellent display and build quality.",
-    "bestFor": "Business",
-    "price": 999,
-    "ram": "16 GB",
-    "storage": "512 GB SSD",
-    "processor": "Intel Core Ultra 7",
-    "display": "13.4-inch premium display",
-    "battery": "All-day battery life",
-    "weight": "About 2.6 lbs",
-    "rating": 4.7,
-    "score": 94,
-    "store": "Dell",
-    "link": "https://www.dell.com/",
-    "pros": ["Premium build quality", "Portable design", "Strong productivity performance", "Excellent screen"],
-    "cons": ["Can get expensive", "Limited port selection"]
-  },
-  {
-    "id": "lenovo-loq-15",
-    "type": "laptop",
-    "brand": "Lenovo",
-    "name": "Lenovo LOQ 15",
-    "image": "assets/images/laptops/lenovo-loq-15.jpg",
+    "id": "asus-rog-strix-scope-ii-96-wireless",
+    "type": "keyboard",
+    "brand": "ASUS",
+    "name": "ASUS ROG Strix Scope II 96 Wireless",
+    "image": "assets/images/keyboards/asus-rog-strix-scope-ii-96-wireless.jpg",
     "category": "gaming",
-    "badge": "Gaming",
-    "summary": "Affordable gaming laptop with dedicated NVIDIA graphics.",
+    "badge": "Gaming Pick",
+    "summary": "A compact wireless gaming keyboard with a 96% layout, smooth switches, and strong gaming features.",
     "bestFor": "Gaming",
-    "price": 899,
-    "ram": "16 GB",
-    "storage": "1 TB SSD",
-    "processor": "AMD Ryzen 7",
-    "display": "15.6-inch gaming display",
-    "battery": "Moderate gaming battery life",
-    "weight": "About 5.3 lbs",
+    "price": 179,
+    "highlights": [
+      "96% Layout",
+      "Wireless",
+      "Gaming Switches"
+    ],
+    "specs": {
+      "Layout": "96%",
+      "Switches": "ROG mechanical switches",
+      "Connectivity": "Bluetooth / 2.4 GHz / USB-C",
+      "Backlight": "RGB",
+      "Media Controls": "Yes",
+      "Best For": "Gaming and productivity"
+    },
     "rating": 4.8,
     "score": 95,
-    "store": "Lenovo",
-    "link": "https://www.lenovo.com/",
-    "pros": ["Strong gaming value", "Dedicated graphics performance", "Large SSD storage", "Good multitasking specs"],
-    "cons": ["Heavier than ultrabooks", "Battery life is shorter while gaming"]
+    "store": "ASUS",
+    "link": "https://www.asus.com/",
+    "pros": [
+      "Compact but full-featured",
+      "Great gaming performance",
+      "Wireless support",
+      "Strong build quality"
+    ],
+    "cons": [
+      "Premium price",
+      "96% layout may feel dense"
+    ]
+  },
+  {
+    "id": "corsair-k70-rgb-pro",
+    "type": "keyboard",
+    "brand": "Corsair",
+    "name": "Corsair K70 RGB Pro",
+    "image": "assets/images/keyboards/corsair-k70-rgb-pro.jpg",
+    "category": "gaming",
+    "badge": "RGB Favorite",
+    "summary": "A full-size mechanical gaming keyboard with strong performance, bright RGB lighting, and dedicated controls.",
+    "bestFor": "Gaming",
+    "price": 159,
+    "highlights": [
+      "Full-size",
+      "Mechanical",
+      "RGB"
+    ],
+    "specs": {
+      "Layout": "Full-size",
+      "Switches": "Mechanical",
+      "Connectivity": "USB-C wired",
+      "Backlight": "RGB",
+      "Media Controls": "Dedicated controls",
+      "Best For": "Desktop gaming setups"
+    },
+    "rating": 4.7,
+    "score": 91,
+    "store": "Corsair",
+    "link": "https://www.corsair.com/",
+    "pros": [
+      "Strong gaming performance",
+      "Bright RGB lighting",
+      "Dedicated media controls",
+      "Full-size layout"
+    ],
+    "cons": [
+      "Wired only",
+      "Takes more desk space"
+    ]
+  },
+  {
+    "id": "keychron-k2-pro",
+    "type": "keyboard",
+    "brand": "Keychron",
+    "name": "Keychron K2 Pro",
+    "image": "assets/images/keyboards/keychron-k2-pro.jpg",
+    "category": "budget",
+    "badge": "Best Value",
+    "summary": "A compact wireless mechanical keyboard with strong value, hot-swappable switches, and Mac/Windows support.",
+    "bestFor": "Budget",
+    "price": 99,
+    "highlights": [
+      "75% Layout",
+      "Wireless",
+      "Hot-swappable"
+    ],
+    "specs": {
+      "Layout": "75%",
+      "Switches": "Mechanical",
+      "Connectivity": "Bluetooth / USB-C",
+      "Hot-swappable": "Yes",
+      "Backlight": "RGB",
+      "Best For": "Budget mechanical keyboard users"
+    },
+    "rating": 4.7,
+    "score": 92,
+    "store": "Keychron",
+    "link": "https://www.keychron.com/",
+    "pros": [
+      "Great value",
+      "Hot-swappable switches",
+      "Works with Mac and Windows",
+      "Compact layout"
+    ],
+    "cons": [
+      "Not as premium as Q-series models",
+      "Layout may take adjustment"
+    ]
+  },
+  {
+    "id": "keychron-q1-max",
+    "type": "keyboard",
+    "brand": "Keychron",
+    "name": "Keychron Q1 Max",
+    "image": "assets/images/keyboards/keychron-q1-max.jpg",
+    "category": "creator",
+    "badge": "Editor's Choice",
+    "summary": "A premium custom-style wireless mechanical keyboard with excellent build quality and typing feel.",
+    "bestFor": "Creators",
+    "price": 219,
+    "highlights": [
+      "75% Layout",
+      "Wireless",
+      "Aluminum Body"
+    ],
+    "specs": {
+      "Layout": "75%",
+      "Switches": "Mechanical",
+      "Connectivity": "Bluetooth / 2.4 GHz / USB-C",
+      "Body": "Aluminum",
+      "Hot-swappable": "Yes",
+      "Best For": "Premium typing setups"
+    },
+    "rating": 4.9,
+    "score": 97,
+    "store": "Keychron",
+    "link": "https://www.keychron.com/",
+    "pros": [
+      "Excellent build quality",
+      "Premium typing feel",
+      "Multiple connection modes",
+      "Hot-swappable"
+    ],
+    "cons": [
+      "Expensive",
+      "Heavier than basic keyboards"
+    ]
+  },
+  {
+    "id": "logitech-mx-keys-s",
+    "type": "keyboard",
+    "brand": "Logitech",
+    "name": "Logitech MX Keys S",
+    "image": "assets/images/keyboards/logitech-mx-keys-s.jpg",
+    "category": "business",
+    "badge": "Productivity",
+    "summary": "A quiet, low-profile wireless keyboard designed for productivity, office work, and multi-device setups.",
+    "bestFor": "Business",
+    "price": 109,
+    "highlights": [
+      "Low Profile",
+      "Wireless",
+      "Quiet Typing"
+    ],
+    "specs": {
+      "Layout": "Full-size",
+      "Switches": "Low-profile scissor",
+      "Connectivity": "Bluetooth / Logi Bolt",
+      "Backlight": "Smart illumination",
+      "Battery": "Rechargeable",
+      "Best For": "Office productivity"
+    },
+    "rating": 4.8,
+    "score": 94,
+    "store": "Logitech",
+    "link": "https://www.logitech.com/",
+    "pros": [
+      "Quiet typing",
+      "Great for productivity",
+      "Multi-device support",
+      "Comfortable low-profile design"
+    ],
+    "cons": [
+      "Not mechanical",
+      "Limited gaming appeal"
+    ]
+  },
+  {
+    "id": "nuphy-air75-v2",
+    "type": "keyboard",
+    "brand": "NuPhy",
+    "name": "NuPhy Air75 V2",
+    "image": "assets/images/keyboards/nuphy-air75-v2.jpg",
+    "category": "creator",
+    "badge": "Low Profile",
+    "summary": "A slim mechanical keyboard with a portable layout, wireless connectivity, and a strong typing experience.",
+    "bestFor": "Creators",
+    "price": 119,
+    "highlights": [
+      "Low Profile",
+      "Wireless",
+      "75% Layout"
+    ],
+    "specs": {
+      "Layout": "75%",
+      "Switches": "Low-profile mechanical",
+      "Connectivity": "Bluetooth / 2.4 GHz / USB-C",
+      "Backlight": "RGB",
+      "Hot-swappable": "Yes",
+      "Best For": "Portable creator setups"
+    },
+    "rating": 4.7,
+    "score": 93,
+    "store": "NuPhy",
+    "link": "https://nuphy.com/",
+    "pros": [
+      "Slim design",
+      "Portable layout",
+      "Good typing feel",
+      "Wireless options"
+    ],
+    "cons": [
+      "Low-profile feel is not for everyone",
+      "Smaller layout may require adjustment"
+    ]
+  },
+  {
+    "id": "razer-blackwidow-v4-pro",
+    "type": "keyboard",
+    "brand": "Razer",
+    "name": "Razer BlackWidow V4 Pro",
+    "image": "assets/images/keyboards/razer-blackwidow-v4-pro.jpg",
+    "category": "gaming",
+    "badge": "Premium",
+    "summary": "A premium full-size gaming keyboard with extensive controls, RGB lighting, and a feature-packed design.",
+    "bestFor": "Gaming",
+    "price": 229,
+    "highlights": [
+      "Full-size",
+      "Mechanical",
+      "Command Dial"
+    ],
+    "specs": {
+      "Layout": "Full-size",
+      "Switches": "Mechanical",
+      "Connectivity": "USB wired",
+      "Backlight": "RGB",
+      "Controls": "Command dial and macro keys",
+      "Best For": "Premium gaming setups"
+    },
+    "rating": 4.7,
+    "score": 92,
+    "store": "Razer",
+    "link": "https://www.razer.com/",
+    "pros": [
+      "Feature-packed design",
+      "Great RGB lighting",
+      "Useful extra controls",
+      "Premium gaming feel"
+    ],
+    "cons": [
+      "Expensive",
+      "Large footprint"
+    ]
+  },
+  {
+    "id": "steelseries-apex-pro-tkl-wireless",
+    "type": "keyboard",
+    "brand": "SteelSeries",
+    "name": "SteelSeries Apex Pro TKL Wireless",
+    "image": "assets/images/keyboards/steelseries-apex-pro-tkl-wireless.jpg",
+    "category": "gaming",
+    "badge": "Esports",
+    "summary": "A high-end wireless gaming keyboard with adjustable actuation and a compact tournament-ready layout.",
+    "bestFor": "Gaming",
+    "price": 249,
+    "highlights": [
+      "TKL Layout",
+      "Wireless",
+      "Adjustable Actuation"
+    ],
+    "specs": {
+      "Layout": "Tenkeyless",
+      "Switches": "Adjustable mechanical switches",
+      "Connectivity": "Wireless / USB-C",
+      "Backlight": "RGB",
+      "Gaming Features": "Adjustable actuation",
+      "Best For": "Competitive gaming"
+    },
+    "rating": 4.8,
+    "score": 96,
+    "store": "SteelSeries",
+    "link": "https://steelseries.com/",
+    "pros": [
+      "Excellent gaming performance",
+      "Adjustable actuation",
+      "Compact TKL design",
+      "Premium feature set"
+    ],
+    "cons": [
+      "Very expensive",
+      "Overkill for casual users"
+    ]
   },
   {
     "id": "asus-vivobook-15",
@@ -82,90 +322,150 @@
     "summary": "A great everyday laptop that offers excellent value for money.",
     "bestFor": "Budget",
     "price": 599,
-    "ram": "16 GB",
-    "storage": "512 GB SSD",
-    "processor": "AMD Ryzen 5",
-    "display": "15.6-inch display",
-    "battery": "Good everyday battery life",
-    "weight": "About 3.7 lbs",
+    "highlights": [
+      "16 GB RAM",
+      "512 GB SSD",
+      "AMD Ryzen 5"
+    ],
+    "specs": {
+      "Display": "15.6-inch display",
+      "Processor": "AMD Ryzen 5",
+      "Memory": "16 GB",
+      "Storage": "512 GB SSD",
+      "Battery": "Good everyday battery life",
+      "Weight": "About 3.7 lbs"
+    },
     "rating": 4.6,
     "score": 90,
     "store": "ASUS",
     "link": "https://www.asus.com/",
-    "pros": ["Affordable price", "Good everyday performance", "16 GB RAM at a budget price", "Large screen"],
-    "cons": ["Not ideal for heavy gaming", "Build quality is more basic"]
+    "pros": [
+      "Affordable price",
+      "Good everyday performance",
+      "16 GB RAM at a budget price",
+      "Large screen"
+    ],
+    "cons": [
+      "Not ideal for heavy gaming",
+      "Build quality is more basic"
+    ]
   },
   {
-    "id": "dell-ultrasharp-u2723qe",
-    "type": "monitor",
+    "id": "dell-xps-13",
+    "type": "laptop",
     "brand": "Dell",
-    "name": "Dell UltraSharp U2723QE",
-    "image": "assets/images/monitors/dell-ultrasharp-u2725qe.jpg",
-    "category": "creator",
-    "badge": "Best 4K Monitor",
-    "summary": "A sharp 27-inch 4K monitor with excellent color quality for productivity and creative work.",
-    "bestFor": "Creators",
-    "price": 549,
-    "ram": "27-inch",
-    "storage": "4K UHD",
-    "processor": "IPS Black panel",
-    "display": "27-inch 4K UHD",
-    "battery": "Not applicable",
-    "weight": "About 14.6 lbs",
-    "rating": 4.8,
-    "score": 96,
+    "name": "Dell XPS 13",
+    "image": "assets/images/laptops/dell-xps-13.jpg",
+    "category": "business",
+    "badge": "Premium",
+    "summary": "A premium Windows ultrabook with an excellent display and build quality.",
+    "bestFor": "Business",
+    "price": 999,
+    "highlights": [
+      "16 GB RAM",
+      "512 GB SSD",
+      "Intel Core Ultra 7"
+    ],
+    "specs": {
+      "Display": "13.4-inch premium display",
+      "Processor": "Intel Core Ultra 7",
+      "Memory": "16 GB",
+      "Storage": "512 GB SSD",
+      "Battery": "All-day battery life",
+      "Weight": "About 2.6 lbs"
+    },
+    "rating": 4.7,
+    "score": 94,
     "store": "Dell",
     "link": "https://www.dell.com/",
-    "pros": ["Excellent 4K sharpness", "Great color quality", "USB-C connectivity", "Strong productivity features"],
-    "cons": ["More expensive than basic monitors", "Not designed for high-refresh gaming"]
+    "pros": [
+      "Premium build quality",
+      "Portable design",
+      "Strong productivity performance",
+      "Excellent screen"
+    ],
+    "cons": [
+      "Can get expensive",
+      "Limited port selection"
+    ]
   },
   {
-    "id": "lg-ultragear-27gr83q",
-    "type": "monitor",
-    "brand": "LG",
-    "name": "LG UltraGear 27GR83Q",
-    "image": "assets/images/monitors/lg-ultragear-27GR83Q-B.jpg",
+    "id": "lenovo-loq-15",
+    "type": "laptop",
+    "brand": "Lenovo",
+    "name": "Lenovo LOQ 15",
+    "image": "assets/images/laptops/lenovo-loq-15.jpg",
     "category": "gaming",
-    "badge": "Gaming Pick",
-    "summary": "A fast 27-inch gaming monitor with a high refresh rate and smooth performance.",
+    "badge": "Gaming",
+    "summary": "Affordable gaming laptop with dedicated NVIDIA graphics.",
     "bestFor": "Gaming",
-    "price": 349,
-    "ram": "27-inch",
-    "storage": "1440p QHD",
-    "processor": "240 Hz panel",
-    "display": "27-inch QHD",
-    "battery": "Not applicable",
-    "weight": "About 13 lbs",
-    "rating": 4.7,
-    "score": 93,
-    "store": "LG",
-    "link": "https://www.lg.com/",
-    "pros": ["Very smooth refresh rate", "Great for competitive gaming", "Sharp QHD resolution", "Low input lag"],
-    "cons": ["Not 4K", "Best value depends on sale price"]
+    "price": 899,
+    "highlights": [
+      "16 GB RAM",
+      "1 TB SSD",
+      "AMD Ryzen 7"
+    ],
+    "specs": {
+      "Display": "15.6-inch gaming display",
+      "Processor": "AMD Ryzen 7",
+      "Memory": "16 GB",
+      "Storage": "1 TB SSD",
+      "Battery": "Moderate gaming battery life",
+      "Weight": "About 5.3 lbs"
+    },
+    "rating": 4.8,
+    "score": 95,
+    "store": "Lenovo",
+    "link": "https://www.lenovo.com/",
+    "pros": [
+      "Strong gaming value",
+      "Dedicated graphics performance",
+      "Large SSD storage",
+      "Good multitasking specs"
+    ],
+    "cons": [
+      "Heavier than ultrabooks",
+      "Battery life is shorter while gaming"
+    ]
   },
   {
-    "id": "samsung-odyssey-g5",
-    "type": "monitor",
-    "brand": "Samsung",
-    "name": "Samsung Odyssey G5",
-    "image": "assets/images/monitors/samsung-odyssey-g5-g50D.jpg",
-    "category": "gaming",
-    "badge": "Curved Gaming",
-    "summary": "A curved gaming monitor that offers immersive gameplay at a strong value price.",
-    "bestFor": "Gaming",
-    "price": 279,
-    "ram": "27-inch",
-    "storage": "1440p QHD",
-    "processor": "Curved VA panel",
-    "display": "27-inch curved QHD",
-    "battery": "Not applicable",
-    "weight": "About 10 lbs",
-    "rating": 4.6,
-    "score": 89,
-    "store": "Samsung",
-    "link": "https://www.samsung.com/",
-    "pros": ["Immersive curved display", "Good gaming value", "Sharp QHD resolution", "Strong contrast"],
-    "cons": ["Viewing angles are not as wide as IPS", "Color accuracy is not creator-focused"]
+    "id": "macbook-air-m3",
+    "type": "laptop",
+    "brand": "Apple",
+    "name": "MacBook Air 13 (M3)",
+    "image": "assets/images/laptops/macbook-air-m3.jpg",
+    "category": "student",
+    "badge": "Editor's Choice",
+    "summary": "Excellent battery life, lightweight, and perfect for students and everyday work.",
+    "bestFor": "Students",
+    "price": 1099,
+    "highlights": [
+      "16 GB RAM",
+      "512 GB SSD",
+      "Apple M3"
+    ],
+    "specs": {
+      "Display": "13.6-inch Liquid Retina",
+      "Processor": "Apple M3",
+      "Memory": "16 GB",
+      "Storage": "512 GB SSD",
+      "Battery": "Up to 18 hours",
+      "Weight": "2.7 lbs"
+    },
+    "rating": 4.9,
+    "score": 98,
+    "store": "Apple",
+    "link": "https://www.apple.com/macbook-air/",
+    "pros": [
+      "Excellent battery life",
+      "Lightweight design",
+      "Fast Apple M3 chip",
+      "Great for students"
+    ],
+    "cons": [
+      "Limited ports",
+      "Upgrades can be expensive"
+    ]
   },
   {
     "id": "asus-proart-pa278qv",
@@ -178,17 +478,149 @@
     "summary": "A color-focused monitor for creators, designers, and productivity users on a budget.",
     "bestFor": "Creators",
     "price": 299,
-    "ram": "27-inch",
-    "storage": "1440p QHD",
-    "processor": "IPS panel",
-    "display": "27-inch QHD",
-    "battery": "Not applicable",
-    "weight": "About 15 lbs",
+    "highlights": [
+      "27-inch",
+      "1440p QHD",
+      "IPS Panel"
+    ],
+    "specs": {
+      "Screen Size": "27-inch",
+      "Resolution": "2560×1440 (QHD)",
+      "Panel": "IPS",
+      "Refresh Rate": "75 Hz",
+      "Color Accuracy": "Calman Verified",
+      "Weight": "About 15 lbs"
+    },
     "rating": 4.7,
     "score": 91,
     "store": "ASUS",
     "link": "https://www.asus.com/",
-    "pros": ["Good color accuracy", "Great value for creators", "Sharp QHD resolution", "Comfortable stand adjustments"],
-    "cons": ["Not a high-refresh gaming monitor", "No 4K resolution"]
+    "pros": [
+      "Good color accuracy",
+      "Great value for creators",
+      "Sharp QHD resolution",
+      "Comfortable stand adjustments"
+    ],
+    "cons": [
+      "Not a high-refresh gaming monitor",
+      "No 4K resolution"
+    ]
+  },
+  {
+    "id": "dell-ultrasharp-u2723qe",
+    "type": "monitor",
+    "brand": "Dell",
+    "name": "Dell UltraSharp U2723QE",
+    "image": "assets/images/monitors/dell-ultrasharp-u2725qe.jpg",
+    "category": "creator",
+    "badge": "Best 4K Monitor",
+    "summary": "A sharp 27-inch 4K monitor with excellent color quality for productivity and creative work.",
+    "bestFor": "Creators",
+    "price": 549,
+    "highlights": [
+      "27-inch",
+      "4K UHD",
+      "IPS Black Panel"
+    ],
+    "specs": {
+      "Screen Size": "27-inch",
+      "Resolution": "4K UHD",
+      "Panel": "IPS Black",
+      "Refresh Rate": "60 Hz",
+      "Connectivity": "USB-C, HDMI, DisplayPort",
+      "Weight": "About 14.6 lbs"
+    },
+    "rating": 4.8,
+    "score": 96,
+    "store": "Dell",
+    "link": "https://www.dell.com/",
+    "pros": [
+      "Excellent 4K sharpness",
+      "Great color quality",
+      "USB-C connectivity",
+      "Strong productivity features"
+    ],
+    "cons": [
+      "More expensive than basic monitors",
+      "Not designed for high-refresh gaming"
+    ]
+  },
+  {
+    "id": "lg-ultragear-27gr83q",
+    "type": "monitor",
+    "brand": "LG",
+    "name": "LG UltraGear 27GR83Q",
+    "image": "assets/images/monitors/lg-ultragear-27GR83Q-B.jpg",
+    "category": "gaming",
+    "badge": "Gaming Pick",
+    "summary": "A fast 27-inch gaming monitor with a high refresh rate and smooth performance.",
+    "bestFor": "Gaming",
+    "price": 349,
+    "highlights": [
+      "27-inch",
+      "1440p QHD",
+      "240 Hz"
+    ],
+    "specs": {
+      "Screen Size": "27-inch",
+      "Resolution": "2560×1440 (QHD)",
+      "Panel": "IPS",
+      "Refresh Rate": "240 Hz",
+      "Response Time": "1 ms",
+      "Weight": "About 13 lbs"
+    },
+    "rating": 4.7,
+    "score": 93,
+    "store": "LG",
+    "link": "https://www.lg.com/",
+    "pros": [
+      "Very smooth refresh rate",
+      "Great for competitive gaming",
+      "Sharp QHD resolution",
+      "Low input lag"
+    ],
+    "cons": [
+      "Not 4K",
+      "Best value depends on sale price"
+    ]
+  },
+  {
+    "id": "samsung-odyssey-g5",
+    "type": "monitor",
+    "brand": "Samsung",
+    "name": "Samsung Odyssey G5",
+    "image": "assets/images/monitors/samsung-odyssey-g5-g50D.jpg",
+    "category": "gaming",
+    "badge": "Curved Gaming",
+    "summary": "A curved gaming monitor that offers immersive gameplay at a strong value price.",
+    "bestFor": "Gaming",
+    "price": 279,
+    "highlights": [
+      "27-inch",
+      "1440p QHD",
+      "Curved VA Panel"
+    ],
+    "specs": {
+      "Screen Size": "27-inch",
+      "Resolution": "2560×1440 (QHD)",
+      "Panel": "Curved VA",
+      "Refresh Rate": "165 Hz",
+      "Response Time": "1 ms",
+      "Weight": "About 10 lbs"
+    },
+    "rating": 4.6,
+    "score": 89,
+    "store": "Samsung",
+    "link": "https://www.samsung.com/",
+    "pros": [
+      "Immersive curved display",
+      "Good gaming value",
+      "Sharp QHD resolution",
+      "Strong contrast"
+    ],
+    "cons": [
+      "Viewing angles are not as wide as IPS",
+      "Color accuracy is not creator-focused"
+    ]
   }
 ]
