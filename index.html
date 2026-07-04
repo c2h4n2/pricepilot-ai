@@ -45,30 +45,31 @@
         <button id="clearBtn">Clear</button>
       </div>
 
-      <div class="filter-selects">
-        <label>
-          Product Type
-          <select id="typeSelect">
-            <option value="all">All Products</option>
-            <option value="laptop">💻 Laptops</option>
-            <option value="monitor">🖥️ Monitors</option>
-            <option value="keyboard">⌨️ Keyboards</option>
-          </select>
-        </label>
+<div class="filter-selects">
 
-        <label>
-          Shopping Goal
-          <select id="categorySelect">
-            <option value="all">All Goals</option>
-            <option value="student">Student</option>
-            <option value="gaming">Gaming</option>
-            <option value="business">Business</option>
-            <option value="creator">Creator</option>
-            <option value="budget">Budget</option>
-          </select>
-        </label>
-      </div>
-    </div>
+  <div class="filter-group">
+    <label for="typeSelect">Product Category</label>
+
+    <select id="typeSelect">
+      <option value="all">All Categories</option>
+      <option value="laptop">💻 Laptops</option>
+      <option value="monitor">🖥️ Monitors</option>
+      <option value="keyboard">⌨️ Keyboards</option>
+    </select>
+  </div>
+
+  <div class="filter-group">
+    <label for="sortSelect">Sort By</label>
+
+    <select id="sortSelect">
+      <option value="score">⭐ Best Value (Score)</option>
+      <option value="rating">⭐ Highest Rated</option>
+      <option value="priceLow">💲 Lowest Price</option>
+      <option value="priceHigh">💰 Highest Price</option>
+    </select>
+  </div>
+
+</div>
 
     <aside class="hero-card">
       <p class="eyebrow">AI Pick</p>
@@ -96,32 +97,29 @@
   </section>
 
   <section class="stats wrap">
-    <div>
-      <strong id="productCount">0</strong>
-      <span>curated products</span>
-    </div>
 
-    <div>
-      <strong>5</strong>
-      <span>shopping goals</span>
-    </div>
+  <div>
+    <strong id="productCount">0</strong>
+    <span>curated products</span>
+  </div>
 
-    <div>
-      <strong>0</strong>
-      <span>guesswork required</span>
-    </div>
-  </section>
+  <div>
+    <strong id="categoryCount">0</strong>
+    <span>product categories</span>
+  </div>
+
+  <div>
+    <strong>AI</strong>
+    <span>recommendations</span>
+  </div>
+
+</section>
 
   <section id="deals" class="wrap section-head">
     <p class="eyebrow">Featured deals</p>
     <h2>Recommended products</h2>
 
-    <select id="sortSelect">
-      <option value="score">Best value</option>
-      <option value="priceLow">Price: low to high</option>
-      <option value="priceHigh">Price: high to low</option>
-      <option value="rating">Highest rated</option>
-    </select>
+    
   </section>
 
   <section class="wrap">

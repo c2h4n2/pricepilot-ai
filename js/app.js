@@ -66,6 +66,9 @@ function render() {
 
   getById("productCount").textContent = list.length;
 
+  const categoryCount = new Set(products.map((p) => p.type)).size;
+  getById("categoryCount").textContent = categoryCount;
+
   renderProductCards(list);
   renderCompareTable();
   renderTopPick();
@@ -77,11 +80,11 @@ function resetFilters() {
   currentFilter = "all";
   currentTypeFilter = "all";
 
-  const categorySelect = getById("categorySelect");
   const typeSelect = getById("typeSelect");
+  const sortSelect = getById("sortSelect");
 
-  if (categorySelect) categorySelect.value = "all";
   if (typeSelect) typeSelect.value = "all";
+  if (sortSelect) sortSelect.value = "score";
 }
 
 function init() {
@@ -92,18 +95,10 @@ function init() {
   getById("clearCompareBtn").addEventListener("click", clearCompare);
 
   const typeSelect = getById("typeSelect");
-  const categorySelect = getById("categorySelect");
 
   if (typeSelect) {
     typeSelect.addEventListener("change", () => {
       currentTypeFilter = typeSelect.value;
-      render();
-    });
-  }
-
-  if (categorySelect) {
-    categorySelect.addEventListener("change", () => {
-      currentFilter = categorySelect.value;
       render();
     });
   }
