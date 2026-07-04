@@ -73,12 +73,40 @@ function render() {
   getById("emptyState").classList.toggle("hidden", list.length > 0);
 }
 
+function resetFilters() {
+  currentFilter = "all";
+  currentTypeFilter = "all";
+
+  const categorySelect = getById("categorySelect");
+  const typeSelect = getById("typeSelect");
+
+  if (categorySelect) categorySelect.value = "all";
+  if (typeSelect) typeSelect.value = "all";
+}
+
 function init() {
   getById("year").textContent = new Date().getFullYear();
 
   getById("searchInput").addEventListener("input", render);
   getById("sortSelect").addEventListener("change", render);
   getById("clearCompareBtn").addEventListener("click", clearCompare);
+
+  const typeSelect = getById("typeSelect");
+  const categorySelect = getById("categorySelect");
+
+  if (typeSelect) {
+    typeSelect.addEventListener("change", () => {
+      currentTypeFilter = typeSelect.value;
+      render();
+    });
+  }
+
+  if (categorySelect) {
+    categorySelect.addEventListener("change", () => {
+      currentFilter = categorySelect.value;
+      render();
+    });
+  }
 
   const advisorBtn = getById("advisorBtn");
   const advisorInput = getById("advisorInput");
@@ -93,40 +121,8 @@ function init() {
 
   getById("clearBtn").addEventListener("click", () => {
     getById("searchInput").value = "";
-    currentFilter = "all";
-    currentTypeFilter = "all";
-
-    document.querySelectorAll(".filters button").forEach((button) => {
-      button.classList.toggle("active", button.dataset.filter === "all");
-    });
-
-    document.querySelectorAll(".type-filters button").forEach((button) => {
-      button.classList.toggle("active", button.dataset.type === "all");
-    });
-
+    resetFilters();
     render();
-  });
-
-  document.querySelectorAll(".filters button").forEach((button) => {
-    button.addEventListener("click", () => {
-      currentFilter = button.dataset.filter;
-
-      document.querySelectorAll(".filters button").forEach((b) => b.classList.remove("active"));
-
-      button.classList.add("active");
-      render();
-    });
-  });
-
-  document.querySelectorAll(".type-filters button").forEach((button) => {
-    button.addEventListener("click", () => {
-      currentTypeFilter = button.dataset.type;
-
-      document.querySelectorAll(".type-filters button").forEach((b) => b.classList.remove("active"));
-
-      button.classList.add("active");
-      render();
-    });
   });
 
   render();

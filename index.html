@@ -26,9 +26,7 @@
 <main>
 
   <section class="hero wrap">
-
     <div>
-
       <p class="eyebrow">Tech deals, simplified</p>
 
       <h1>Find the best tech deal without hours of research.</h1>
@@ -42,66 +40,62 @@
         <input
           id="searchInput"
           type="search"
-          placeholder="Try student, gaming, under 700, 16GB, MacBook..."
+          placeholder="Try wireless, gaming, under 100, 4K, MacBook..."
         />
         <button id="clearBtn">Clear</button>
       </div>
 
-      <section class="type-filters">
-        <button data-type="all" class="active">All Products</button>
-        <button data-type="laptop">💻 Laptops</button>
-        <button data-type="monitor">🖥️ Monitors</button>
-      </section>
+      <div class="filter-selects">
+        <label>
+          Product Type
+          <select id="typeSelect">
+            <option value="all">All Products</option>
+            <option value="laptop">💻 Laptops</option>
+            <option value="monitor">🖥️ Monitors</option>
+            <option value="keyboard">⌨️ Keyboards</option>
+          </select>
+        </label>
 
-      <div class="filters" id="filters">
-        <button data-filter="all" class="active">All</button>
-        <button data-filter="student">Student</button>
-        <button data-filter="gaming">Gaming</button>
-        <button data-filter="business">Business</button>
-        <button data-filter="creator">Creator</button>
-        <button data-filter="budget">Budget</button>
+        <label>
+          Shopping Goal
+          <select id="categorySelect">
+            <option value="all">All Goals</option>
+            <option value="student">Student</option>
+            <option value="gaming">Gaming</option>
+            <option value="business">Business</option>
+            <option value="creator">Creator</option>
+            <option value="budget">Budget</option>
+          </select>
+        </label>
       </div>
-
     </div>
 
     <aside class="hero-card">
-
       <p class="eyebrow">AI Pick</p>
-
       <h2 id="topPickName">Loading...</h2>
-
-      <p id="topPickSummary">
-        Finding today's best balanced product.
-      </p>
-
+      <p id="topPickSummary">Finding today's best balanced product.</p>
       <strong id="topPickScore">-- value score</strong>
-
     </aside>
-
   </section>
 
   <section class="advisor wrap">
-
     <p class="eyebrow">Ask PricePilot AI</p>
-
     <h2>Tell us what you need. We'll recommend the right product.</h2>
 
     <div class="advisor-box">
       <input
         id="advisorInput"
         type="text"
-        placeholder="Example: I need a laptop under $900 for college and programming"
+        placeholder="Example: I need a wireless keyboard for productivity"
       />
 
       <button id="advisorBtn">Find my product</button>
     </div>
 
     <div id="advisorResult" class="advisor-result hidden"></div>
-
   </section>
 
   <section class="stats wrap">
-
     <div>
       <strong id="productCount">0</strong>
       <span>curated products</span>
@@ -116,13 +110,10 @@
       <strong>0</strong>
       <span>guesswork required</span>
     </div>
-
   </section>
 
   <section id="deals" class="wrap section-head">
-
     <p class="eyebrow">Featured deals</p>
-
     <h2>Recommended products</h2>
 
     <select id="sortSelect">
@@ -131,11 +122,9 @@
       <option value="priceHigh">Price: high to low</option>
       <option value="rating">Highest rated</option>
     </select>
-
   </section>
 
   <section class="wrap">
-
     <div class="compare-actions">
       <button id="clearCompareBtn">Clear comparison</button>
       <span id="compareStatus">Select products to compare.</span>
@@ -145,21 +134,16 @@
 
     <p id="emptyState" class="empty hidden">
       No products matched your search.
-      Try a broader term like "student" or "gaming".
+      Try a broader term like "wireless", "gaming", or "budget".
     </p>
-
   </section>
 
   <section id="compare" class="wrap compare">
-
     <p class="eyebrow">Side-by-side</p>
-
     <h2>Selected comparison</h2>
 
     <div class="table-wrap">
-
       <table>
-
         <thead>
           <tr>
             <th>Product</th>
@@ -172,26 +156,17 @@
         </thead>
 
         <tbody id="compareRows"></tbody>
-
       </table>
-
     </div>
 
-    <div
-      id="compareRecommendation"
-      class="compare-recommendation hidden">
-    </div>
-
+    <div id="compareRecommendation" class="compare-recommendation hidden"></div>
   </section>
 
   <section id="guides" class="wrap guides">
-
     <p class="eyebrow">SEO content engine</p>
-
     <h2>Buying guides to publish first</h2>
 
     <div class="guide-grid">
-
       <a href="best-laptops-under-500.html">
         <b>Best laptops under $500</b>
         <span>Budget picks for school and everyday use.</span>
@@ -216,18 +191,13 @@
         <b>Chromebook vs laptop</b>
         <span>A beginner-friendly choosing guide.</span>
       </a>
-
     </div>
-
   </section>
 
 </main>
 
 <footer class="footer wrap">
-
-  <p>
-    © <span id="year"></span> PricePilot AI.
-  </p>
+  <p>© <span id="year"></span> PricePilot AI.</p>
 
   <p>
     <a href="about.html">About</a> ·
@@ -235,7 +205,6 @@
     <a href="privacy.html">Privacy</a> ·
     <a href="affiliate-disclosure.html">Affiliate Disclosure</a>
   </p>
-
 </footer>
 
 <script src="js/utils.js?v=2"></script>
