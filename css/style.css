@@ -829,3 +829,59 @@ td:first-child {
 .compare-btn:disabled {
   pointer-events: none;
 }
+/* ---------- Polished Dropdown Filters ---------- */
+
+.filter-selects {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 14px;
+  max-width: 760px;
+  margin-top: 18px;
+}
+
+.filter-group {
+  display: grid;
+  gap: 8px;
+}
+
+.filter-group label {
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+
+.filter-group select {
+  width: 100%;
+  appearance: none;
+  border: 1px solid rgba(141, 240, 167, 0.24);
+  border-radius: 18px;
+  padding: 15px 46px 15px 16px;
+  color: var(--text);
+  background:
+    linear-gradient(45deg, transparent 50%, var(--accent) 50%) right 18px center / 7px 7px no-repeat,
+    linear-gradient(135deg, var(--accent) 50%, transparent 50%) right 12px center / 7px 7px no-repeat,
+    rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  font-weight: 800;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
+}
+
+.filter-group select:hover,
+.filter-group select:focus {
+  outline: none;
+  border-color: rgba(141, 240, 167, 0.62);
+  background-color: rgba(255, 255, 255, 0.085);
+}
+
+.filter-group select option {
+  background: #0b1a11;
+  color: var(--text);
+}
+
+@media (max-width: 700px) {
+  .filter-selects {
+    grid-template-columns: 1fr;
+  }
+}
