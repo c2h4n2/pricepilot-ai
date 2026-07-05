@@ -4,15 +4,23 @@ function getBudget(text) {
 }
 
 function getProductTypeFromQuery(text) {
-  const types = {
-    laptop: ["laptop", "notebook", "macbook", "computer"],
-    monitor: ["monitor", "display", "screen"],
-    keyboard: ["keyboard", "mechanical keyboard", "keys"]
-  };
+  const typeRules = [
+    {
+      type: "laptop",
+      words: ["laptop", "laptops", "notebook", "notebooks", "macbook", "computer", "college computer"]
+    },
+    {
+      type: "monitor",
+      words: ["monitor", "monitors", "display", "displays", "screen", "screens"]
+    },
+    {
+      type: "keyboard",
+      words: ["keyboard", "keyboards", "mechanical keyboard", "keys"]
+    }
+  ];
 
-  return Object.keys(types).find((type) =>
-    types[type].some((word) => text.includes(word))
-  );
+  const rule = typeRules.find((item) => item.words.some((word) => text.includes(word)));
+  return rule ? rule.type : null;
 }
 
 function getHighlights(product) {
@@ -33,32 +41,44 @@ function productSearchText(product) {
   `.toLowerCase();
 }
 
+function readableType(type) {
+  const labels = {
+    laptop: "laptop",
+    monitor: "monitor",
+    keyboard: "keyboard"
+  };
+
+  return labels[type] || "product";
+}
+
 function scoreProduct(product, query) {
   const text = query.toLowerCase();
   const searchable = productSearchText(product);
   const budget = getBudget(text);
   const requestedType = getProductTypeFromQuery(text);
 
-  let advisorScore = Number(product.score) || 0;
+  let advisorScore = 50;
   const reasons = [];
   const warnings = [];
 
+  advisorScore += Math.min(25, Math.round((Number(product.score) || 0) / 4));
+
   if (requestedType) {
     if (product.type === requestedType) {
-      advisorScore += 35;
-      reasons.push(`Matches your requested product category: ${requestedType}.`);
+      advisorScore += 30;
+      reasons.push(`Matches your requested category: ${readableType(requestedType)}.`);
     } else {
-      advisorScore -= 80;
-      warnings.push(`This is a ${product.type}, not a ${requestedType}.`);
+      advisorScore -= 200;
+      warnings.push(`Different product category.`);
     }
   }
 
   if (budget) {
     if (product.price <= budget) {
-      advisorScore += 30;
+      advisorScore += 22;
       reasons.push(`Fits your ${money(budget)} budget.`);
     } else {
-      advisorScore -= 45;
+      advisorScore -= 35;
       warnings.push(`Above your ${money(budget)} budget.`);
     }
   }
@@ -72,7 +92,7 @@ function scoreProduct(product, query) {
     {
       words: ["gaming", "game", "esports", "fps"],
       category: "gaming",
-      reason: "Built for gaming-focused performance."
+      reason: "Good fit for gaming-focused needs."
     },
     {
       words: ["business", "office", "work", "productivity"],
@@ -94,7 +114,7 @@ function scoreProduct(product, query) {
   intentRules.forEach((rule) => {
     if (rule.words.some((word) => text.includes(word))) {
       if (product.category === rule.category) {
-        advisorScore += 28;
+        advisorScore += 22;
         reasons.push(rule.reason);
       }
     }
@@ -104,34 +124,43 @@ function scoreProduct(product, query) {
     "wireless",
     "mechanical",
     "hot-swappable",
+    "hot swappable",
     "rgb",
     "low profile",
     "4k",
     "qhd",
     "240 hz",
+    "240hz",
     "1440p",
     "16 gb",
+    "16gb",
     "1 tb",
+    "1tb",
     "ssd",
     "usb-c",
     "portable",
-    "quiet"
+    "quiet",
+    "coding",
+    "programming"
   ];
 
   featureWords.forEach((word) => {
-    if (text.includes(word) && searchable.includes(word)) {
-      advisorScore += 12;
+    if (text.includes(word) && searchable.includes(word.replace(" ", ""))) {
+      advisorScore += 10;
+      reasons.push(`Matches your requested feature: ${word}.`);
+    } else if (text.includes(word) && searchable.includes(word)) {
+      advisorScore += 10;
       reasons.push(`Matches your requested feature: ${word}.`);
     }
   });
 
   if (Number(product.rating) >= 4.7) {
-    advisorScore += 8;
+    advisorScore += 6;
     reasons.push(`Strong ${product.rating}/5 rating.`);
   }
 
   if (Number(product.score) >= 94) {
-    advisorScore += 8;
+    advisorScore += 6;
     reasons.push(`Excellent ${product.score}/100 value score.`);
   }
 
@@ -150,7 +179,16 @@ function scoreProduct(product, query) {
 }
 
 function getRecommendations(query) {
-  return products
+  const text = query.toLowerCase();
+  const requestedType = getProductTypeFromQuery(text);
+
+  let candidates = products;
+
+  if (requestedType) {
+    candidates = products.filter((product) => product.type === requestedType);
+  }
+
+  return candidates
     .map((product) => scoreProduct(product, query))
     .sort((a, b) => b.advisorScore - a.advisorScore)
     .slice(0, 3);
@@ -173,9 +211,18 @@ function runAdvisor() {
   }
 
   const recommendations = getRecommendations(query);
-  const best = recommendations[0];
 
   result.classList.remove("hidden");
+
+  if (!recommendations.length) {
+    result.innerHTML = `
+      <h3>No matching products yet</h3>
+      <p>Try a broader search like <strong>gaming monitor</strong>, <strong>student laptop</strong>, or <strong>wireless keyboard</strong>.</p>
+    `;
+    return;
+  }
+
+  const best = recommendations[0];
 
   result.innerHTML = `
     <h3>🎯 PricePilot AI recommends</h3>
