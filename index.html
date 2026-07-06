@@ -40,36 +40,35 @@
         <input
           id="searchInput"
           type="search"
-          placeholder="Try wireless, gaming, under 100, 4K, MacBook..."
+          placeholder="Search products: wireless, gaming, under 100, 4K, MacBook..."
         />
         <button id="clearBtn">Clear</button>
       </div>
 
-<div class="filter-selects">
+      <div class="filter-selects">
+        <div class="filter-group">
+          <label for="typeSelect">Product Category</label>
 
-  <div class="filter-group">
-    <label for="typeSelect">Product Category</label>
+          <select id="typeSelect">
+            <option value="all">All Categories</option>
+            <option value="laptop">💻 Laptops</option>
+            <option value="monitor">🖥️ Monitors</option>
+            <option value="keyboard">⌨️ Keyboards</option>
+          </select>
+        </div>
 
-    <select id="typeSelect">
-      <option value="all">All Categories</option>
-      <option value="laptop">💻 Laptops</option>
-      <option value="monitor">🖥️ Monitors</option>
-      <option value="keyboard">⌨️ Keyboards</option>
-    </select>
-  </div>
+        <div class="filter-group">
+          <label for="sortSelect">Sort By</label>
 
-  <div class="filter-group">
-    <label for="sortSelect">Sort By</label>
-
-    <select id="sortSelect">
-      <option value="score">⭐ Best Value (Score)</option>
-      <option value="rating">⭐ Highest Rated</option>
-      <option value="priceLow">💲 Lowest Price</option>
-      <option value="priceHigh">💰 Highest Price</option>
-    </select>
-  </div>
-
-</div>
+          <select id="sortSelect">
+            <option value="score">⭐ Best Value</option>
+            <option value="rating">⭐ Highest Rated</option>
+            <option value="priceLow">💲 Lowest Price</option>
+            <option value="priceHigh">💰 Highest Price</option>
+          </select>
+        </div>
+      </div>
+    </div>
 
     <aside class="hero-card">
       <p class="eyebrow">AI Pick</p>
@@ -80,46 +79,56 @@
   </section>
 
   <section class="advisor wrap">
-    <p class="eyebrow">Ask PricePilot AI</p>
-    <h2>Tell us what you need. We'll recommend the right product.</h2>
+    <div class="advisor-feature">
+      <p class="eyebrow">✨ AI Shopping Assistant</p>
 
-    <div class="advisor-box">
-      <input
-        id="advisorInput"
-        type="text"
-        placeholder="Example: I need a wireless keyboard for productivity"
-      />
+      <h2>Describe what you need. We'll find your best match.</h2>
 
-      <button id="advisorBtn">Find my product</button>
+      <p class="lead">
+        Tell PricePilot your budget, product type, use case, or must-have features.
+        We'll recommend the best products and explain why they fit.
+      </p>
+
+      <div class="advisor-box">
+        <input
+          id="advisorInput"
+          type="text"
+          placeholder="Example: I need a laptop under $900 for college and coding"
+        />
+
+        <button id="advisorBtn">Find Best Match</button>
+      </div>
+
+      <div class="advisor-benefits">
+        <span>✓ Personalized recommendations</span>
+        <span>✓ Clear match reasons</span>
+        <span>✓ Curated tech picks only</span>
+      </div>
     </div>
 
     <div id="advisorResult" class="advisor-result hidden"></div>
   </section>
 
   <section class="stats wrap">
+    <div>
+      <strong id="productCount">0</strong>
+      <span>curated products</span>
+    </div>
 
-  <div>
-    <strong id="productCount">0</strong>
-    <span>curated products</span>
-  </div>
+    <div>
+      <strong id="categoryCount">0</strong>
+      <span>product categories</span>
+    </div>
 
-  <div>
-    <strong id="categoryCount">0</strong>
-    <span>product categories</span>
-  </div>
-
-  <div>
-    <strong>AI</strong>
-    <span>recommendations</span>
-  </div>
-
-</section>
+    <div>
+      <strong>AI</strong>
+      <span>recommendations</span>
+    </div>
+  </section>
 
   <section id="deals" class="wrap section-head">
     <p class="eyebrow">Featured deals</p>
     <h2>Recommended products</h2>
-
-    
   </section>
 
   <section class="wrap">
@@ -205,24 +214,12 @@
   </p>
 </footer>
 
-<script src="js/utils.js?v=2"></script>
-<script src="js/favorites.js?v=2"></script>
-<script src="js/cards.js?v=2"></script>
-<script src="js/compare.js?v=2"></script>
-<script src="js/advisor.js?v=2"></script>
-<script src="js/app.js?v=2"></script>
+<script src="js/utils.js?v=5"></script>
+<script src="js/favorites.js?v=5"></script>
+<script src="js/cards.js?v=5"></script>
+<script src="js/compare.js?v=5"></script>
+<script src="js/advisor.js?v=5"></script>
+<script src="js/app.js?v=5"></script>
 
 </body>
 </html>
-<script src="js/utils.js?v=3"></script>
-<script src="js/favorites.js?v=3"></script>
-<script src="js/cards.js?v=3"></script>
-<script src="js/compare.js?v=3"></script>
-<script src="js/advisor.js?v=3"></script>
-<script src="js/app.js?v=3"></script>
-<script src="js/utils.js?v=4"></script>
-<script src="js/favorites.js?v=4"></script>
-<script src="js/cards.js?v=4"></script>
-<script src="js/compare.js?v=4"></script>
-<script src="js/advisor.js?v=4"></script>
-<script src="js/app.js?v=4"></script>
