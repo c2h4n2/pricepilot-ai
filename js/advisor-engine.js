@@ -34,23 +34,38 @@ function productSearchText(product) {
 
 function readableType(type) {
   const labels = {
-    laptop: "laptop",
-    monitor: "monitor",
-    keyboard: "keyboard"
+    laptop: "Laptop",
+    monitor: "Monitor",
+    keyboard: "Keyboard"
   };
 
-  return labels[type] || "product";
+  return labels[type] || "Product";
 }
 
 function hasAny(text, words) {
   return words.some((word) => text.includes(word));
 }
 
-function scoreProduct(product, query) {
+function analyzeQuery(query) {
   const text = query.toLowerCase();
+
+  return {
+    text,
+    productType: getProductTypeFromQuery(text),
+    budget: getBudget(text),
+    student: hasAny(text, ["student", "college", "school", "class"]),
+    gaming: hasAny(text, ["gaming", "game", "esports", "fps"]),
+    business: hasAny(text, ["business", "office", "work", "productivity"]),
+    creator: hasAny(text, ["creator", "design", "photo", "video", "editing"]),
+    coding: hasAny(text, ["coding", "programming", "developer", "computer science", "cs"]),
+    budgetFocused: hasAny(text, ["budget", "cheap", "affordable", "value"])
+  };
+}
+
+function scoreProduct(product, query) {
+  const intent = analyzeQuery(query);
+  const text = intent.text;
   const searchable = productSearchText(product);
-  const budget = getBudget(text);
-  const requestedType = getProductTypeFromQuery(text);
 
   let advisorScore = 50;
   const reasons = [];
@@ -58,45 +73,42 @@ function scoreProduct(product, query) {
 
   advisorScore += Math.min(25, Math.round((Number(product.score) || 0) / 4));
 
-  if (requestedType) {
-    if (product.type === requestedType) {
+  if (intent.productType) {
+    if (product.type === intent.productType) {
       advisorScore += 30;
-      reasons.push(`Matches your requested category: ${readableType(requestedType)}.`);
+      reasons.push(`Matches your requested category: ${readableType(intent.productType)}.`);
     } else {
       advisorScore -= 200;
       warnings.push("Different product category.");
     }
   }
 
-  if (budget) {
-    if (product.price <= budget) {
+  if (intent.budget) {
+    if (product.price <= intent.budget) {
       advisorScore += 25;
-      reasons.push(`Fits your ${money(budget)} budget.`);
+      reasons.push(`Fits your ${money(intent.budget)} budget.`);
     } else {
       advisorScore -= 45;
-      warnings.push(`Above your ${money(budget)} budget.`);
+      warnings.push(`Above your ${money(intent.budget)} budget.`);
     }
   }
 
   const intentRules = [
-    { words: ["student", "college", "school", "class"], category: "student", reason: "Strong fit for students and school use." },
-    { words: ["gaming", "game", "esports", "fps"], category: "gaming", reason: "Good fit for gaming-focused needs." },
-    { words: ["business", "office", "work", "productivity"], category: "business", reason: "Well suited for work and productivity." },
-    { words: ["creator", "design", "photo", "video", "editing"], category: "creator", reason: "Good fit for creators and visual work." },
-    { words: ["budget", "cheap", "affordable", "value"], category: "budget", reason: "Strong value-focused option." }
+    { active: intent.student, category: "student", reason: "Strong fit for students and school use." },
+    { active: intent.gaming, category: "gaming", reason: "Good fit for gaming-focused needs." },
+    { active: intent.business, category: "business", reason: "Well suited for work and productivity." },
+    { active: intent.creator, category: "creator", reason: "Good fit for creators and visual work." },
+    { active: intent.budgetFocused, category: "budget", reason: "Strong value-focused option." }
   ];
 
   intentRules.forEach((rule) => {
-    if (hasAny(text, rule.words) && product.category === rule.category) {
+    if (rule.active && product.category === rule.category) {
       advisorScore += 22;
       reasons.push(rule.reason);
     }
   });
 
-  if (
-    product.type === "laptop" &&
-    hasAny(text, ["coding", "programming", "developer", "computer science", "cs"])
-  ) {
+  if (product.type === "laptop" && intent.coding) {
     advisorScore += 26;
     reasons.push("Good fit for coding and programming work.");
 
@@ -171,13 +183,12 @@ function scoreProduct(product, query) {
 }
 
 function getRecommendations(query, productList) {
-  const text = query.toLowerCase();
-  const requestedType = getProductTypeFromQuery(text);
+  const intent = analyzeQuery(query);
 
   let candidates = productList;
 
-  if (requestedType) {
-    candidates = productList.filter((product) => product.type === requestedType);
+  if (intent.productType) {
+    candidates = productList.filter((product) => product.type === intent.productType);
   }
 
   return candidates
