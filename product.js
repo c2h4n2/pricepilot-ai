@@ -120,16 +120,81 @@ function specsTable(product) {
   `;
 }
 
+function uniqueProducts(list) {
+  const seen = new Set();
+
+  return list.filter((product) => {
+    if (!product || seen.has(product.id)) return false;
+    seen.add(product.id);
+    return true;
+  });
+}
+
+function getRelatedReason(currentProduct, relatedProduct) {
+  if (relatedProduct.price < currentProduct.price) {
+    return "💰 Budget Alternative";
+  }
+
+  if (Number(relatedProduct.score) > Number(currentProduct.score)) {
+    return "⚡ Higher Score Pick";
+  }
+
+  if (Number(relatedProduct.rating) > Number(currentProduct.rating)) {
+    return "⭐ Top Rated Alternative";
+  }
+
+  if (relatedProduct.category === currentProduct.category) {
+    return "🎯 Similar Choice";
+  }
+
+  return "🏆 Worth Comparing";
+}
+
+function getSmartRelatedProducts(currentProduct) {
+  const sameType = products.filter(
+    (product) => product.id !== currentProduct.id && product.type === currentProduct.type
+  );
+
+  const budgetAlternative = sameType
+    .filter((product) => product.price < currentProduct.price)
+    .sort((a, b) => b.score - a.score)[0];
+
+  const higherScorePick = sameType
+    .filter((product) => Number(product.score) > Number(currentProduct.score))
+    .sort((a, b) => b.score - a.score)[0];
+
+  const topRatedAlternative = [...sameType].sort((a, b) => b.rating - a.rating)[0];
+
+  const similarChoice = sameType
+    .filter((product) => product.category === currentProduct.category)
+    .sort((a, b) => b.score - a.score)[0];
+
+  const fallback = [...sameType].sort((a, b) => b.score - a.score);
+
+  return uniqueProducts([
+    budgetAlternative,
+    higherScorePick,
+    topRatedAlternative,
+    similarChoice,
+    ...fallback
+  ]).slice(0, 3);
+}
+
 function relatedProducts(currentProduct) {
-  return products
-    .filter((p) => p.id !== currentProduct.id && p.type === currentProduct.type)
-    .slice(0, 3)
+  const related = getSmartRelatedProducts(currentProduct);
+
+  if (!related.length) {
+    return `<p class="empty">No related products available yet.</p>`;
+  }
+
+  return related
     .map(
-      (p) => `
-        <a class="related-card" href="product.html?id=${p.id}">
-          <img src="${p.image}" alt="${p.name}">
-          <strong>${p.name}</strong>
-          <span>${money(p.price)}</span>
+      (product) => `
+        <a class="related-card" href="product.html?id=${product.id}">
+          <img src="${product.image}" alt="${product.name}">
+          <span class="related-label">${getRelatedReason(currentProduct, product)}</span>
+          <strong>${product.name}</strong>
+          <span>${money(product.price)} · ${product.score}/100 score</span>
         </a>
       `
     )
@@ -274,7 +339,7 @@ async function loadProduct() {
 
       <section class="review-card">
         <p class="eyebrow">Keep comparing</p>
-        <h2>You may also like</h2>
+        <h2>Smarter alternatives</h2>
         <div class="related-grid">
           ${relatedProducts(product)}
         </div>
