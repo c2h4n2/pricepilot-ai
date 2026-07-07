@@ -1060,3 +1060,28 @@ td:first-child {
   }
 
 }
+/* ---------- Smart Related Products ---------- */
+
+.related-label {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(141, 240, 167, 0.12);
+  border: 1px solid rgba(141, 240, 167, 0.28);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 900;
+}
+
+.related-card strong {
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.related-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(141, 240, 167, 0.38);
+}
