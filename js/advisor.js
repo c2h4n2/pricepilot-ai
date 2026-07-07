@@ -48,6 +48,36 @@ function renderRequestSummary(query) {
   `;
 }
 
+function buildRecommendationExplanation(product, query) {
+  const intent = analyzeQuery(query);
+  const highlights = (product.highlights || []).slice(0, 3).join(", ");
+
+  let explanation = `We recommend ${product.name} because it combines ${highlights} with a ${product.score}/100 value score`;
+
+  if (intent.budget && product.price <= intent.budget) {
+    explanation += ` while staying within your ${money(intent.budget)} budget`;
+  }
+
+  if (intent.coding && product.type === "laptop") {
+    explanation += `. Those specs make it a strong fit for coding, multitasking, and college coursework`;
+  } else if (intent.gaming) {
+    explanation += `. That makes it a strong fit for gaming-focused shoppers`;
+  } else if (intent.business) {
+    explanation += `. That makes it a practical choice for work and productivity`;
+  } else if (intent.creator) {
+    explanation += `. That makes it useful for creative work and visual tasks`;
+  } else if (intent.student) {
+    explanation += `. That makes it a smart option for students`;
+  }
+
+  return `${explanation}.`;
+}
+
+function buildRunnerUpExplanation(product) {
+  const reasons = product.reasons.slice(0, 2).join(" ");
+  return reasons || `${product.name} is also a strong alternative based on value, rating, and product fit.`;
+}
+
 function runAdvisor() {
   const input = getById("advisorInput");
   const result = getById("advisorResult");
@@ -92,10 +122,14 @@ function runAdvisor() {
         ${money(best.price)} ·
         ${stars(best.rating)} ${best.rating}
       </p>
-      <p>${best.summary}</p>
+
+      <h3>Why we picked it</h3>
+      <p>${buildRecommendationExplanation(best, query)}</p>
+
       <ul>
         ${best.reasons.slice(0, 4).map((reason) => `<li>${reason}</li>`).join("")}
       </ul>
+
       <a class="buy" href="product.html?id=${best.id}">View Best Match</a>
     </div>
 
@@ -110,10 +144,7 @@ function runAdvisor() {
                 <p class="eyebrow">Runner-up · ${product.advisorScore}% match</p>
                 <h2>${product.name}</h2>
                 <p><strong>${money(product.price)}</strong> · ${stars(product.rating)} ${product.rating}</p>
-                <p>${product.summary}</p>
-                <ul>
-                  ${product.reasons.slice(0, 3).map((reason) => `<li>${reason}</li>`).join("")}
-                </ul>
+                <p>${buildRunnerUpExplanation(product)}</p>
                 <a class="buy" href="product.html?id=${product.id}">View Details</a>
               </div>
             </article>
