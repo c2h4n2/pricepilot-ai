@@ -42,21 +42,23 @@ function getSpecChips(product) {
     .join("");
 }
 
-
 function renderProductCards(list) {
   const firstCompared = selectedCompareIds.length
     ? products.find((product) => product.id === selectedCompareIds[0])
     : null;
 
   getById("productGrid").innerHTML = list
-    .map((p) => {
+    .map((p, index) => {
       const isSelected = selectedCompareIds.includes(p.id);
       const favorite = isFavorite(p.id);
       const image = p.image || "assets/images/placeholder.svg";
       const compareLocked = firstCompared && firstCompared.type !== p.type && !isSelected;
 
       return `
-        <article class="card product-card">
+        <article
+          class="card product-card"
+          style="animation-delay: ${index * 70}ms"
+        >
           <div class="product-image">
             <img src="${image}" alt="${p.name}" loading="lazy">
             <span class="image-badge">${p.badge}</span>

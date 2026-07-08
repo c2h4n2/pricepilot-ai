@@ -1085,3 +1085,89 @@ td:first-child {
   transform: translateY(-2px);
   border-color: rgba(141, 240, 167, 0.38);
 }
+/* ==========================
+   Loading Skeleton
+========================== */
+
+.skeleton-card {
+  background: var(--card-bg, #1d2433);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255,255,255,.08);
+  border-radius: 8px;
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.18),
+    transparent
+  );
+  animation: shimmer 1.4s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton-image {
+  height: 180px;
+  margin-bottom: 18px;
+}
+
+.skeleton-title {
+  height: 22px;
+  width: 75%;
+  margin-bottom: 12px;
+}
+
+.skeleton-text {
+  height: 14px;
+  margin-bottom: 10px;
+}
+
+.skeleton-text.short {
+  width: 55%;
+}
+
+.skeleton-button {
+  height: 42px;
+  width: 45%;
+  margin-top: 18px;
+}
+/* ==========================
+   Product Card Animation
+========================== */
+
+.product-card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp .45s ease forwards;
+}
+
+@keyframes fadeUp {
+
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
