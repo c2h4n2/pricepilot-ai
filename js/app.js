@@ -56,7 +56,10 @@ function renderTopPick() {
 
   if (top) {
     getById("topPickName").textContent = top.name;
-    getById("topPickSummary").textContent = top.summary;
+   const topHighlights = top.highlights?.slice(0, 2).join(" and ") || "strong value and rating";
+
+getById("topPickSummary").textContent =
+  `${top.summary} It stands out for ${topHighlights}.`;
     getById("topPickScore").textContent = `${top.score}/100 value score`;
   }
 }
@@ -122,8 +125,26 @@ function init() {
 
   render();
 }
+function showLoadingSkeleton() {
+  const grid = getById("productGrid");
 
+  if (!grid) return;
+
+  grid.innerHTML = Array.from({ length: 8 })
+    .map(() => `
+      <article class="skeleton-card">
+        <div class="skeleton skeleton-image"></div>
+        <div class="skeleton skeleton-title"></div>
+        <div class="skeleton skeleton-text"></div>
+        <div class="skeleton skeleton-text"></div>
+        <div class="skeleton skeleton-text short"></div>
+        <div class="skeleton skeleton-button"></div>
+      </article>
+    `)
+    .join("");
+}
 async function loadProducts() {
+  showLoadingSkeleton();
   try {
     const response = await fetch("data/products.json");
 
