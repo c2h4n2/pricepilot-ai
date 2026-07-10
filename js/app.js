@@ -50,20 +50,25 @@ function getFiltered() {
 
 function renderTopPick() {
   const list = getFiltered();
+
   const top =
     [...list].sort((a, b) => b.score - a.score)[0] ||
     [...products].sort((a, b) => b.score - a.score)[0];
 
   if (top) {
-    getById("topPickName").textContent = top.name;
-   const topHighlights = top.highlights?.slice(0, 2).join(" and ") || "strong value and rating";
+    const topHighlights =
+      top.highlights?.slice(0, 2).join(" and ") ||
+      "strong value and rating";
 
-getById("topPickSummary").textContent =
-  `${top.summary} It stands out for ${topHighlights}.`;
-    getById("topPickScore").textContent = `${top.score}/100 value score`;
+    getById("topPickName").textContent = top.name;
+
+    getById("topPickSummary").textContent =
+      `${top.summary} It stands out for ${topHighlights}.`;
+
+    getById("topPickScore").textContent =
+      `${top.score}/100 value score • ${money(top.price)}`;
   }
 }
-
 function render() {
   const list = getFiltered();
 
