@@ -42,6 +42,20 @@ function getSpecChips(product) {
     .join("");
 }
 
+function getSmartBadge(product) {
+  const score = Number(product.score) || 0;
+
+  if (score >= 97) return "🏆 Best Overall";
+  if (product.category === "budget") return "💰 Best Budget";
+  if (product.category === "student") return "🎓 Student Pick";
+  if (product.category === "gaming") return "🎮 Gaming Pick";
+  if (product.category === "creator") return "🎨 Creator Pick";
+  if (product.category === "business") return "💼 Business Pick";
+  if (score >= 94) return "⭐ Editor's Choice";
+
+  return product.badge || "Recommended";
+}
+
 function renderProductCards(list) {
   const firstCompared = selectedCompareIds.length
     ? products.find((product) => product.id === selectedCompareIds[0])
@@ -52,7 +66,10 @@ function renderProductCards(list) {
       const isSelected = selectedCompareIds.includes(p.id);
       const favorite = isFavorite(p.id);
       const image = p.image || "assets/images/placeholder.svg";
-      const compareLocked = firstCompared && firstCompared.type !== p.type && !isSelected;
+      const compareLocked =
+        firstCompared &&
+        firstCompared.type !== p.type &&
+        !isSelected;
 
       return `
         <article
@@ -60,8 +77,13 @@ function renderProductCards(list) {
           style="animation-delay: ${index * 70}ms"
         >
           <div class="product-image">
-            <img src="${image}" alt="${p.name}" loading="lazy">
-            <span class="image-badge">${p.badge}</span>
+            <img
+              src="${image}"
+              alt="${p.name}"
+              loading="lazy"
+              onerror="this.src='assets/images/placeholder.svg'"
+            >
+            <span class="image-badge">${getSmartBadge(p)}</span>
           </div>
 
           <div class="card-topline">
@@ -85,6 +107,7 @@ function renderProductCards(list) {
               <span class="price-label">From</span>
               <div class="price">${money(p.price)}</div>
             </div>
+
             <span class="category-pill">${p.bestFor}</span>
           </div>
 
@@ -94,14 +117,27 @@ function renderProductCards(list) {
 
           <div class="card-actions">
             <div class="card-action-row">
-              <button class="favorite-btn ${favorite ? "selected" : ""}" data-id="${p.id}">
+              <button
+                class="favorite-btn ${favorite ? "selected" : ""}"
+                data-id="${p.id}"
+                type="button"
+                aria-label="${favorite ? `Remove ${p.name} from favorites` : `Save ${p.name} to favorites`}"
+              >
                 ${favorite ? "♥ Saved" : "♡ Save"}
               </button>
 
               <button
                 class="compare-btn ${isSelected ? "selected" : ""} ${compareLocked ? "locked" : ""}"
                 data-id="${p.id}"
+                type="button"
                 ${compareLocked ? "disabled" : ""}
+                aria-label="${
+                  isSelected
+                    ? `Remove ${p.name} from comparison`
+                    : compareLocked
+                      ? `${p.name} cannot be compared with the currently selected product type`
+                      : `Add ${p.name} to comparison`
+                }"
               >
                 ${
                   isSelected
@@ -122,11 +158,17 @@ function renderProductCards(list) {
     })
     .join("");
 
-  document.querySelectorAll(".compare-btn:not(:disabled)").forEach((button) => {
-    button.addEventListener("click", () => toggleCompare(button.dataset.id));
-  });
+  document
+    .querySelectorAll(".compare-btn:not(:disabled)")
+    .forEach((button) => {
+      button.addEventListener("click", () => {
+        toggleCompare(button.dataset.id);
+      });
+    });
 
   document.querySelectorAll(".favorite-btn").forEach((button) => {
-    button.addEventListener("click", () => toggleFavorite(button.dataset.id));
+    button.addEventListener("click", () => {
+      toggleFavorite(button.dataset.id);
+    });
   });
 }
