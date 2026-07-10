@@ -67,6 +67,8 @@ function renderTopPick() {
 
     getById("topPickScore").textContent =
       `${top.score}/100 value score • ${money(top.price)}`;
+      
+      getById("topPickLink").href = `product.html?id=${top.id}`;
   }
 }
 function render() {
