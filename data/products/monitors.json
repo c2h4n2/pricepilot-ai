@@ -154,5 +154,243 @@
       "Not a high-refresh gaming monitor",
       "No 4K resolution"
     ]
+  },
+  {
+    "id": "dell-ultrasharp-u2725qe",
+    "type": "monitor",
+    "brand": "Dell",
+    "name": "Dell UltraSharp U2725QE",
+    "image": "assets/images/placeholder.svg",
+    "category": "creator",
+    "badge": "Premium Productivity",
+    "summary": "A premium 27-inch 4K productivity monitor with IPS Black, 120 Hz refresh rate, Thunderbolt 4, and excellent color coverage.",
+    "bestFor": "Creators",
+    "price": 849.99,
+    "highlights": [
+      "27-inch 4K",
+      "120 Hz",
+      "Thunderbolt 4"
+    ],
+    "specs": {
+      "Screen Size": "27-inch",
+      "Resolution": "3840×2160 (4K UHD)",
+      "Panel": "IPS Black",
+      "Refresh Rate": "120 Hz",
+      "Color Coverage": "99% DCI-P3",
+      "Connectivity": "Thunderbolt 4, HDMI 2.1, DisplayPort, USB-C",
+      "Power Delivery": "Up to 140 W"
+    },
+    "rating": 4.8,
+    "score": 97,
+    "store": "Dell",
+    "link": "https://www.dell.com/en-us/shop/dell-ultrasharp-27-4k-thunderbolt-hub-monitor-u2725qe/apd/210-bqhr/monitors-monitor-accessories",
+    "pros": [
+      "Sharp 4K image quality",
+      "Excellent professional connectivity",
+      "Strong color coverage",
+      "Smooth 120 Hz refresh rate"
+    ],
+    "cons": [
+      "Premium price",
+      "More connectivity than casual users may need"
+    ]
+  },
+  {
+    "id": "lg-ultragear-34gs95qe",
+    "type": "monitor",
+    "brand": "LG",
+    "name": "LG UltraGear 34GS95QE",
+    "image": "assets/images/placeholder.svg",
+    "category": "gaming",
+    "badge": "Ultrawide OLED",
+    "summary": "An immersive curved ultrawide OLED gaming monitor with fast response time, rich contrast, and a high refresh rate.",
+    "bestFor": "Gaming",
+    "price": 799.99,
+    "highlights": [
+      "34-inch Ultrawide",
+      "OLED",
+      "240 Hz"
+    ],
+    "specs": {
+      "Screen Size": "34-inch",
+      "Resolution": "3440×1440 (UltraWide QHD)",
+      "Panel": "Curved OLED",
+      "Refresh Rate": "240 Hz",
+      "Response Time": "0.03 ms",
+      "HDR": "DisplayHDR True Black 400"
+    },
+    "rating": 4.8,
+    "score": 96,
+    "store": "LG",
+    "link": "https://www.lg.com/us/monitors/lg-34gs95qe-b-gaming-monitor",
+    "pros": [
+      "Immersive ultrawide format",
+      "Excellent OLED contrast",
+      "Very fast response time",
+      "Smooth 240 Hz gaming"
+    ],
+    "cons": [
+      "Expensive compared with standard QHD monitors",
+      "OLED panels require sensible burn-in precautions"
+    ]
+  },
+  {
+    "id": "samsung-odyssey-oled-g8-g81sf",
+    "type": "monitor",
+    "brand": "Samsung",
+    "name": "Samsung Odyssey OLED G8 G81SF",
+    "image": "assets/images/placeholder.svg",
+    "category": "gaming",
+    "badge": "4K OLED Pick",
+    "summary": "A high-end 32-inch 4K QD-OLED gaming monitor with a 240 Hz refresh rate and vivid HDR performance.",
+    "bestFor": "Gaming",
+    "price": 1299.99,
+    "highlights": [
+      "32-inch 4K",
+      "QD-OLED",
+      "240 Hz"
+    ],
+    "specs": {
+      "Screen Size": "32-inch",
+      "Resolution": "3840×2160 (4K UHD)",
+      "Panel": "QD-OLED",
+      "Refresh Rate": "240 Hz",
+      "Response Time": "0.03 ms",
+      "HDR": "DisplayHDR True Black 400"
+    },
+    "rating": 4.8,
+    "score": 96,
+    "store": "Samsung",
+    "link": "https://www.samsung.com/us/monitors/gaming/32-inch-odyssey-oled-g8-g81sf-4k-240hz-gaming-monitor-sku-ls32fg810snxza/",
+    "pros": [
+      "Excellent 4K OLED image quality",
+      "Very smooth 240 Hz refresh rate",
+      "Near-instant response time",
+      "Strong HDR contrast"
+    ],
+    "cons": [
+      "High price",
+      "Requires a powerful graphics card for 4K high-refresh gaming"
+    ]
+  },
+  {
+    "id": "benq-pd2725u",
+    "type": "monitor",
+    "brand": "BenQ",
+    "name": "BenQ PD2725U",
+    "image": "assets/images/placeholder.svg",
+    "category": "creator",
+    "badge": "Mac Creator Pick",
+    "summary": "A 27-inch 4K designer monitor with strong color accuracy, Thunderbolt connectivity, and Mac-focused display modes.",
+    "bestFor": "Creators",
+    "price": 599.99,
+    "highlights": [
+      "27-inch 4K",
+      "95% P3",
+      "Thunderbolt 3"
+    ],
+    "specs": {
+      "Screen Size": "27-inch",
+      "Resolution": "3840×2160 (4K UHD)",
+      "Panel": "IPS",
+      "Refresh Rate": "60 Hz",
+      "Color Coverage": "95% P3, 100% sRGB",
+      "Connectivity": "Thunderbolt 3, HDMI, DisplayPort",
+      "Certification": "Calman Verified and Pantone Validated"
+    },
+    "rating": 4.7,
+    "score": 94,
+    "store": "BenQ",
+    "link": "https://www.benq.com/en-us/monitor/creative-pro/pd2725u.html",
+    "pros": [
+      "Strong out-of-box color accuracy",
+      "Useful Mac-focused display modes",
+      "Thunderbolt connectivity",
+      "Factory calibrated"
+    ],
+    "cons": [
+      "Only 60 Hz",
+      "Not intended for competitive gaming"
+    ]
+  },
+  {
+    "id": "asus-rog-strix-oled-xg27aqdmg",
+    "type": "monitor",
+    "brand": "ASUS",
+    "name": "ASUS ROG Strix OLED XG27AQDMG",
+    "image": "assets/images/placeholder.svg",
+    "category": "gaming",
+    "badge": "OLED Value",
+    "summary": "A glossy 27-inch QHD OLED gaming monitor with fast motion performance, vivid contrast, and OLED protection features.",
+    "bestFor": "Gaming",
+    "price": 599,
+    "highlights": [
+      "27-inch QHD",
+      "OLED",
+      "240 Hz"
+    ],
+    "specs": {
+      "Screen Size": "26.5-inch viewable",
+      "Resolution": "2560×1440 (QHD)",
+      "Panel": "Glossy WOLED",
+      "Refresh Rate": "240 Hz",
+      "Response Time": "0.03 ms",
+      "Color Coverage": "99% DCI-P3",
+      "OLED Protection": "ASUS OLED Care"
+    },
+    "rating": 4.8,
+    "score": 95,
+    "store": "ASUS",
+    "link": "https://rog.asus.com/us/monitors/27-to-31-5-inches/rog-strix-oled-xg27aqdmg/",
+    "pros": [
+      "Excellent OLED contrast",
+      "Fast 240 Hz refresh rate",
+      "Glossy panel produces vivid images",
+      "Useful OLED protection features"
+    ],
+    "cons": [
+      "Glossy finish can reflect bright lights",
+      "OLED ownership requires burn-in awareness"
+    ]
+  },
+  {
+    "id": "dell-s2725qs",
+    "type": "monitor",
+    "brand": "Dell",
+    "name": "Dell 27 Plus 4K Monitor S2725QS",
+    "image": "assets/images/placeholder.svg",
+    "category": "budget",
+    "badge": "Best 4K Value",
+    "summary": "An affordable 27-inch 4K monitor with a 120 Hz refresh rate, built-in speakers, and strong everyday versatility.",
+    "bestFor": "Productivity",
+    "price": 299.99,
+    "highlights": [
+      "27-inch 4K",
+      "120 Hz",
+      "Built-in Speakers"
+    ],
+    "specs": {
+      "Screen Size": "27-inch",
+      "Resolution": "3840×2160 (4K UHD)",
+      "Panel": "IPS",
+      "Refresh Rate": "120 Hz",
+      "Adaptive Sync": "AMD FreeSync Premium",
+      "Speakers": "Dual 5 W",
+      "Connectivity": "HDMI and DisplayPort"
+    },
+    "rating": 4.7,
+    "score": 94,
+    "store": "Dell",
+    "link": "https://www.dell.com/en-us/shop/dell-27-plus-4k-monitor-s2725qs/apd/210-brnd/monitors-monitor-accessories",
+    "pros": [
+      "Sharp 4K resolution",
+      "Smooth 120 Hz refresh rate",
+      "Useful built-in speakers",
+      "Strong value for productivity"
+    ],
+    "cons": [
+      "No USB-C connection",
+      "Not designed for professional color-critical work"
+    ]
   }
 ]

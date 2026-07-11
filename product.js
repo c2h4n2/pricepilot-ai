@@ -4,6 +4,16 @@ const params = new URLSearchParams(window.location.search);
 const productId = params.get("id");
 const container = getById("product-detail");
 
+const PLACEHOLDER_IMAGE = "assets/images/placeholder.svg";
+
+function productImage(product) {
+  return product.image || PLACEHOLDER_IMAGE;
+}
+
+function imageFallback() {
+  return `onerror="this.onerror=null;this.src='${PLACEHOLDER_IMAGE}'"`;
+}
+
 function productTypeLabel(product) {
   const labels = {
     laptop: "Laptop",
@@ -35,7 +45,10 @@ function bestForTags(product) {
     ...getHighlights(product).slice(0, 1)
   ];
 
-  return tags.filter(Boolean).map((tag) => `<span>${tag}</span>`).join("");
+  return tags
+    .filter(Boolean)
+    .map((tag) => `<span>${tag}</span>`)
+    .join("");
 }
 
 function productSpecChips(product) {
@@ -46,7 +59,10 @@ function productSpecChips(product) {
 }
 
 function ratingBreakdown(product) {
-  const value = Math.min(5, Math.max(1, product.score / 20)).toFixed(1);
+  const value = Math.min(
+    5,
+    Math.max(1, Number(product.score) / 20)
+  ).toFixed(1);
 
   const rows = [
     ["Performance", product.rating],
@@ -73,11 +89,23 @@ function highlightsText(product) {
 }
 
 function verdict(product) {
-  return `${product.name} is one of the strongest picks for ${product.bestFor.toLowerCase()} because it combines ${highlightsText(product)} and a ${product.score}/100 value score. It is a smart option if you want a reliable ${productTypeLabel(product).toLowerCase()} without spending hours comparing specs.`;
+  const bestFor = product.bestFor || "everyday use";
+
+  const highlights =
+    highlightsText(product) ||
+    "useful features and dependable performance";
+
+  return `${product.name} is one of the strongest picks for ${bestFor.toLowerCase()} because it combines ${highlights} and a ${product.score}/100 value score. It is a smart option if you want a reliable ${productTypeLabel(product).toLowerCase()} without spending hours comparing specs.`;
 }
 
 function recommendationText(product) {
-  return `${product.name} is a strong choice for ${product.bestFor.toLowerCase()} because it balances ${highlightsText(product)} and a ${product.score}/100 value score.`;
+  const bestFor = product.bestFor || "everyday use";
+
+  const highlights =
+    highlightsText(product) ||
+    "useful features and dependable performance";
+
+  return `${product.name} is a strong choice for ${bestFor.toLowerCase()} because it balances ${highlights} and a ${product.score}/100 value score.`;
 }
 
 function buyingTip(product) {
@@ -112,11 +140,26 @@ function specsTable(product) {
   const specs = product.specs || {};
 
   return `
-    <div><strong>Brand</strong><span>${product.brand}</span></div>
+    <div>
+      <strong>Brand</strong>
+      <span>${product.brand}</span>
+    </div>
+
     ${Object.entries(specs)
-      .map(([label, value]) => `<div><strong>${label}</strong><span>${value}</span></div>`)
+      .map(
+        ([label, value]) => `
+          <div>
+            <strong>${label}</strong>
+            <span>${value}</span>
+          </div>
+        `
+      )
       .join("")}
-    <div><strong>Best For</strong><span>${product.bestFor}</span></div>
+
+    <div>
+      <strong>Best For</strong>
+      <span>${product.bestFor}</span>
+    </div>
   `;
 }
 
@@ -125,6 +168,7 @@ function uniqueProducts(list) {
 
   return list.filter((product) => {
     if (!product || seen.has(product.id)) return false;
+
     seen.add(product.id);
     return true;
   });
@@ -152,24 +196,36 @@ function getRelatedReason(currentProduct, relatedProduct) {
 
 function getSmartRelatedProducts(currentProduct) {
   const sameType = products.filter(
-    (product) => product.id !== currentProduct.id && product.type === currentProduct.type
+    (product) =>
+      product.id !== currentProduct.id &&
+      product.type === currentProduct.type
   );
 
   const budgetAlternative = sameType
     .filter((product) => product.price < currentProduct.price)
-    .sort((a, b) => b.score - a.score)[0];
+    .sort((a, b) => Number(b.score) - Number(a.score))[0];
 
   const higherScorePick = sameType
-    .filter((product) => Number(product.score) > Number(currentProduct.score))
-    .sort((a, b) => b.score - a.score)[0];
+    .filter(
+      (product) =>
+        Number(product.score) > Number(currentProduct.score)
+    )
+    .sort((a, b) => Number(b.score) - Number(a.score))[0];
 
-  const topRatedAlternative = [...sameType].sort((a, b) => b.rating - a.rating)[0];
+  const topRatedAlternative = [...sameType].sort(
+    (a, b) => Number(b.rating) - Number(a.rating)
+  )[0];
 
   const similarChoice = sameType
-    .filter((product) => product.category === currentProduct.category)
-    .sort((a, b) => b.score - a.score)[0];
+    .filter(
+      (product) =>
+        product.category === currentProduct.category
+    )
+    .sort((a, b) => Number(b.score) - Number(a.score))[0];
 
-  const fallback = [...sameType].sort((a, b) => b.score - a.score);
+  const fallback = [...sameType].sort(
+    (a, b) => Number(b.score) - Number(a.score)
+  );
 
   return uniqueProducts([
     budgetAlternative,
@@ -190,38 +246,162 @@ function relatedProducts(currentProduct) {
   return related
     .map(
       (product) => `
-        <a class="related-card" href="product.html?id=${product.id}">
-          <img src="${product.image}" alt="${product.name}">
-          <span class="related-label">${getRelatedReason(currentProduct, product)}</span>
+        <a
+          class="related-card"
+          href="product.html?id=${product.id}"
+        >
+          <img
+            src="${productImage(product)}"
+            alt="${product.name}"
+            loading="lazy"
+            ${imageFallback()}
+          >
+
+          <span class="related-label">
+            ${getRelatedReason(currentProduct, product)}
+          </span>
+
           <strong>${product.name}</strong>
-          <span>${money(product.price)} · ${product.score}/100 score</span>
+
+          <span>
+            ${money(product.price)} ·
+            ${product.score}/100 score
+          </span>
         </a>
       `
     )
     .join("");
 }
 
+function getRecentlyViewedProducts(currentProduct) {
+  if (typeof getRecentlyViewed !== "function") {
+    return [];
+  }
+
+  const recentIds = getRecentlyViewed();
+
+  return recentIds
+    .filter(
+      (id) => String(id) !== String(currentProduct.id)
+    )
+    .map((id) =>
+      products.find(
+        (product) => String(product.id) === String(id)
+      )
+    )
+    .filter(Boolean)
+    .slice(0, 3);
+}
+
+function recentlyViewedSection(currentProduct) {
+  const recentProducts =
+    getRecentlyViewedProducts(currentProduct);
+
+  if (!recentProducts.length) {
+    return "";
+  }
+
+  return `
+    <section class="review-card">
+      <p class="eyebrow">Continue browsing</p>
+      <h2>Recently viewed</h2>
+
+      <div class="related-grid">
+        ${recentProducts
+          .map(
+            (product) => `
+              <a
+                class="related-card"
+                href="product.html?id=${product.id}"
+              >
+                <img
+                  src="${productImage(product)}"
+                  alt="${product.name}"
+                  loading="lazy"
+                  ${imageFallback()}
+                >
+
+                <span class="related-label">
+                  Recently viewed
+                </span>
+
+                <strong>${product.name}</strong>
+
+                <span>
+                  ${money(product.price)} ·
+                  ${product.score}/100 score
+                </span>
+              </a>
+            `
+          )
+          .join("")}
+      </div>
+    </section>
+  `;
+}
+
 async function loadProduct() {
   try {
-    const response = await fetch("data/products.json");
+    if (!container) {
+      throw new Error(
+        "Product detail container was not found."
+      );
+    }
+
+    const cacheBuster = Date.now();
+
+    const response = await fetch(
+      `data/products.json?v=${cacheBuster}`,
+      {
+        cache: "no-store"
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(
+        `Product data could not be loaded. Status: ${response.status}`
+      );
+    }
+
     products = await response.json();
 
-    const product = products.find((p) => String(p.id) === String(productId));
+    const product = products.find(
+      (item) => String(item.id) === String(productId)
+    );
 
     if (!product) {
       container.innerHTML = `
         <h1>Product not found</h1>
-        <p>This product may not exist yet.</p>
-        <p><a href="index.html">← Back to homepage</a></p>
+
+        <p>
+          This product may not exist yet, or your catalog
+          may need to be rebuilt.
+        </p>
+
+        <p>
+          <a href="index.html">← Back to homepage</a>
+        </p>
       `;
+
       return;
     }
 
     const typeLabel = productTypeLabel(product);
-    document.title = `${product.name} | PricePilot AI`;
+
+    document.title =
+      `${product.name} | PricePilot AI`;
+
+    const recentSection =
+      recentlyViewedSection(product);
+
+    if (typeof saveRecentlyViewed === "function") {
+      saveRecentlyViewed(String(product.id));
+    }
 
     container.innerHTML = `
-      <a href="index.html" class="back-link">← Back to all products</a>
+      <a href="index.html" class="back-link">
+        ← Back to all products
+      </a>
 
       <section class="review-meta">
         <span>Reviewed by PricePilot AI</span>
@@ -231,34 +411,60 @@ async function loadProduct() {
 
       <section class="product-hero">
         <div class="product-hero-image">
-          <img src="${product.image}" alt="${product.name}">
+          <img
+            src="${productImage(product)}"
+            alt="${product.name}"
+            ${imageFallback()}
+          >
         </div>
 
         <div class="product-hero-content">
-          <p class="eyebrow">${product.brand} ${typeLabel}</p>
+          <p class="eyebrow">
+            ${product.brand} ${typeLabel}
+          </p>
+
           <h1>${product.name}</h1>
 
           <div class="rating-row">
-            <span class="stars">${stars(product.rating)}</span>
+            <span class="stars">
+              ${stars(product.rating)}
+            </span>
+
             <span>${product.rating} / 5</span>
-            <span class="score-pill">${product.score}/100 value score</span>
+
+            <span class="score-pill">
+              ${product.score}/100 value score
+            </span>
           </div>
 
           <p class="lead">${product.summary}</p>
 
           <div class="price-row">
             <div>
-              <span class="price-label">Starting at</span>
-              <div class="price">${money(product.price)}</div>
+              <span class="price-label">
+                Starting at
+              </span>
+
+              <div class="price">
+                ${money(product.price)}
+              </div>
             </div>
-            <span class="category-pill">${product.bestFor}</span>
+
+            <span class="category-pill">
+              ${product.bestFor}
+            </span>
           </div>
 
           <div class="spec-chips">
             ${productSpecChips(product)}
           </div>
 
-          <a class="buy product-buy" href="${product.link}" target="_blank" rel="nofollow sponsored noopener">
+          <a
+            class="buy product-buy"
+            href="${product.link}"
+            target="_blank"
+            rel="nofollow sponsored noopener"
+          >
             Check price at ${product.store}
           </a>
         </div>
@@ -274,7 +480,11 @@ async function loadProduct() {
         <article class="award-card">
           <p class="eyebrow">Award</p>
           <h2>${product.badge}</h2>
-          <p>Selected by PricePilot AI for ${product.bestFor.toLowerCase()}.</p>
+
+          <p>
+            Selected by PricePilot AI for
+            ${(product.bestFor || "everyday use").toLowerCase()}.
+          </p>
         </article>
       </section>
 
@@ -286,7 +496,11 @@ async function loadProduct() {
 
       <section class="review-card">
         <p class="eyebrow">Rating breakdown</p>
-        <h2>How this ${typeLabel.toLowerCase()} scores</h2>
+
+        <h2>
+          How this ${typeLabel.toLowerCase()} scores
+        </h2>
+
         <div class="rating-breakdown">
           ${ratingBreakdown(product)}
         </div>
@@ -295,6 +509,7 @@ async function loadProduct() {
       <section class="review-card">
         <p class="eyebrow">Best for</p>
         <h2>Who should buy this?</h2>
+
         <div class="best-for-tags">
           ${bestForTags(product)}
         </div>
@@ -303,6 +518,7 @@ async function loadProduct() {
       <section class="product-review-grid">
         <article class="review-card">
           <h2>Why you'll love it</h2>
+
           <ul class="positive-list">
             ${listItems(product.pros || [])}
           </ul>
@@ -310,6 +526,7 @@ async function loadProduct() {
 
         <article class="review-card">
           <h2>Things to consider</h2>
+
           <ul class="negative-list">
             ${listItems(product.cons || [])}
           </ul>
@@ -317,8 +534,14 @@ async function loadProduct() {
       </section>
 
       <section class="review-card">
-        <p class="eyebrow">PricePilot recommendation</p>
-        <h2>Why PricePilot AI recommends this</h2>
+        <p class="eyebrow">
+          PricePilot recommendation
+        </p>
+
+        <h2>
+          Why PricePilot AI recommends this
+        </h2>
+
         <p>${recommendationText(product)}</p>
       </section>
 
@@ -329,7 +552,10 @@ async function loadProduct() {
       </section>
 
       <section class="review-card">
-        <p class="eyebrow">${typeLabel} specifications</p>
+        <p class="eyebrow">
+          ${typeLabel} specifications
+        </p>
+
         <h2>Detailed specs</h2>
 
         <div class="spec-table">
@@ -340,20 +566,34 @@ async function loadProduct() {
       <section class="review-card">
         <p class="eyebrow">Keep comparing</p>
         <h2>Smarter alternatives</h2>
+
         <div class="related-grid">
           ${relatedProducts(product)}
         </div>
       </section>
+
+      ${recentSection}
     `;
   } catch (error) {
     console.error("Product page failed:", error);
 
-    container.innerHTML = `
-      <h1>Something went wrong</h1>
-      <p>We could not load this product right now.</p>
-      <p><a href="index.html">← Back to homepage</a></p>
-    `;
+    if (container) {
+      container.innerHTML = `
+        <h1>Something went wrong</h1>
+
+        <p>
+          We could not load this product right now.
+        </p>
+
+        <p>
+          <a href="index.html">← Back to homepage</a>
+        </p>
+      `;
+    }
   }
 }
 
-document.addEventListener("DOMContentLoaded", loadProduct);
+document.addEventListener(
+  "DOMContentLoaded",
+  loadProduct
+);

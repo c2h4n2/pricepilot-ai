@@ -23,8 +23,16 @@
     "score": 98,
     "store": "Apple",
     "link": "https://www.apple.com/macbook-air/",
-    "pros": ["Excellent battery life", "Lightweight design", "Fast Apple M3 chip", "Great for students"],
-    "cons": ["Limited ports", "Upgrades can be expensive"]
+    "pros": [
+      "Excellent battery life",
+      "Lightweight design",
+      "Fast Apple M3 chip",
+      "Great for students"
+    ],
+    "cons": [
+      "Limited ports",
+      "Upgrades can be expensive"
+    ]
   },
   {
     "id": "dell-xps-13",
@@ -50,8 +58,16 @@
     "score": 94,
     "store": "Dell",
     "link": "https://www.dell.com/",
-    "pros": ["Premium build quality", "Portable design", "Strong productivity performance", "Excellent screen"],
-    "cons": ["Can get expensive", "Limited port selection"]
+    "pros": [
+      "Premium build quality",
+      "Portable design",
+      "Strong productivity performance",
+      "Excellent screen"
+    ],
+    "cons": [
+      "Can get expensive",
+      "Limited port selection"
+    ]
   },
   {
     "id": "lenovo-loq-15",
@@ -77,8 +93,16 @@
     "score": 95,
     "store": "Lenovo",
     "link": "https://www.lenovo.com/",
-    "pros": ["Strong gaming value", "Dedicated graphics performance", "Large SSD storage", "Good multitasking specs"],
-    "cons": ["Heavier than ultrabooks", "Battery life is shorter while gaming"]
+    "pros": [
+      "Strong gaming value",
+      "Dedicated graphics performance",
+      "Large SSD storage",
+      "Good multitasking specs"
+    ],
+    "cons": [
+      "Heavier than ultrabooks",
+      "Battery life is shorter while gaming"
+    ]
   },
   {
     "id": "asus-vivobook-15",
@@ -104,7 +128,225 @@
     "score": 90,
     "store": "ASUS",
     "link": "https://www.asus.com/",
-    "pros": ["Affordable price", "Good everyday performance", "16 GB RAM at a budget price", "Large screen"],
-    "cons": ["Not ideal for heavy gaming", "Build quality is more basic"]
+    "pros": [
+      "Affordable price",
+      "Good everyday performance",
+      "16 GB RAM at a budget price",
+      "Large screen"
+    ],
+    "cons": [
+      "Not ideal for heavy gaming",
+      "Build quality is more basic"
+    ]
+  },
+  {
+    "id": "acer-swift-go-14",
+    "type": "laptop",
+    "brand": "Acer",
+    "name": "Acer Swift Go 14",
+    "image": "assets/images/placeholder.svg",
+    "category": "student",
+    "badge": "Portable Pick",
+    "summary": "A portable 14-inch laptop with strong everyday performance, a touchscreen, and generous storage.",
+    "bestFor": "Students",
+    "price": 899,
+    "highlights": ["16 GB RAM", "1 TB SSD", "Ryzen 7 8845HS"],
+    "specs": {
+      "Display": "14-inch WUXGA touchscreen",
+      "Processor": "AMD Ryzen 7 8845HS",
+      "Memory": "16 GB LPDDR5X",
+      "Storage": "1 TB SSD",
+      "Graphics": "AMD Radeon 780M",
+      "Operating System": "Windows 11 Home"
+    },
+    "rating": 4.7,
+    "score": 93,
+    "store": "Acer",
+    "link": "https://store.acer.com/en-us/swift-go-14-laptop-sfg14-63t-r1f4",
+    "pros": [
+      "Strong Ryzen 7 performance",
+      "Large 1 TB SSD",
+      "Portable 14-inch design",
+      "Touchscreen display"
+    ],
+    "cons": [
+      "Integrated graphics are not intended for demanding gaming",
+      "Availability may vary"
+    ]
+  },
+  {
+    "id": "lenovo-thinkpad-e14-gen-6-amd",
+    "type": "laptop",
+    "brand": "Lenovo",
+    "name": "Lenovo ThinkPad E14 Gen 6 AMD",
+    "image": "assets/images/placeholder.svg",
+    "category": "business",
+    "badge": "Business Pick",
+    "summary": "A durable business laptop with upgrade-friendly memory, practical performance, and ThinkPad productivity features.",
+    "bestFor": "Business",
+    "price": 1579,
+    "highlights": ["16 GB DDR5", "512 GB SSD", "Ryzen 5 7535U"],
+    "specs": {
+      "Display": "14-inch business display",
+      "Processor": "AMD Ryzen 5 7535U",
+      "Memory": "16 GB DDR5",
+      "Storage": "512 GB SSD",
+      "Graphics": "AMD Radeon 660M",
+      "Operating System": "Windows 11 Pro"
+    },
+    "rating": 4.6,
+    "score": 88,
+    "store": "Lenovo",
+    "link": "https://www.lenovo.com/us/en/p/laptops/thinkpad/thinkpade/lenovo-thinkpad-e14-gen-6-14-inch-amd/len101t0095",
+    "pros": [
+      "Durable business-focused design",
+      "Comfortable productivity keyboard",
+      "Upgrade-friendly memory and storage",
+      "Windows 11 Pro"
+    ],
+    "cons": [
+      "Higher starting price than many consumer laptops",
+      "Display options vary by configuration"
+    ]
+  },
+  {
+    "id": "hp-omnibook-ultra-flip-14",
+    "type": "laptop",
+    "brand": "HP",
+    "name": "HP OmniBook Ultra Flip 14",
+    "image": "assets/images/placeholder.svg",
+    "category": "creator",
+    "badge": "Best 2-in-1",
+    "summary": "A premium convertible laptop with a vivid OLED touchscreen, flexible design, and strong productivity performance.",
+    "bestFor": "Creators",
+    "price": 1599,
+    "highlights": ["16 GB RAM", "1 TB SSD", "3K OLED Touch"],
+    "specs": {
+      "Display": "14-inch 3K OLED touchscreen",
+      "Processor": "Intel Core Ultra 7",
+      "Memory": "16 GB",
+      "Storage": "1 TB SSD",
+      "Graphics": "Intel Arc Graphics",
+      "Form Factor": "Convertible 2-in-1"
+    },
+    "rating": 4.7,
+    "score": 94,
+    "store": "HP",
+    "link": "https://www.hp.com/us-en/shop/vwa/laptops/brand%3DOmniBook-Ultra",
+    "pros": [
+      "Sharp 3K OLED touchscreen",
+      "Flexible convertible design",
+      "Premium build quality",
+      "Strong productivity performance"
+    ],
+    "cons": [
+      "Premium starting price",
+      "Onboard memory limits future upgrades"
+    ]
+  },
+  {
+    "id": "asus-zenbook-14-oled-um3406",
+    "type": "laptop",
+    "brand": "ASUS",
+    "name": "ASUS Zenbook 14 OLED",
+    "image": "assets/images/placeholder.svg",
+    "category": "creator",
+    "badge": "OLED Value",
+    "summary": "A thin and portable OLED laptop with strong performance, excellent color, and generous storage.",
+    "bestFor": "Creators",
+    "price": 1099,
+    "highlights": ["16 GB RAM", "1 TB SSD", "14-inch OLED"],
+    "specs": {
+      "Display": "14-inch WUXGA OLED touchscreen",
+      "Processor": "AMD Ryzen AI 7 350",
+      "Memory": "16 GB LPDDR5X",
+      "Storage": "1 TB SSD",
+      "Graphics": "AMD Radeon Graphics",
+      "Operating System": "Windows 11"
+    },
+    "rating": 4.7,
+    "score": 95,
+    "store": "ASUS",
+    "link": "https://shop.asus.com/us/90nb14u2-m000h0-asus-zenbook-14-oled-um3406.html",
+    "pros": [
+      "Vibrant OLED display",
+      "Thin and portable design",
+      "Large 1 TB SSD",
+      "Strong productivity performance"
+    ],
+    "cons": [
+      "Glossy display may reflect bright lights",
+      "Memory is not user-upgradeable"
+    ]
+  },
+  {
+    "id": "microsoft-surface-laptop-7-13",
+    "type": "laptop",
+    "brand": "Microsoft",
+    "name": "Microsoft Surface Laptop 7 13.8-inch",
+    "image": "assets/images/placeholder.svg",
+    "category": "business",
+    "badge": "Battery Pick",
+    "summary": "A polished Windows laptop with excellent battery life, a responsive touchscreen, and a premium lightweight design.",
+    "bestFor": "Business",
+    "price": 1499,
+    "highlights": ["16 GB RAM", "512 GB SSD", "Snapdragon X"],
+    "specs": {
+      "Display": "13.8-inch PixelSense touchscreen",
+      "Processor": "Snapdragon X Elite",
+      "Memory": "16 GB",
+      "Storage": "512 GB SSD",
+      "Graphics": "Qualcomm Adreno",
+      "Operating System": "Windows 11 on ARM"
+    },
+    "rating": 4.7,
+    "score": 93,
+    "store": "Microsoft",
+    "link": "https://www.microsoft.com/en-us/store/configure/surface-laptop-13-8-inch/8mzbmmcjzqjk",
+    "pros": [
+      "Excellent battery efficiency",
+      "Premium aluminum design",
+      "Bright and responsive touchscreen",
+      "Quiet everyday performance"
+    ],
+    "cons": [
+      "Some older Windows applications may have ARM compatibility limitations",
+      "Upgrades are expensive"
+    ]
+  },
+  {
+    "id": "framework-laptop-13-amd-ai-300",
+    "type": "laptop",
+    "brand": "Framework",
+    "name": "Framework Laptop 13 AMD AI 300",
+    "image": "assets/images/placeholder.svg",
+    "category": "business",
+    "badge": "Repairable Pick",
+    "summary": "A highly repairable and upgradeable laptop designed for buyers who value longevity, customization, and reduced electronic waste.",
+    "bestFor": "Upgradability",
+    "price": 1049,
+    "highlights": ["Upgradeable RAM", "Modular Ports", "Ryzen AI 300"],
+    "specs": {
+      "Display": "13.5-inch display",
+      "Processor": "AMD Ryzen AI 5 340",
+      "Memory": "Configurable",
+      "Storage": "Configurable",
+      "Ports": "User-selectable expansion cards",
+      "Repairability": "User-replaceable and upgradeable components"
+    },
+    "rating": 4.8,
+    "score": 96,
+    "store": "Framework",
+    "link": "https://frame.work/laptop13?slug=laptop13-amd-ai300",
+    "pros": [
+      "Excellent repairability",
+      "Upgradeable memory and storage",
+      "Customizable port selection",
+      "Long-term ownership value"
+    ],
+    "cons": [
+      "DIY configurations require setup",
+      "Some configurations cost more than mass-market alternatives"
+    ]
   }
 ]

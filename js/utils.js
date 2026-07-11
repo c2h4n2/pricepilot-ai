@@ -8,7 +8,8 @@ function money(n) {
 
 function stars(rating) {
   const fullStars = Math.round(Number(rating));
-  return "★★★★★".slice(0, fullStars) + "☆☆☆☆☆".slice(0, 5 - fullStars);
+  return "★★★★★".slice(0, fullStars) +
+         "☆☆☆☆☆".slice(0, 5 - fullStars);
 }
 
 function getById(id) {
@@ -32,4 +33,42 @@ function scoreLabel(score) {
   if (score >= 90) return "Great";
   if (score >= 80) return "Very Good";
   return "Good";
+}
+
+// ======================================
+// Recently Viewed Products
+// ======================================
+
+const RECENTLY_VIEWED_KEY = "pricepilot_recently_viewed";
+
+function saveRecentlyViewed(productId) {
+  if (!productId) return;
+
+  let recent = JSON.parse(
+    localStorage.getItem(RECENTLY_VIEWED_KEY) || "[]"
+  );
+
+  // Remove duplicate if already present
+  recent = recent.filter(id => id !== productId);
+
+  // Add newest to the front
+  recent.unshift(productId);
+
+  // Keep only the latest 6 products
+  recent = recent.slice(0, 6);
+
+  localStorage.setItem(
+    RECENTLY_VIEWED_KEY,
+    JSON.stringify(recent)
+  );
+}
+
+function getRecentlyViewed() {
+  return JSON.parse(
+    localStorage.getItem(RECENTLY_VIEWED_KEY) || "[]"
+  );
+}
+
+function clearRecentlyViewed() {
+  localStorage.removeItem(RECENTLY_VIEWED_KEY);
 }
