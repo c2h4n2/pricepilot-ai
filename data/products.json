@@ -1,5 +1,235 @@
 [
   {
+    "id": "airpods-max",
+    "type": "headphones",
+    "brand": "Apple",
+    "name": "Apple AirPods Max",
+    "image": "assets/images/placeholder.svg",
+    "category": "apple",
+    "badge": "Apple Ecosystem",
+    "summary": "Premium Apple over-ear headphones offering seamless integration across Apple devices.",
+    "bestFor": "Apple Users",
+    "price": 549,
+    "highlights": [
+      "Spatial Audio",
+      "ANC",
+      "USB-C"
+    ],
+    "specs": {
+      "Type": "Over-ear",
+      "Connectivity": "Bluetooth",
+      "Battery": "20 hours",
+      "Charging": "USB-C",
+      "Weight": "386 g"
+    },
+    "rating": 4.7,
+    "score": 94,
+    "store": "Apple",
+    "link": "https://www.apple.com/",
+    "pros": [
+      "Excellent build quality",
+      "Outstanding transparency mode",
+      "Great Apple integration",
+      "High-quality audio"
+    ],
+    "cons": [
+      "Heavy",
+      "Very expensive"
+    ]
+  },
+  {
+    "id": "beats-studio-pro",
+    "type": "headphones",
+    "brand": "Beats",
+    "name": "Beats Studio Pro",
+    "image": "assets/images/placeholder.svg",
+    "category": "lifestyle",
+    "badge": "Lifestyle Pick",
+    "summary": "Stylish wireless headphones with strong ANC and compatibility across Apple and Android devices.",
+    "bestFor": "Everyday Use",
+    "price": 349,
+    "highlights": [
+      "ANC",
+      "USB-C Audio",
+      "40 Hours"
+    ],
+    "specs": {
+      "Type": "Over-ear",
+      "Connectivity": "Bluetooth",
+      "Battery": "40 hours",
+      "Charging": "USB-C",
+      "Weight": "260 g"
+    },
+    "rating": 4.6,
+    "score": 91,
+    "store": "Beats",
+    "link": "https://www.beatsbydre.com/",
+    "pros": [
+      "Good battery life",
+      "Comfortable",
+      "USB-C audio support",
+      "Stylish design"
+    ],
+    "cons": [
+      "ANC behind Sony and Bose",
+      "Premium pricing"
+    ]
+  },
+  {
+    "id": "bose-qc-ultra",
+    "type": "headphones",
+    "brand": "Bose",
+    "name": "Bose QuietComfort Ultra",
+    "image": "assets/images/placeholder.svg",
+    "category": "premium",
+    "badge": "Best Noise Cancelling",
+    "summary": "Premium Bose headphones focused on comfort and class-leading active noise cancellation.",
+    "bestFor": "Travel",
+    "price": 429,
+    "highlights": [
+      "ANC",
+      "Spatial Audio",
+      "24 Hours"
+    ],
+    "specs": {
+      "Type": "Over-ear",
+      "Connectivity": "Bluetooth",
+      "Battery": "24 hours",
+      "Charging": "USB-C",
+      "Weight": "254 g"
+    },
+    "rating": 4.8,
+    "score": 97,
+    "store": "Bose",
+    "link": "https://www.bose.com/",
+    "pros": [
+      "Excellent comfort",
+      "Top-tier ANC",
+      "Natural sound",
+      "Premium build"
+    ],
+    "cons": [
+      "Battery shorter than Sony",
+      "Expensive"
+    ]
+  },
+  {
+    "id": "sennheiser-momentum-4",
+    "type": "headphones",
+    "brand": "Sennheiser",
+    "name": "Momentum 4 Wireless",
+    "image": "assets/images/placeholder.svg",
+    "category": "audiophile",
+    "badge": "Best Sound",
+    "summary": "Wireless headphones with exceptional sound quality and industry-leading battery life.",
+    "bestFor": "Music",
+    "price": 299,
+    "highlights": [
+      "60 Hours",
+      "ANC",
+      "Bluetooth"
+    ],
+    "specs": {
+      "Type": "Over-ear",
+      "Connectivity": "Bluetooth",
+      "Battery": "60 hours",
+      "Charging": "USB-C",
+      "Weight": "293 g"
+    },
+    "rating": 4.8,
+    "score": 96,
+    "store": "Sennheiser",
+    "link": "https://www.sennheiser.com/",
+    "pros": [
+      "Amazing sound",
+      "Very long battery",
+      "Comfortable",
+      "Excellent value"
+    ],
+    "cons": [
+      "ANC trails Sony slightly",
+      "App could be better"
+    ]
+  },
+  {
+    "id": "sony-wh1000xm5",
+    "type": "headphones",
+    "brand": "Sony",
+    "name": "Sony WH-1000XM5",
+    "image": "assets/images/placeholder.svg",
+    "category": "premium",
+    "badge": "Travel Favorite",
+    "summary": "Still one of the best wireless headphones with superb ANC and balanced sound.",
+    "bestFor": "Travel",
+    "price": 349,
+    "highlights": [
+      "Wireless",
+      "ANC",
+      "30 Hours"
+    ],
+    "specs": {
+      "Type": "Over-ear",
+      "Connectivity": "Bluetooth",
+      "Noise Cancellation": "ANC",
+      "Battery": "30 hours",
+      "Charging": "USB-C",
+      "Weight": "250 g"
+    },
+    "rating": 4.8,
+    "score": 96,
+    "store": "Sony",
+    "link": "https://electronics.sony.com/",
+    "pros": [
+      "Excellent ANC",
+      "Comfortable",
+      "Great microphone",
+      "Reliable battery"
+    ],
+    "cons": [
+      "Doesn't fold",
+      "Premium pricing"
+    ]
+  },
+  {
+    "id": "sony-wh1000xm6",
+    "type": "headphones",
+    "brand": "Sony",
+    "name": "Sony WH-1000XM6",
+    "image": "assets/images/placeholder.svg",
+    "category": "premium",
+    "badge": "Editor's Choice",
+    "summary": "Sony's flagship wireless noise-canceling headphones with excellent sound quality, industry-leading ANC, and long battery life.",
+    "bestFor": "Travel",
+    "price": 449,
+    "highlights": [
+      "Wireless",
+      "ANC",
+      "30 Hours"
+    ],
+    "specs": {
+      "Type": "Over-ear",
+      "Connectivity": "Bluetooth 5.3",
+      "Noise Cancellation": "Adaptive ANC",
+      "Battery": "Up to 30 hours",
+      "Charging": "USB-C",
+      "Weight": "Approx. 250 g"
+    },
+    "rating": 4.9,
+    "score": 98,
+    "store": "Sony",
+    "link": "https://electronics.sony.com/",
+    "pros": [
+      "Outstanding noise cancellation",
+      "Excellent sound quality",
+      "Comfortable for long sessions",
+      "Long battery life"
+    ],
+    "cons": [
+      "Premium price",
+      "No wired USB audio"
+    ]
+  },
+  {
     "id": "asus-rog-strix-scope-ii-96-wireless",
     "type": "keyboard",
     "brand": "ASUS",
@@ -156,6 +386,123 @@
     ]
   },
   {
+    "id": "keychron-v1-max",
+    "type": "keyboard",
+    "brand": "Keychron",
+    "name": "Keychron V1 Max",
+    "image": "assets/images/placeholder.svg",
+    "category": "budget",
+    "badge": "Custom Value",
+    "summary": "An affordable wireless custom mechanical keyboard with QMK/VIA support, hot-swappable switches, and a gasket-mounted design.",
+    "bestFor": "Budget",
+    "price": 114.99,
+    "highlights": [
+      "75% Layout",
+      "Wireless",
+      "QMK/VIA"
+    ],
+    "specs": {
+      "Layout": "75%",
+      "Switches": "Mechanical",
+      "Connectivity": "2.4 GHz / Bluetooth / USB-C",
+      "Hot-swappable": "Yes",
+      "Customization": "QMK and VIA",
+      "Mounting": "Gasket mounted"
+    },
+    "rating": 4.7,
+    "score": 95,
+    "store": "Keychron",
+    "link": "https://www.keychron.com/products/keychron-v1-max-qmk-via-wireless-custom-mechanical-keyboard",
+    "pros": [
+      "Excellent customization value",
+      "Wireless and wired connectivity",
+      "Hot-swappable switches",
+      "QMK and VIA support"
+    ],
+    "cons": [
+      "Plastic case is less premium than aluminum models",
+      "Configuration options may feel complex for beginners"
+    ]
+  },
+  {
+    "id": "logitech-g515-lightspeed-tkl",
+    "type": "keyboard",
+    "brand": "Logitech",
+    "name": "Logitech G515 LIGHTSPEED TKL",
+    "image": "assets/images/placeholder.svg",
+    "category": "gaming",
+    "badge": "Wireless Value",
+    "summary": "A slim wireless gaming keyboard with low-profile mechanical switches, tri-mode connectivity, and PBT keycaps.",
+    "bestFor": "Gaming",
+    "price": 129.99,
+    "highlights": [
+      "TKL Layout",
+      "Wireless",
+      "Low Profile"
+    ],
+    "specs": {
+      "Layout": "Tenkeyless",
+      "Switches": "Low-profile GL mechanical",
+      "Connectivity": "LIGHTSPEED / Bluetooth / USB-C",
+      "Keycaps": "Double-shot PBT",
+      "Backlight": "LIGHTSYNC RGB",
+      "Construction": "Sound-dampened low-profile design"
+    },
+    "rating": 4.7,
+    "score": 94,
+    "store": "Logitech",
+    "link": "https://www.logitechg.com/en-us/shop/p/g515-tkl-wireless-keyboard",
+    "pros": [
+      "Comfortable low-profile design",
+      "Reliable wireless performance",
+      "Durable PBT keycaps",
+      "Multiple connection modes"
+    ],
+    "cons": [
+      "No hot-swappable switches",
+      "Low-profile feel may not suit traditional mechanical keyboard fans"
+    ]
+  },
+  {
+    "id": "logitech-g915-x-lightspeed-tkl",
+    "type": "keyboard",
+    "brand": "Logitech",
+    "name": "Logitech G915 X LIGHTSPEED TKL",
+    "image": "assets/images/placeholder.svg",
+    "category": "gaming",
+    "badge": "Premium Wireless",
+    "summary": "A premium low-profile wireless gaming keyboard with aluminum construction, PBT keycaps, and tri-mode connectivity.",
+    "bestFor": "Gaming",
+    "price": 229.99,
+    "highlights": [
+      "TKL Layout",
+      "Wireless",
+      "Aluminum Top"
+    ],
+    "specs": {
+      "Layout": "Tenkeyless",
+      "Switches": "Low-profile GL mechanical",
+      "Connectivity": "LIGHTSPEED / Bluetooth / USB-C",
+      "Keycaps": "Double-shot PBT",
+      "Backlight": "LIGHTSYNC RGB",
+      "Controls": "Media controls and volume roller"
+    },
+    "rating": 4.8,
+    "score": 95,
+    "store": "Logitech",
+    "link": "https://www.logitechg.com/en-us/shop/p/g915-x-tkl-wireless",
+    "pros": [
+      "Premium low-profile build",
+      "Strong wireless performance",
+      "Durable PBT keycaps",
+      "Useful dedicated media controls"
+    ],
+    "cons": [
+      "High price",
+      "Switches are not hot-swappable"
+    ]
+  },
+  {
     "id": "logitech-mx-keys-s",
     "type": "keyboard",
     "brand": "Logitech",
@@ -234,6 +581,45 @@
     ]
   },
   {
+    "id": "razer-blackwidow-v4-75",
+    "type": "keyboard",
+    "brand": "Razer",
+    "name": "Razer BlackWidow V4 75%",
+    "image": "assets/images/placeholder.svg",
+    "category": "gaming",
+    "badge": "Hot-Swap Pick",
+    "summary": "A compact hot-swappable gaming keyboard with gasket mounting, RGB lighting, and enthusiast-style sound tuning.",
+    "bestFor": "Gaming",
+    "price": 129.99,
+    "highlights": [
+      "75% Layout",
+      "Hot-swappable",
+      "Gasket Mount"
+    ],
+    "specs": {
+      "Layout": "75%",
+      "Switches": "Mechanical",
+      "Connectivity": "USB-C wired",
+      "Hot-swappable": "Supports 3-pin and 5-pin switches",
+      "Backlight": "Razer Chroma RGB",
+      "Included Comfort": "Magnetic wrist rest"
+    },
+    "rating": 4.7,
+    "score": 93,
+    "store": "Razer",
+    "link": "https://www.razer.com/gaming-keyboards/razer-blackwidow-v4-75",
+    "pros": [
+      "Hot-swappable switch support",
+      "Compact but practical layout",
+      "Comfortable gasket-mounted typing feel",
+      "Strong RGB customization"
+    ],
+    "cons": [
+      "Wired only",
+      "Software is required for full customization"
+    ]
+  },
+  {
     "id": "razer-blackwidow-v4-pro",
     "type": "keyboard",
     "brand": "Razer",
@@ -273,6 +659,45 @@
     ]
   },
   {
+    "id": "steelseries-apex-pro-tkl-gen-3",
+    "type": "keyboard",
+    "brand": "SteelSeries",
+    "name": "SteelSeries Apex Pro TKL Gen 3",
+    "image": "assets/images/placeholder.svg",
+    "category": "gaming",
+    "badge": "Rapid Trigger Pick",
+    "summary": "A tournament-focused magnetic gaming keyboard with adjustable actuation, rapid trigger, and advanced movement features.",
+    "bestFor": "Competitive Gaming",
+    "price": 219.99,
+    "highlights": [
+      "TKL Layout",
+      "Magnetic Switches",
+      "Rapid Trigger"
+    ],
+    "specs": {
+      "Layout": "Tenkeyless",
+      "Switches": "OmniPoint 3.0 magnetic",
+      "Connectivity": "USB-C wired",
+      "Actuation Range": "0.1 mm to 4.0 mm",
+      "Gaming Features": "Rapid Trigger, Rapid Tap, Protection Mode",
+      "Backlight": "Per-key RGB"
+    },
+    "rating": 4.8,
+    "score": 96,
+    "store": "SteelSeries",
+    "link": "https://steelseries.com/gaming-keyboards/apex-pro-gen-3?connectivityType=wired&keyboardSize=tkl",
+    "pros": [
+      "Highly adjustable actuation",
+      "Excellent competitive gaming performance",
+      "Useful rapid-trigger features",
+      "Compact tournament layout"
+    ],
+    "cons": [
+      "Premium price",
+      "Advanced features may require setup time"
+    ]
+  },
+  {
     "id": "steelseries-apex-pro-tkl-wireless",
     "type": "keyboard",
     "brand": "SteelSeries",
@@ -309,6 +734,45 @@
     "cons": [
       "Very expensive",
       "Overkill for casual users"
+    ]
+  },
+  {
+    "id": "wooting-80he",
+    "type": "keyboard",
+    "brand": "Wooting",
+    "name": "Wooting 80HE",
+    "image": "assets/images/placeholder.svg",
+    "category": "gaming",
+    "badge": "Competitive Pick",
+    "summary": "A high-performance Hall effect keyboard with rapid trigger, adjustable actuation, and true 8 kHz polling.",
+    "bestFor": "Competitive Gaming",
+    "price": 199.99,
+    "highlights": [
+      "80% Layout",
+      "Hall Effect",
+      "8 kHz Polling"
+    ],
+    "specs": {
+      "Layout": "80%",
+      "Switches": "Lekker L60 V2 Hall effect",
+      "Connectivity": "USB-C wired",
+      "Polling Rate": "Up to 8000 Hz",
+      "Gaming Features": "Rapid Trigger and adjustable actuation",
+      "Mounting": "Gasket mounted"
+    },
+    "rating": 4.9,
+    "score": 98,
+    "store": "Wooting",
+    "link": "https://wooting.io/wooting-80he",
+    "pros": [
+      "Exceptional gaming responsiveness",
+      "True 8 kHz polling",
+      "Highly adjustable actuation",
+      "Excellent software customization"
+    ],
+    "cons": [
+      "Wired only",
+      "Advanced features may be unnecessary for casual users"
     ]
   },
   {
@@ -1093,6 +1557,225 @@
     "cons": [
       "High price",
       "Requires a powerful graphics card for 4K high-refresh gaming"
+    ]
+  },
+  {
+    "id": "logitech-g-pro-x-superlight-2",
+    "type": "mouse",
+    "brand": "Logitech",
+    "name": "Logitech G Pro X Superlight 2",
+    "image": "assets/images/placeholder.svg",
+    "category": "gaming",
+    "badge": "Esports Pick",
+    "summary": "An ultra-lightweight gaming mouse built for professional esports players.",
+    "bestFor": "Gaming",
+    "price": 159,
+    "highlights": [
+      "60 g",
+      "Wireless",
+      "32000 DPI"
+    ],
+    "specs": {
+      "Sensor": "HERO 2",
+      "Weight": "60 g",
+      "Polling": "2000 Hz",
+      "Connectivity": "LIGHTSPEED Wireless"
+    },
+    "rating": 4.9,
+    "score": 99,
+    "store": "Logitech",
+    "link": "https://www.logitechg.com/",
+    "pros": [
+      "Extremely lightweight",
+      "Outstanding tracking",
+      "Excellent battery",
+      "Trusted by esports players"
+    ],
+    "cons": [
+      "Expensive",
+      "Minimal buttons"
+    ]
+  },
+  {
+    "id": "logitech-g502-x-plus",
+    "type": "mouse",
+    "brand": "Logitech",
+    "name": "Logitech G502 X Plus",
+    "image": "assets/images/placeholder.svg",
+    "category": "gaming",
+    "badge": "Feature Packed",
+    "summary": "A versatile gaming mouse packed with programmable buttons and RGB lighting.",
+    "bestFor": "Gaming",
+    "price": 159,
+    "highlights": [
+      "13 Buttons",
+      "Wireless",
+      "RGB"
+    ],
+    "specs": {
+      "Sensor": "HERO 25K",
+      "Weight": "106 g",
+      "Buttons": "13",
+      "Connectivity": "LIGHTSPEED"
+    },
+    "rating": 4.8,
+    "score": 96,
+    "store": "Logitech",
+    "link": "https://www.logitechg.com/",
+    "pros": [
+      "Excellent customization",
+      "Comfortable shape",
+      "Great battery",
+      "Accurate sensor"
+    ],
+    "cons": [
+      "Heavier than esports mice",
+      "Expensive"
+    ]
+  },
+  {
+    "id": "logitech-mx-master-3s",
+    "type": "mouse",
+    "brand": "Logitech",
+    "name": "Logitech MX Master 3S",
+    "image": "assets/images/placeholder.svg",
+    "category": "business",
+    "badge": "Editor's Choice",
+    "summary": "A premium productivity mouse with an ergonomic shape, quiet clicks, and exceptional multi-device support.",
+    "bestFor": "Productivity",
+    "price": 99,
+    "highlights": [
+      "Wireless",
+      "8000 DPI",
+      "USB-C"
+    ],
+    "specs": {
+      "Sensor": "8000 DPI",
+      "Buttons": "7",
+      "Connectivity": "Bluetooth / Logi Bolt",
+      "Battery": "Up to 70 days",
+      "Weight": "141 g"
+    },
+    "rating": 4.9,
+    "score": 98,
+    "store": "Logitech",
+    "link": "https://www.logitech.com/",
+    "pros": [
+      "Outstanding ergonomics",
+      "Excellent battery life",
+      "Very quiet clicks",
+      "Works across multiple computers"
+    ],
+    "cons": [
+      "Not designed for competitive gaming",
+      "Premium price"
+    ]
+  },
+  {
+    "id": "razer-deathadder-v3-pro",
+    "type": "mouse",
+    "brand": "Razer",
+    "name": "Razer DeathAdder V3 Pro",
+    "image": "assets/images/placeholder.svg",
+    "category": "gaming",
+    "badge": "Ergonomic Gaming",
+    "summary": "A lightweight ergonomic gaming mouse with flagship performance.",
+    "bestFor": "Gaming",
+    "price": 149,
+    "highlights": [
+      "63 g",
+      "Wireless",
+      "30000 DPI"
+    ],
+    "specs": {
+      "Sensor": "Focus Pro 30K",
+      "Weight": "63 g",
+      "Connectivity": "HyperSpeed Wireless"
+    },
+    "rating": 4.8,
+    "score": 97,
+    "store": "Razer",
+    "link": "https://www.razer.com/",
+    "pros": [
+      "Excellent ergonomics",
+      "Very light",
+      "Accurate sensor",
+      "Long battery"
+    ],
+    "cons": [
+      "Expensive",
+      "Right-handed only"
+    ]
+  },
+  {
+    "id": "razer-viper-v3-pro",
+    "type": "mouse",
+    "brand": "Razer",
+    "name": "Razer Viper V3 Pro",
+    "image": "assets/images/placeholder.svg",
+    "category": "gaming",
+    "badge": "Ultra Light",
+    "summary": "One of the lightest flagship wireless gaming mice available.",
+    "bestFor": "Gaming",
+    "price": 159,
+    "highlights": [
+      "54 g",
+      "Wireless",
+      "35000 DPI"
+    ],
+    "specs": {
+      "Sensor": "Focus Pro 35K",
+      "Weight": "54 g",
+      "Connectivity": "HyperSpeed Wireless"
+    },
+    "rating": 4.9,
+    "score": 98,
+    "store": "Razer",
+    "link": "https://www.razer.com/",
+    "pros": [
+      "Extremely light",
+      "Outstanding sensor",
+      "Long battery life",
+      "Professional esports design"
+    ],
+    "cons": [
+      "Premium price",
+      "Few extra buttons"
+    ]
+  },
+  {
+    "id": "steelseries-rival-3-wireless",
+    "type": "mouse",
+    "brand": "SteelSeries",
+    "name": "SteelSeries Rival 3 Wireless",
+    "image": "assets/images/placeholder.svg",
+    "category": "budget",
+    "badge": "Best Budget",
+    "summary": "Affordable wireless gaming mouse with excellent battery life.",
+    "bestFor": "Budget",
+    "price": 49,
+    "highlights": [
+      "Wireless",
+      "18000 DPI",
+      "Long Battery"
+    ],
+    "specs": {
+      "Sensor": "TrueMove Air",
+      "Weight": "95 g",
+      "Connectivity": "2.4 GHz / Bluetooth"
+    },
+    "rating": 4.6,
+    "score": 90,
+    "store": "SteelSeries",
+    "link": "https://steelseries.com/",
+    "pros": [
+      "Excellent value",
+      "Very long battery",
+      "Comfortable"
+    ],
+    "cons": [
+      "Uses AA batteries",
+      "Not ultralight"
     ]
   }
 ]

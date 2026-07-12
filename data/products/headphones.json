@@ -1,0 +1,208 @@
+[
+  {
+    "id": "sony-wh1000xm6",
+    "type": "headphones",
+    "brand": "Sony",
+    "name": "Sony WH-1000XM6",
+    "image": "assets/images/placeholder.svg",
+    "category": "premium",
+    "badge": "Editor's Choice",
+    "summary": "Sony's flagship wireless noise-canceling headphones with excellent sound quality, industry-leading ANC, and long battery life.",
+    "bestFor": "Travel",
+    "price": 449,
+    "highlights": ["Wireless", "ANC", "30 Hours"],
+    "specs": {
+      "Type": "Over-ear",
+      "Connectivity": "Bluetooth 5.3",
+      "Noise Cancellation": "Adaptive ANC",
+      "Battery": "Up to 30 hours",
+      "Charging": "USB-C",
+      "Weight": "Approx. 250 g"
+    },
+    "rating": 4.9,
+    "score": 98,
+    "store": "Sony",
+    "link": "https://electronics.sony.com/",
+    "pros": [
+      "Outstanding noise cancellation",
+      "Excellent sound quality",
+      "Comfortable for long sessions",
+      "Long battery life"
+    ],
+    "cons": [
+      "Premium price",
+      "No wired USB audio"
+    ]
+  },
+  {
+    "id": "sony-wh1000xm5",
+    "type": "headphones",
+    "brand": "Sony",
+    "name": "Sony WH-1000XM5",
+    "image": "assets/images/placeholder.svg",
+    "category": "premium",
+    "badge": "Travel Favorite",
+    "summary": "Still one of the best wireless headphones with superb ANC and balanced sound.",
+    "bestFor": "Travel",
+    "price": 349,
+    "highlights": ["Wireless", "ANC", "30 Hours"],
+    "specs": {
+      "Type": "Over-ear",
+      "Connectivity": "Bluetooth",
+      "Noise Cancellation": "ANC",
+      "Battery": "30 hours",
+      "Charging": "USB-C",
+      "Weight": "250 g"
+    },
+    "rating": 4.8,
+    "score": 96,
+    "store": "Sony",
+    "link": "https://electronics.sony.com/",
+    "pros": [
+      "Excellent ANC",
+      "Comfortable",
+      "Great microphone",
+      "Reliable battery"
+    ],
+    "cons": [
+      "Doesn't fold",
+      "Premium pricing"
+    ]
+  },
+  {
+    "id": "bose-qc-ultra",
+    "type": "headphones",
+    "brand": "Bose",
+    "name": "Bose QuietComfort Ultra",
+    "image": "assets/images/placeholder.svg",
+    "category": "premium",
+    "badge": "Best Noise Cancelling",
+    "summary": "Premium Bose headphones focused on comfort and class-leading active noise cancellation.",
+    "bestFor": "Travel",
+    "price": 429,
+    "highlights": ["ANC", "Spatial Audio", "24 Hours"],
+    "specs": {
+      "Type": "Over-ear",
+      "Connectivity": "Bluetooth",
+      "Battery": "24 hours",
+      "Charging": "USB-C",
+      "Weight": "254 g"
+    },
+    "rating": 4.8,
+    "score": 97,
+    "store": "Bose",
+    "link": "https://www.bose.com/",
+    "pros": [
+      "Excellent comfort",
+      "Top-tier ANC",
+      "Natural sound",
+      "Premium build"
+    ],
+    "cons": [
+      "Battery shorter than Sony",
+      "Expensive"
+    ]
+  },
+  {
+    "id": "airpods-max",
+    "type": "headphones",
+    "brand": "Apple",
+    "name": "Apple AirPods Max",
+    "image": "assets/images/placeholder.svg",
+    "category": "apple",
+    "badge": "Apple Ecosystem",
+    "summary": "Premium Apple over-ear headphones offering seamless integration across Apple devices.",
+    "bestFor": "Apple Users",
+    "price": 549,
+    "highlights": ["Spatial Audio", "ANC", "USB-C"],
+    "specs": {
+      "Type": "Over-ear",
+      "Connectivity": "Bluetooth",
+      "Battery": "20 hours",
+      "Charging": "USB-C",
+      "Weight": "386 g"
+    },
+    "rating": 4.7,
+    "score": 94,
+    "store": "Apple",
+    "link": "https://www.apple.com/",
+    "pros": [
+      "Excellent build quality",
+      "Outstanding transparency mode",
+      "Great Apple integration",
+      "High-quality audio"
+    ],
+    "cons": [
+      "Heavy",
+      "Very expensive"
+    ]
+  },
+  {
+    "id": "sennheiser-momentum-4",
+    "type": "headphones",
+    "brand": "Sennheiser",
+    "name": "Momentum 4 Wireless",
+    "image": "assets/images/placeholder.svg",
+    "category": "audiophile",
+    "badge": "Best Sound",
+    "summary": "Wireless headphones with exceptional sound quality and industry-leading battery life.",
+    "bestFor": "Music",
+    "price": 299,
+    "highlights": ["60 Hours", "ANC", "Bluetooth"],
+    "specs": {
+      "Type": "Over-ear",
+      "Connectivity": "Bluetooth",
+      "Battery": "60 hours",
+      "Charging": "USB-C",
+      "Weight": "293 g"
+    },
+    "rating": 4.8,
+    "score": 96,
+    "store": "Sennheiser",
+    "link": "https://www.sennheiser.com/",
+    "pros": [
+      "Amazing sound",
+      "Very long battery",
+      "Comfortable",
+      "Excellent value"
+    ],
+    "cons": [
+      "ANC trails Sony slightly",
+      "App could be better"
+    ]
+  },
+  {
+    "id": "beats-studio-pro",
+    "type": "headphones",
+    "brand": "Beats",
+    "name": "Beats Studio Pro",
+    "image": "assets/images/placeholder.svg",
+    "category": "lifestyle",
+    "badge": "Lifestyle Pick",
+    "summary": "Stylish wireless headphones with strong ANC and compatibility across Apple and Android devices.",
+    "bestFor": "Everyday Use",
+    "price": 349,
+    "highlights": ["ANC", "USB-C Audio", "40 Hours"],
+    "specs": {
+      "Type": "Over-ear",
+      "Connectivity": "Bluetooth",
+      "Battery": "40 hours",
+      "Charging": "USB-C",
+      "Weight": "260 g"
+    },
+    "rating": 4.6,
+    "score": 91,
+    "store": "Beats",
+    "link": "https://www.beatsbydre.com/",
+    "pros": [
+      "Good battery life",
+      "Comfortable",
+      "USB-C audio support",
+      "Stylish design"
+    ],
+    "cons": [
+      "ANC behind Sony and Bose",
+      "Premium pricing"
+    ]
+  }
+]
